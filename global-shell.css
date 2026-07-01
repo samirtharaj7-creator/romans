@@ -1,0 +1,303 @@
+:root{
+  --mbe-ink:#111827;
+  --mbe-bg:#ffffff;
+  --mbe-soft:#f6f8f7;
+  --mbe-gold:#c9a44c;
+  --mbe-gold-dark:#9b7628;
+  --mbe-teal:#2f7d7a;
+  --mbe-navy:#0b1f3a;
+  --mbe-rule:#e5e0d6;
+  --mbe-muted:#5f6673;
+  --mbe-ivory:#f7f3e8;
+  --mbe-max:1080px;
+  --mbe-accent:var(--mbe-gold);
+  --mbe-accent-dark:var(--mbe-gold-dark);
+  --mbe-font-display:"Cormorant Garamond",Georgia,serif;
+  --mbe-font-reading:"Literata",Georgia,serif;
+  --mbe-font-ui:"Inter",system-ui,sans-serif;
+}
+
+.mbe-global-shell *,
+.mbe-global-footer *{box-sizing:border-box;}
+
+.mbe-global-shell[data-tool="hermeneutics"],
+.mbe-global-footer[data-tool="hermeneutics"]{--mbe-accent:#6b54b3;--mbe-accent-dark:#4b3b87;}
+.mbe-global-shell[data-tool="psalms"],
+.mbe-global-footer[data-tool="psalms"]{--mbe-accent:#c9a44c;--mbe-accent-dark:#2f7d7a;}
+.mbe-global-shell[data-tool="daniel"],
+.mbe-global-footer[data-tool="daniel"]{--mbe-accent:#c9a44c;--mbe-accent-dark:#5a7049;}
+.mbe-global-shell[data-tool="revelation"],
+.mbe-global-footer[data-tool="revelation"]{--mbe-accent:#c1564f;--mbe-accent-dark:#8a2f3a;}
+.mbe-global-shell[data-tool="sanctuary"],
+.mbe-global-footer[data-tool="sanctuary"]{--mbe-accent:#c9a44c;--mbe-accent-dark:#36432f;}
+.mbe-global-shell[data-tool="last-day-events"],
+.mbe-global-footer[data-tool="last-day-events"]{--mbe-accent:#3f5f86;--mbe-accent-dark:#283a54;}
+.mbe-global-shell[data-tool="romans"],
+.mbe-global-footer[data-tool="romans"]{--mbe-accent:#c9a44c;--mbe-accent-dark:#4f5f3a;}
+
+.mbe-global-shell{
+  position:sticky;
+  top:0;
+  z-index:1200;
+  min-height:46px;
+  background:var(--mbe-navy);
+  border-bottom:1px solid rgba(247,243,232,.14);
+  color:#f7f3e8;
+  font-family:var(--mbe-font-ui);
+}
+
+.mbe-global-shell + .site-header{
+  top:46px;
+}
+
+.mbe-global-shell ~ .reader-header{
+  top:46px !important;
+}
+
+.mbe-global-shell ~ .fixed.left-0.top-0{
+  top:46px !important;
+}
+
+/* Hermeneutics renders its native navigation inside the React root, not as
+   .site-header. Keep those sticky bars below the shared library ribbon. */
+body > #root > div > header.sticky.top-0{
+  top:46px !important;
+}
+
+#root .top-\[65px\]{
+  top:111px !important;
+}
+
+#root .top-\[67px\]{
+  top:113px !important;
+}
+
+#root .top-\[73px\]{
+  top:119px !important;
+}
+
+#root .top-\[122px\]{
+  top:168px !important;
+}
+
+.mbe-shell-wrap{
+  max-width:var(--mbe-max);
+  margin:0 auto;
+  padding:0 28px;
+}
+
+.mbe-global-shell .mbe-shell-wrap{
+  min-height:46px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+}
+
+.mbe-ribbon-left{
+  min-width:0;
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+.mbe-ribbon-brand{
+  color:#fff;
+  font-family:var(--mbe-font-display);
+  font-size:1.14rem;
+  font-weight:600;
+  line-height:1;
+  letter-spacing:.01em;
+  text-decoration:none;
+  white-space:nowrap;
+}
+
+.mbe-ribbon-brand:hover,
+.mbe-ribbon-back:hover,
+.mbe-global-nav a:hover,
+.mbe-library-menu[open] .mbe-library-toggle,
+.mbe-library-toggle:hover{
+  color:var(--mbe-gold);
+}
+
+.mbe-ribbon-back{
+  color:#d8d3c3;
+  font-size:.73rem;
+  font-weight:700;
+  letter-spacing:.14em;
+  line-height:1;
+  text-decoration:none;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+
+.mbe-ribbon-back::before{
+  content:"";
+  display:inline-block;
+  width:1px;
+  height:16px;
+  margin-right:18px;
+  background:rgba(247,243,232,.22);
+  vertical-align:-3px;
+}
+
+.mbe-global-nav{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:18px;
+  color:#d8d3c3;
+  font-size:.82rem;
+  font-weight:700;
+  line-height:1;
+}
+
+.mbe-global-nav a,
+.mbe-library-toggle{
+  color:inherit;
+  text-decoration:none;
+  transition:color .18s ease;
+  white-space:nowrap;
+}
+
+.mbe-library-menu{position:relative;}
+.mbe-library-toggle{list-style:none;cursor:pointer;}
+.mbe-library-toggle::-webkit-details-marker{display:none;}
+
+.mbe-library-toggle::after{
+  content:"";
+  display:inline-block;
+  width:.38rem;
+  height:.38rem;
+  margin-left:.42rem;
+  border-right:1.5px solid currentColor;
+  border-bottom:1.5px solid currentColor;
+  transform:rotate(45deg) translateY(-.1rem);
+}
+
+.mbe-library-menu[open] .mbe-library-toggle::after{
+  transform:rotate(225deg) translateY(-.08rem);
+}
+
+.mbe-library-panel{
+  position:absolute;
+  right:0;
+  top:calc(100% + 14px);
+  width:min(560px,calc(100vw - 32px));
+  padding:12px;
+  border:1px solid var(--mbe-rule);
+  border-radius:8px;
+  background:#fff;
+  color:var(--mbe-ink);
+  box-shadow:0 24px 50px -34px rgba(11,31,58,.55);
+}
+
+.mbe-library-panel::before{
+  content:"";
+  position:absolute;
+  top:-14px;
+  right:0;
+  left:0;
+  height:14px;
+}
+
+.mbe-library-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:6px;
+}
+
+.mbe-library-item{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  padding:11px 12px;
+  border-radius:6px;
+  color:var(--mbe-ink);
+  text-decoration:none;
+}
+
+.mbe-library-item:hover{background:var(--mbe-soft);}
+.mbe-library-item[aria-current="page"]{background:rgba(201,164,76,.13);}
+.mbe-library-name{font-family:var(--mbe-font-display);font-size:1.02rem;font-weight:600;line-height:1.1;}
+.mbe-library-desc{color:var(--mbe-muted);font-size:.78rem;font-weight:500;line-height:1.35;}
+
+.mbe-global-footer{
+  background:var(--mbe-navy);
+  color:#c8ced8;
+  font-family:var(--mbe-font-ui);
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+.mbe-global-footer .mbe-shell-wrap{
+  max-width:none;
+}
+
+.mbe-footer-wrap{
+  min-height:188px;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px 44px;
+  padding:64px clamp(28px,3vw,52px);
+  font-size:clamp(.98rem,1.35vw,1.13rem);
+  line-height:1.45;
+}
+
+.mbe-footer-brand{
+  color:#fff;
+  font-family:var(--mbe-font-display);
+  font-size:clamp(1.75rem,2.8vw,2.2rem);
+  font-weight:600;
+  line-height:1.05;
+  text-decoration:none;
+  border-bottom:1px solid rgba(247,243,232,.38);
+  padding-bottom:14px;
+}
+
+.mbe-footer-link{
+  color:var(--mbe-gold);
+  text-decoration:none;
+  font-weight:700;
+  border-bottom:1px solid rgba(201,164,76,.64);
+  padding-bottom:2px;
+}
+
+.mbe-footer-link:hover{
+  color:#f7f3e8;
+  border-bottom-color:#f7f3e8;
+}
+
+@media(max-width:720px){
+  .mbe-global-shell .mbe-shell-wrap{
+    padding:0 18px;
+    gap:12px;
+  }
+
+  .mbe-ribbon-back{display:none;}
+
+  .mbe-ribbon-brand{
+    font-size:1rem;
+  }
+
+  .mbe-global-nav{
+    gap:14px;
+    font-size:.78rem;
+  }
+
+  .mbe-library-panel{
+    right:-76px;
+    width:min(360px,calc(100vw - 24px));
+  }
+
+  .mbe-library-grid{grid-template-columns:1fr;}
+
+  .mbe-footer-wrap{
+    min-height:auto;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:16px;
+    padding:44px 24px;
+  }
+}
