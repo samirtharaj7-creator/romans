@@ -1,0 +1,5 @@
+1:"$Sreact.fragment"
+2:I[4826,[],"ViewportBoundary"]
+3:I[4826,[],"MetadataBoundary"]
+4:"$Sreact.suspense"
+0:{"rsc":["$","$1","h",{"children":[null,["$","$L2",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L3",null,{"children":["$","$4",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Romans 15 | Romans Study"}],["$","meta","1",{"name":"description","content":"Christ teaches the church to bear the weak, welcome the nations, and serve the gospel mission."}]]}]}]}],null]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"-GbKp6AZLs6Mu2tguWo8F"}
