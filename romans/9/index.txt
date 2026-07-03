@@ -1,8 +1,8 @@
 1:"$Sreact.fragment"
-2:I[4514,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","676","static/chunks/676-0e861427d7838b11.js","177","static/chunks/app/layout-7a59849285855451.js"],"ThemeProvider"]
-3:I[8543,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","676","static/chunks/676-0e861427d7838b11.js","177","static/chunks/app/layout-7a59849285855451.js"],"TooltipProvider"]
-4:I[9185,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","676","static/chunks/676-0e861427d7838b11.js","177","static/chunks/app/layout-7a59849285855451.js"],"ReadingProgressBar"]
-5:I[9186,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","676","static/chunks/676-0e861427d7838b11.js","177","static/chunks/app/layout-7a59849285855451.js"],"SiteHeader"]
+2:I[4514,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","676","static/chunks/676-0e861427d7838b11.js","177","static/chunks/app/layout-7a59849285855451.js?v=commentary-nav-1"],"ThemeProvider"]
+3:I[8543,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","676","static/chunks/676-0e861427d7838b11.js","177","static/chunks/app/layout-7a59849285855451.js?v=commentary-nav-1"],"TooltipProvider"]
+4:I[9185,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","676","static/chunks/676-0e861427d7838b11.js","177","static/chunks/app/layout-7a59849285855451.js?v=commentary-nav-1"],"ReadingProgressBar"]
+5:I[9186,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","676","static/chunks/676-0e861427d7838b11.js","177","static/chunks/app/layout-7a59849285855451.js?v=commentary-nav-1"],"SiteHeader"]
 6:I[5011,[],""]
 7:I[6607,[],""]
 9:I[4826,[],"OutletBoundary"]

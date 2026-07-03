@@ -301,3 +301,26 @@ body > #root > div > header.sticky.top-0{
     padding:44px 24px;
   }
 }
+
+/* Home hero spacing */
+.home-showcase{
+  padding-top:clamp(1rem,2vw,2rem);
+}
+
+.home-showcase-hero{
+  align-items:center;
+  min-height:clamp(24rem,52vh,36rem);
+  margin-bottom:clamp(3rem,6vw,5rem);
+  padding-top:clamp(1.25rem,3vw,2.75rem);
+}
+
+@media(max-width:980px){
+  .home-showcase{
+    padding-top:clamp(1rem,4vw,2rem);
+  }
+
+  .home-showcase-hero{
+    min-height:auto;
+    padding-top:clamp(1rem,5vw,2.5rem);
+  }
+}
