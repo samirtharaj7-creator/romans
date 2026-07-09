@@ -1346,3 +1346,62 @@ body[data-romans-chapter] .commentary-reading p {
 body[data-romans-chapter] .commentary-reading p + p {
   margin-top: 1rem !important;
 }
+
+/* Mobile inline commentary notes for the Romans reader. */
+.romans-inline-note {
+  display: none !important;
+}
+
+@media (max-width: 1023.98px) {
+  body[data-romans-chapter] .romans-inline-note {
+    display: block !important;
+    width: 100% !important;
+    margin: .9rem 0 .35rem !important;
+    padding: 1rem !important;
+    border: 1px solid hsl(42 54% 54% / .50) !important;
+    border-left-width: 4px !important;
+    border-radius: .375rem !important;
+    background: hsl(213 42% 16%) !important;
+    color: hsl(41 44% 89%) !important;
+    box-shadow:
+      0 0 0 1px hsl(42 54% 54% / .18),
+      0 18px 36px rgb(0 0 0 / .20) !important;
+  }
+
+  body[data-romans-chapter] .romans-inline-note .exposition-card-heading {
+    margin-bottom: .7rem !important;
+  }
+
+  body[data-romans-chapter] .romans-inline-note .exposition-card-heading h2 {
+    color: hsl(41 44% 89%) !important;
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif !important;
+    font-size: .875rem !important;
+    font-weight: 700 !important;
+    line-height: 1.25rem !important;
+  }
+
+  body[data-romans-chapter] .romans-inline-note .commentary-reading,
+  body[data-romans-chapter] .romans-inline-note .commentary-reading p {
+    color: hsl(41 44% 89%) !important;
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif !important;
+    font-size: var(--notes-font-size, 18px) !important;
+    font-weight: 400 !important;
+    line-height: 1.8 !important;
+  }
+
+  body[data-romans-chapter] .romans-inline-note .commentary-reading p + p {
+    margin-top: .85rem !important;
+  }
+
+  body[data-romans-chapter] .romans-inline-note .verse-study-card {
+    margin-top: 1rem !important;
+    border-color: hsl(42 54% 54% / .24) !important;
+    background: hsl(213 38% 19% / .72) !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  body[data-romans-chapter] .romans-inline-note {
+    display: none !important;
+  }
+}

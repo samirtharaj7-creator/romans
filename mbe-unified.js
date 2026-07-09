@@ -1,6 +1,6 @@
 (() => {
   const tool = "romans";
-  const illustratedVersion = "romans-tags-removed-15";
+  const illustratedVersion = "romans-inline-notes-16";
   const danielFontsHref = "https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@400;500;600&display=swap";
   const headerMarkup = "<header class=\"mbe-global-shell\" data-tool=\"romans\" data-embedded=\"true\">\n      <div class=\"mbe-shell-wrap\">\n        <div class=\"mbe-ribbon-left\">\n          <a class=\"mbe-ribbon-brand\" href=\"https://mybibleexplorer.com\" aria-label=\"My Bible Explorer home\"><img class=\"mbe-ribbon-logo\" src=\"/assets/my-bible-explorer-logo.png\" alt=\"My Bible Explorer\"></a>\n          <a class=\"mbe-ribbon-back\" href=\"https://mybibleexplorer.com/#journeys\">Back to Library</a>\n        </div>\n        <nav class=\"mbe-global-nav\" aria-label=\"My Bible Explorer\">\n          <details class=\"mbe-library-menu\">\n            <summary class=\"mbe-library-toggle\">Library</summary>\n            <div class=\"mbe-library-panel\">\n              <div class=\"mbe-library-grid\">\n            <a class=\"mbe-library-item\" href=\"https://hermeneutics.mybibleexplorer.com\"><span class=\"mbe-library-name\">Hermeneutics</span><span class=\"mbe-library-desc\">Learn to read Scripture faithfully</span></a>\n            <a class=\"mbe-library-item\" href=\"https://psalms.mybibleexplorer.com\"><span class=\"mbe-library-name\">Psalms</span><span class=\"mbe-library-desc\">Worship, lament, praise, and prayer</span></a>\n            <a class=\"mbe-library-item\" href=\"https://daniel.mybibleexplorer.com\"><span class=\"mbe-library-name\">Daniel</span><span class=\"mbe-library-desc\">Prophecy and providence</span></a>\n            <a class=\"mbe-library-item\" href=\"https://revelation.mybibleexplorer.com/\"><span class=\"mbe-library-name\">Revelation</span><span class=\"mbe-library-desc\">Symbols, judgment, and final hope</span></a>\n            <a class=\"mbe-library-item\" href=\"https://sanctuary.mybibleexplorer.com/#structure\"><span class=\"mbe-library-name\">Sanctuary</span><span class=\"mbe-library-desc\">A blueprint of salvation</span></a>\n            <a class=\"mbe-library-item\" href=\"https://lastdayevents.mybibleexplorer.com/index.html\"><span class=\"mbe-library-name\">Last Day Events</span><span class=\"mbe-library-desc\">Earth's final chapter</span></a>\n            <a class=\"mbe-library-item\" href=\"https://romans.mybibleexplorer.com\" aria-current=\"page\"><span class=\"mbe-library-name\">Romans</span><span class=\"mbe-library-desc\">Righteousness by faith and life in the Spirit</span></a>\n              </div>\n            </div>\n          </details>\n          <a class=\"mbe-ribbon-give\" href=\"https://mybibleexplorer.com/#donate\">Support</a>\n        </nav>\n      </div>\n    </header>\n";
   const footerMarkup = "<footer class=\"mbe-global-footer\" data-tool=\"romans\">\n      <div class=\"mbe-shell-wrap mbe-footer-wrap\">\n        <a class=\"mbe-footer-brand\" href=\"https://mybibleexplorer.com\" aria-label=\"My Bible Explorer home\"><img class=\"mbe-footer-logo\" src=\"/assets/my-bible-explorer-logo.png\" alt=\"My Bible Explorer\"></a>\n        <span>Know the Word. Live the Word.</span>\n        <span>To contact, email <a class=\"mbe-footer-link\" href=\"mailto:admin@mybibleexplorer.com\">admin@mybibleexplorer.com</a></span>\n        <a class=\"mbe-footer-link\" href=\"https://mybibleexplorer.com/#donate\">Support</a>\n        <span>&copy; <span data-mbe-year></span> My Bible Explorer</span>\n      </div>\n    </footer>\n    ";
@@ -104,12 +104,118 @@
     });
   }
 
+  function isMobileInlineNoteViewport() {
+    return window.matchMedia ? window.matchMedia('(max-width: 1023.98px)').matches : window.innerWidth < 1024;
+  }
+
+  function verseReferenceFromButton(button) {
+    const match = button && button.id ? button.id.match(/^romans-(\d+)-(\d+)$/) : null;
+    if (!match) return null;
+    return {
+      chapter: match[1],
+      verse: match[2],
+      text: 'Romans ' + match[1] + ':' + match[2],
+      inlineId: 'inline-note-' + match[1] + '-' + match[2]
+    };
+  }
+
+  function removeRomansInlineNotes() {
+    document.querySelectorAll('[data-romans-inline-note]').forEach((node) => {
+      node.remove();
+    });
+  }
+
+  function sanitizeInlineNoteIds(note, reference) {
+    note.id = reference.inlineId;
+    note.querySelectorAll('[id]').forEach((node, index) => {
+      node.id = reference.inlineId + '-' + (index + 1);
+    });
+    note.querySelectorAll('[for]').forEach((node) => {
+      node.removeAttribute('for');
+    });
+  }
+
+  function hideMobileCommentaryDrawer() {
+    document.querySelectorAll('[data-commentary-panel][data-state="open"], [data-mobile-commentary][data-state="open"], .commentary-drawer[data-state="open"]').forEach((node) => {
+      node.setAttribute('data-state', 'closed');
+      node.setAttribute('aria-hidden', 'true');
+    });
+    document.querySelectorAll('button[aria-label="Close study notes"], button[aria-label="Close Study Notes"]').forEach((button) => {
+      if (button.offsetParent !== null) button.click();
+    });
+  }
+
+  function cloneCurrentCommentaryForVerse(verseButton, reference) {
+    if (!isMobileInlineNoteViewport()) {
+      removeRomansInlineNotes();
+      return false;
+    }
+    const source = document.querySelector('.commentary-pane .exposition-card');
+    const heading = source ? source.querySelector('.exposition-card-heading h2') : null;
+    if (!source || !heading || heading.textContent.trim() !== reference.text) return false;
+
+    const verseBlock = verseButton.closest('.scripture-list-item') || verseButton.parentElement;
+    if (!verseBlock) return false;
+
+    removeRomansInlineNotes();
+    const inlineNote = source.cloneNode(true);
+    inlineNote.classList.add('romans-inline-note');
+    inlineNote.setAttribute('data-romans-inline-note', reference.text);
+    inlineNote.setAttribute('role', 'region');
+    inlineNote.setAttribute('aria-label', reference.text + ' study note');
+    sanitizeInlineNoteIds(inlineNote, reference);
+    verseBlock.appendChild(inlineNote);
+    hideMobileCommentaryDrawer();
+    return true;
+  }
+
+  function syncRomansInlineNoteForVerse(verseButton, attempt) {
+    const reference = verseReferenceFromButton(verseButton);
+    if (!reference) return;
+    if (!isMobileInlineNoteViewport()) {
+      removeRomansInlineNotes();
+      return;
+    }
+    if (cloneCurrentCommentaryForVerse(verseButton, reference)) return;
+    if ((attempt || 0) < 16) {
+      window.setTimeout(() => syncRomansInlineNoteForVerse(verseButton, (attempt || 0) + 1), 60);
+    }
+  }
+
+  function syncRomansInlineNoteFromActiveVerse() {
+    const active = document.querySelector('.scripture-pane .scripture-card-active[id^="romans-"]');
+    if (active) syncRomansInlineNoteForVerse(active, 0);
+  }
+
+  function installRomansInlineNotes() {
+    if (window.__romansInlineNotesInstalled) return;
+    window.__romansInlineNotesInstalled = true;
+    document.addEventListener('click', (event) => {
+      if (!(event.target instanceof Element)) return;
+      const verseButton = event.target.closest('.scripture-pane button.scripture-card[id^="romans-"]');
+      if (!verseButton) return;
+      window.setTimeout(() => syncRomansInlineNoteForVerse(verseButton, 0), 0);
+    });
+    window.addEventListener('hashchange', () => {
+      window.setTimeout(syncRomansInlineNoteFromActiveVerse, 0);
+    });
+    window.addEventListener('resize', () => {
+      if (isMobileInlineNoteViewport()) {
+        syncRomansInlineNoteFromActiveVerse();
+      } else {
+        removeRomansInlineNotes();
+      }
+    });
+  }
+
   function ensureShell() {
     if (!document.body) return;
     forceDarkTheme();
     ensureIllustratedAssets();
     syncRomansRouteMeta();
     syncChapterTopicPills();
+    installRomansInlineNotes();
+    if (!isMobileInlineNoteViewport()) removeRomansInlineNotes();
     removeThemeToggle();
     document.body.classList.add('mbe-shell-managed');
     document.querySelectorAll('.mbe-global-shell').forEach((node, index) => {
