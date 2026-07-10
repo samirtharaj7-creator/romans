@@ -33,6 +33,7 @@
   --radius: .5rem;
   --font-sans: "Jost", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "EB Garamond", Georgia, serif;
+  --font-display: "Cinzel", Georgia, serif;
   --mbe-ink: #ece0c4;
   --mbe-bg: #0e1f34;
   --mbe-soft: #1e2c3e;
@@ -363,7 +364,7 @@ body[data-romans-route="introduction"] .background-hero > * {
 .home-showcase-copy h1 {
   max-width: 9ch !important;
   color: #f3e8cc !important;
-  font-size: clamp(3.2rem, 7vw, 7.4rem) !important;
+  font-size: clamp(3rem, 7vw, 7rem) !important;
   font-weight: 600 !important;
   text-shadow: 0 18px 44px rgba(0, 0, 0, .32);
 }
@@ -591,7 +592,7 @@ body[data-romans-chapter] .scripture-pane-header > * {
 
 .scripture-pane-header h1 {
   color: #f3e8cc !important;
-  font-size: clamp(2.2rem, 3.2vw, 3rem) !important;
+  font-size: clamp(2.25rem, 3.2vw, 3rem) !important;
   font-weight: 600 !important;
 }
 
@@ -636,7 +637,7 @@ body[data-romans-chapter] .scripture-pane-header > * {
 
 .verse-copy {
   color: #f3e8cc !important;
-  font-size: var(--scripture-desktop-font-size, 20px) !important;
+  font-size: var(--scripture-desktop-font-size, 1.25rem) !important;
   font-weight: 500 !important;
   line-height: 1.62 !important;
 }
@@ -661,7 +662,7 @@ body[data-romans-chapter] .scripture-pane-header > * {
 
 .commentary-reading {
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif !important;
-  font-size: var(--notes-font-size, 18px) !important;
+  font-size: var(--notes-font-size, 1.125rem) !important;
   font-weight: 400 !important;
   line-height: 1.78 !important;
 }
@@ -690,6 +691,7 @@ h2,
 .home-section-split h2,
 .background-hero h1,
 .background-hero h2,
+.background-section h2,
 .article-document-header h1,
 .articles-hero h1,
 .scripture-pane-header h1 {
@@ -782,7 +784,7 @@ body[data-romans-chapter] .scripture-pane-header h1 {
 
 body[data-romans-chapter] .scripture-chapter-summary {
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif !important;
-  font-size: clamp(1.05rem, 1.25vw, 1.25rem) !important;
+  font-size: clamp(1rem, 1.25vw, 1.25rem) !important;
   font-weight: 400 !important;
   letter-spacing: 0 !important;
   line-height: 1.65 !important;
@@ -814,7 +816,7 @@ body[data-romans-chapter] .exposition-card-heading h2 {
 
 body[data-romans-chapter] .commentary-reading,
 body[data-romans-chapter] .commentary-reading p {
-  font-size: var(--notes-font-size, 18px) !important;
+  font-size: var(--notes-font-size, 1.125rem) !important;
   font-weight: 400 !important;
   line-height: 1.82 !important;
 }
@@ -839,11 +841,11 @@ body[data-romans-chapter] .commentary-reading p {
 
 @media (max-width: 640px) {
   .home-showcase-copy h1 {
-    font-size: clamp(3rem, 16vw, 5.2rem) !important;
+    font-size: clamp(3rem, 16vw, 4.5rem) !important;
   }
 
   .verse-copy {
-    font-size: var(--scripture-mobile-font-size, 18px) !important;
+    font-size: var(--scripture-mobile-font-size, 1.125rem) !important;
   }
 }
 
@@ -892,7 +894,7 @@ body[data-romans-chapter] .passage-outline-title {
 
 body[data-romans-chapter] .verse-copy {
   font-family: var(--font-serif), Georgia, serif !important;
-  font-size: var(--scripture-desktop-font-size, 20px) !important;
+  font-size: var(--scripture-desktop-font-size, 1.25rem) !important;
   font-weight: 400 !important;
   letter-spacing: 0 !important;
   line-height: 1.75rem !important;
@@ -909,7 +911,7 @@ body[data-romans-chapter] .exposition-card-heading h2 {
 body[data-romans-chapter] .commentary-reading,
 body[data-romans-chapter] .commentary-reading p {
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif !important;
-  font-size: var(--notes-font-size, 18px) !important;
+  font-size: var(--notes-font-size, 1.125rem) !important;
   font-weight: 400 !important;
   letter-spacing: 0 !important;
   line-height: 2rem !important;
@@ -917,7 +919,7 @@ body[data-romans-chapter] .commentary-reading p {
 
 @media (max-width: 640px) {
   body[data-romans-chapter] .verse-copy {
-    font-size: var(--scripture-mobile-font-size, 18px) !important;
+    font-size: var(--scripture-mobile-font-size, 1.125rem) !important;
   }
 }
 
@@ -925,9 +927,9 @@ body[data-romans-chapter] .commentary-reading p {
    These values mirror Daniel's chapter reader classes and win over the older
    Romans override layers above. */
 body[data-romans-chapter] .split-reader {
-  --scripture-mobile-font-size: 18px;
-  --scripture-desktop-font-size: 20px;
-  --notes-font-size: 18px;
+  --scripture-mobile-font-size: 1.125rem;
+  --scripture-desktop-font-size: 1.25rem;
+  --notes-font-size: 1.125rem;
 }
 
 body[data-romans-chapter] .scripture-pane,
@@ -994,7 +996,7 @@ body[data-romans-chapter] .scripture-list {
   display: grid !important;
   gap: 1rem !important;
   color: #f3e8cc !important;
-  font-size: var(--scripture-desktop-font-size, 20px) !important;
+  font-size: var(--scripture-desktop-font-size, 1.25rem) !important;
   line-height: 1.75rem !important;
 }
 
@@ -1063,7 +1065,7 @@ body[data-romans-chapter] .verse-number {
 body[data-romans-chapter] .verse-copy {
   display: inline !important;
   color: #f3e8cc !important;
-  font-size: var(--scripture-desktop-font-size, 20px) !important;
+  font-size: var(--scripture-desktop-font-size, 1.25rem) !important;
   font-weight: 400 !important;
   letter-spacing: 0 !important;
   line-height: 1.75rem !important;
@@ -1113,7 +1115,7 @@ body[data-romans-chapter] .exposition-card-heading h2 {
 body[data-romans-chapter] .commentary-reading {
   margin-top: 0 !important;
   color: rgba(236, 224, 196, .86) !important;
-  font-size: var(--notes-font-size, 18px) !important;
+  font-size: var(--notes-font-size, 1.125rem) !important;
   font-weight: 400 !important;
   letter-spacing: 0 !important;
   line-height: 2rem !important;
@@ -1134,7 +1136,7 @@ body[data-romans-chapter] .commentary-reading p + p {
 @media (max-width: 640px) {
   body[data-romans-chapter] .scripture-list,
   body[data-romans-chapter] .verse-copy {
-    font-size: var(--scripture-mobile-font-size, 18px) !important;
+    font-size: var(--scripture-mobile-font-size, 1.125rem) !important;
   }
 
   body[data-romans-chapter] .scripture-pane-header h1 {
@@ -1153,9 +1155,9 @@ body[data-romans-chapter] .reader-page {
 }
 
 body[data-romans-chapter] .split-reader {
-  --scripture-mobile-font-size: 18px;
-  --scripture-desktop-font-size: 20px;
-  --notes-font-size: 18px;
+  --scripture-mobile-font-size: 1.125rem;
+  --scripture-desktop-font-size: 1.25rem;
+  --notes-font-size: 1.125rem;
   background: hsl(213 58% 13%) !important;
 }
 
@@ -1281,7 +1283,7 @@ body[data-romans-chapter] .verse-copy {
   display: inline !important;
   color: hsl(41 44% 89%) !important;
   font-family: var(--font-serif), Georgia, serif !important;
-  font-size: var(--scripture-desktop-font-size, 20px) !important;
+  font-size: var(--scripture-desktop-font-size, 1.25rem) !important;
   font-weight: 400 !important;
   line-height: 1.75rem !important;
 }
@@ -1337,7 +1339,7 @@ body[data-romans-chapter] .commentary-reading,
 body[data-romans-chapter] .commentary-reading p {
   color: hsl(41 44% 89%) !important;
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif !important;
-  font-size: var(--notes-font-size, 18px) !important;
+  font-size: var(--notes-font-size, 1.125rem) !important;
   font-weight: 400 !important;
   letter-spacing: 0 !important;
   line-height: 2rem !important;
@@ -1384,7 +1386,7 @@ body[data-romans-chapter] .commentary-reading p + p {
   body[data-romans-chapter] .romans-inline-note .commentary-reading p {
     color: hsl(41 44% 89%) !important;
     font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif !important;
-    font-size: var(--notes-font-size, 18px) !important;
+    font-size: var(--notes-font-size, 1.125rem) !important;
     font-weight: 400 !important;
     line-height: 1.8 !important;
   }
@@ -1403,5 +1405,265 @@ body[data-romans-chapter] .commentary-reading p + p {
 @media (min-width: 1024px) {
   body[data-romans-chapter] .romans-inline-note {
     display: none !important;
+  }
+}
+
+/* Romans typography standardization: final winning layer.
+   Cinzel = headings, EB Garamond = Bible text, Jost = notes and UI. */
+:root,
+.dark {
+  --display-font: "Cinzel", Georgia, "Times New Roman", serif;
+  --scripture-font: "EB Garamond", Georgia, "Times New Roman", serif;
+  --ui-font: "Jost", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: var(--display-font);
+  --font-serif: var(--scripture-font);
+  --font-sans: var(--ui-font);
+  --mbe-font-display: var(--font-display);
+  --mbe-font-reading: var(--font-serif);
+  --mbe-font-ui: var(--font-sans);
+}
+
+body {
+  font-family: var(--font-sans) !important;
+}
+
+.reader-brand-text,
+.reader-brand-strong,
+.mbe-library-name,
+.font-serif-display,
+.home-showcase-copy h1,
+.home-section-split h2,
+.background-hero h1,
+.background-hero h2,
+.article-document-header h1,
+.articles-hero h1,
+.article-section h2,
+.article-why h2,
+body[data-romans-chapter] .scripture-pane-header h1,
+body[data-romans-chapter] .passage-outline-title,
+body[data-romans-chapter] .reader-pane-toolbar-notes .reader-pane-kicker {
+  font-family: var(--font-display) !important;
+  font-weight: 600 !important;
+}
+
+.home-showcase-copy h1 {
+  font-size: clamp(3rem, 7vw, 7rem) !important;
+  line-height: .95 !important;
+}
+
+.home-section-split h2,
+.background-hero h1,
+.article-document-header h1,
+.articles-hero h1 {
+  font-size: clamp(2.25rem, 5vw, 4.5rem) !important;
+  line-height: 1 !important;
+}
+
+.article-section h2,
+.article-why h2,
+.background-section h2 {
+  font-size: clamp(1.875rem, 3vw, 2.25rem) !important;
+  line-height: 1.12 !important;
+}
+
+body[data-romans-chapter] .scripture-pane-header h1 {
+  font-size: clamp(1.875rem, 2.3vw, 2.25rem) !important;
+  line-height: 2.5rem !important;
+}
+
+.verse-copy,
+.scripture-card .verse-copy,
+.scripture-pane .verse-copy,
+body[data-romans-chapter] .verse-copy {
+  font-family: var(--font-serif) !important;
+}
+
+body[data-romans-chapter] .verse-copy {
+  font-size: var(--scripture-desktop-font-size, 1.25rem) !important;
+  font-weight: 400 !important;
+  line-height: 1.75rem !important;
+}
+
+body[data-romans-chapter] .passage-outline-title {
+  font-family: var(--font-display) !important;
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  letter-spacing: .02em !important;
+  line-height: 1.25 !important;
+}
+
+body[data-romans-chapter] .commentary-reading,
+body[data-romans-chapter] .commentary-reading p,
+body[data-romans-chapter] .romans-inline-note .commentary-reading,
+body[data-romans-chapter] .romans-inline-note .commentary-reading p {
+  font-family: var(--font-sans) !important;
+  font-size: var(--notes-font-size, 1.125rem) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+  line-height: 2rem !important;
+}
+
+.mbe-global-shell,
+.mbe-global-footer,
+.mbe-ribbon-back,
+.mbe-library-toggle,
+.mbe-library-desc,
+.mbe-footer-link,
+.reader-nav,
+.reader-menu,
+.reader-menu-link,
+.reader-nav-link,
+.reader-header-actions,
+.reader-menu-button,
+.home-showcase-description,
+.home-showcase-context,
+.home-showcase-context p,
+.home-showcase-actions,
+.home-showcase-primary,
+.home-showcase-secondary,
+.home-action-card,
+.home-action-card strong,
+.home-action-card > span,
+.home-action-card em,
+.home-showcase-label,
+.home-section-kicker,
+.home-chapter-group,
+.home-chapter-group h3,
+.home-chapter-group > p,
+.home-chapter-mini-grid,
+.home-chapter-mini-grid span,
+.article-card,
+.article-card h3,
+.article-card > span,
+.article-card strong,
+.article-meta span,
+.articles-menu a,
+.background-kicker,
+.background-subtitle,
+.background-section-nav,
+.background-section-nav-heading,
+.background-section-nav a,
+.background-section-label,
+.background-section-number,
+.background-fact-card,
+.background-fact-card h2,
+.background-fact-card p,
+.chapter-strip,
+.chapter-strip-label,
+.chapter-strip-link,
+.reader-pane-toolbar,
+.reader-pane-kicker,
+.reader-pane-subtitle,
+.reader-pane-controls,
+.reader-pane-controls button,
+.chapter-control,
+.search-control,
+.scripture-chapter-summary,
+.passage-outline-range,
+.exposition-card-heading h2,
+.romans-inline-note .exposition-card-heading h2,
+.verse-number,
+.selected-reference-pill,
+.verse-study-card,
+.verse-study-card-header,
+.verse-study-card h3,
+.study-card-section h3,
+.reference-chip,
+.word-note-title,
+.word-reference-chip,
+button,
+input,
+select,
+textarea,
+label,
+figcaption,
+caption {
+  font-family: var(--font-sans) !important;
+}
+
+body[data-romans-chapter] .reader-pane-toolbar:not(.reader-pane-toolbar-notes) .reader-pane-kicker,
+body[data-romans-chapter] .reader-pane-toolbar:not(.reader-pane-toolbar-notes) .reader-pane-kicker span,
+body[data-romans-chapter] .passage-outline-range,
+body[data-romans-chapter] .verse-number,
+body[data-romans-chapter] .commentary-empty {
+  font-family: var(--font-sans) !important;
+}
+
+body[data-romans-chapter] .reader-pane-toolbar-notes .reader-pane-kicker,
+body[data-romans-chapter] .reader-pane-toolbar-notes .reader-pane-kicker span {
+  font-family: var(--font-display) !important;
+  font-size: .875rem !important;
+  font-weight: 600 !important;
+  letter-spacing: .16em !important;
+}
+
+.reader-brand-text {
+  font-size: .78rem !important;
+}
+
+.reader-menu-link,
+.reader-nav-link,
+.theme-word-toggle,
+.home-showcase-primary,
+.home-showcase-secondary,
+.home-action-card em,
+.article-card strong,
+.articles-menu a {
+  font-size: .72rem !important;
+}
+
+.home-showcase-label,
+.home-section-kicker,
+.home-chapter-group > p,
+.home-chapter-mini-grid span,
+.article-card > span,
+.article-meta span,
+.passage-outline-range {
+  font-size: .75rem !important;
+}
+
+.home-showcase-description,
+.home-showcase-context p:first-of-type,
+.background-subtitle {
+  font-size: clamp(1rem, 1.7vw, 1.25rem) !important;
+}
+
+.home-showcase-context p + p,
+.home-action-card > span:not(.home-action-icon),
+.home-section-split > p,
+.article-card p,
+.article-related-list span,
+.background-summary p,
+.background-section-body p {
+  font-size: .98rem !important;
+}
+
+.home-action-card strong,
+.home-chapter-group h3,
+.article-card h3,
+.article-related-list strong {
+  font-size: 1.25rem !important;
+}
+
+.scripture-chapter-summary,
+.reader-pane-kicker,
+.exposition-card-heading h2,
+.romans-inline-note .exposition-card-heading h2 {
+  font-size: .875rem !important;
+}
+
+body[data-romans-chapter] .split-reader {
+  --scripture-mobile-font-size: 1.125rem;
+  --scripture-desktop-font-size: 1.25rem;
+  --notes-font-size: 1.125rem;
+}
+
+@media (max-width: 640px) {
+  .home-showcase-copy h1 {
+    font-size: clamp(3rem, 16vw, 4.5rem) !important;
+  }
+
+  body[data-romans-chapter] .verse-copy {
+    font-size: var(--scripture-mobile-font-size, 1.125rem) !important;
   }
 }
