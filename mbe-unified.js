@@ -1,6 +1,6 @@
 (() => {
   const tool = "romans";
-  const illustratedVersion = "romans-font-correction-18";
+  const illustratedVersion = "romans-intro-nav-45";
   const danielFontsHref = "https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@400;500;600&display=swap";
   const headerMarkup = "<header class=\"mbe-global-shell\" data-tool=\"romans\" data-embedded=\"true\">\n      <div class=\"mbe-shell-wrap\">\n        <div class=\"mbe-ribbon-left\">\n          <a class=\"mbe-ribbon-brand\" href=\"https://mybibleexplorer.com\" aria-label=\"My Bible Explorer home\"><img class=\"mbe-ribbon-logo\" src=\"/assets/my-bible-explorer-logo.png\" alt=\"My Bible Explorer\"></a>\n          <a class=\"mbe-ribbon-back\" href=\"https://mybibleexplorer.com/#journeys\">Back to Library</a>\n        </div>\n        <nav class=\"mbe-global-nav\" aria-label=\"My Bible Explorer\">\n          <details class=\"mbe-library-menu\">\n            <summary class=\"mbe-library-toggle\">Library</summary>\n            <div class=\"mbe-library-panel\">\n              <div class=\"mbe-library-grid\">\n            <a class=\"mbe-library-item\" href=\"https://hermeneutics.mybibleexplorer.com\"><span class=\"mbe-library-name\">Hermeneutics</span><span class=\"mbe-library-desc\">Learn to read Scripture faithfully</span></a>\n            <a class=\"mbe-library-item\" href=\"https://psalms.mybibleexplorer.com\"><span class=\"mbe-library-name\">Psalms</span><span class=\"mbe-library-desc\">Worship, lament, praise, and prayer</span></a>\n            <a class=\"mbe-library-item\" href=\"https://daniel.mybibleexplorer.com\"><span class=\"mbe-library-name\">Daniel</span><span class=\"mbe-library-desc\">Prophecy and providence</span></a>\n            <a class=\"mbe-library-item\" href=\"https://revelation.mybibleexplorer.com/\"><span class=\"mbe-library-name\">Revelation</span><span class=\"mbe-library-desc\">Symbols, judgment, and final hope</span></a>\n            <a class=\"mbe-library-item\" href=\"https://sanctuary.mybibleexplorer.com/#structure\"><span class=\"mbe-library-name\">Sanctuary</span><span class=\"mbe-library-desc\">A blueprint of salvation</span></a>\n            <a class=\"mbe-library-item\" href=\"https://lastdayevents.mybibleexplorer.com/index.html\"><span class=\"mbe-library-name\">Last Day Events</span><span class=\"mbe-library-desc\">Earth's final chapter</span></a>\n            <a class=\"mbe-library-item\" href=\"https://romans.mybibleexplorer.com\" aria-current=\"page\"><span class=\"mbe-library-name\">Romans</span><span class=\"mbe-library-desc\">Righteousness by faith and life in the Spirit</span></a>\n              </div>\n            </div>\n          </details>\n          <a class=\"mbe-ribbon-give\" href=\"https://mybibleexplorer.com/#donate\">Support</a>\n        </nav>\n      </div>\n    </header>\n";
   const footerMarkup = "<footer class=\"mbe-global-footer\" data-tool=\"romans\">\n      <div class=\"mbe-shell-wrap mbe-footer-wrap\">\n        <a class=\"mbe-footer-brand\" href=\"https://mybibleexplorer.com\" aria-label=\"My Bible Explorer home\"><img class=\"mbe-footer-logo\" src=\"/assets/my-bible-explorer-logo.png\" alt=\"My Bible Explorer\"></a>\n        <span>Know the Word. Live the Word.</span>\n        <span>To contact, email <a class=\"mbe-footer-link\" href=\"mailto:admin@mybibleexplorer.com\">admin@mybibleexplorer.com</a></span>\n        <a class=\"mbe-footer-link\" href=\"https://mybibleexplorer.com/#donate\">Support</a>\n        <span>&copy; <span data-mbe-year></span> My Bible Explorer</span>\n      </div>\n    </footer>\n    ";
@@ -88,6 +88,10 @@
       document.body.setAttribute('data-romans-route', 'introduction');
       return;
     }
+    if (path === '/articles' || path.startsWith('/articles/')) {
+      document.body.setAttribute('data-romans-route', 'articles');
+      return;
+    }
     if (chapterMatch) {
       document.body.setAttribute('data-romans-route', 'commentary');
       document.body.setAttribute('data-romans-chapter', chapterMatch[1]);
@@ -96,6 +100,227 @@
     if (path === '/search') {
       document.body.setAttribute('data-romans-route', 'search');
     }
+  }
+
+  function syncArticlesNavigation() {
+    const isArticlesRoute = routePath() === '/articles' || routePath().startsWith('/articles/');
+    document.querySelectorAll('.reader-nav, .reader-menu').forEach((nav) => {
+      let articlesLink = Array.from(nav.querySelectorAll('a')).find((link) => {
+        const href = link.getAttribute('href') || '';
+        return href === '/articles' || href === '/articles/';
+      });
+      if (!articlesLink) {
+        articlesLink = document.createElement('a');
+        articlesLink.href = '/articles/';
+        articlesLink.textContent = 'Articles';
+        articlesLink.className = nav.classList.contains('reader-menu') ? 'reader-menu-link' : 'reader-nav-link';
+        const searchLink = Array.from(nav.querySelectorAll('a')).find((link) => {
+          const href = link.getAttribute('href') || '';
+          return href === '/search' || href === '/search/';
+        });
+        nav.insertBefore(articlesLink, searchLink || null);
+      }
+
+      articlesLink.classList.toggle('reader-nav-link-active', isArticlesRoute && nav.classList.contains('reader-nav'));
+      articlesLink.classList.toggle('reader-menu-link-active', isArticlesRoute && nav.classList.contains('reader-menu'));
+      if (isArticlesRoute) {
+        nav.querySelectorAll('a').forEach((link) => {
+          if (link === articlesLink) return;
+          link.classList.remove('reader-nav-link-active', 'reader-menu-link-active');
+          link.removeAttribute('aria-current');
+        });
+        articlesLink.setAttribute('aria-current', 'page');
+      } else {
+        articlesLink.removeAttribute('aria-current');
+      }
+    });
+  }
+
+  function syncHomeArticlesCard() {
+    if (routePath() !== '/') return;
+    const grid = document.querySelector('.home-action-grid');
+    if (!grid || grid.querySelector('[data-romans-articles-card]')) return;
+    const card = document.createElement('a');
+    card.className = 'home-action-card';
+    card.href = '/articles/';
+    card.setAttribute('data-romans-articles-card', 'true');
+    card.innerHTML = '<span class="home-action-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><path d="M8 7h8"></path><path d="M8 11h6"></path></svg></span><strong>Read the Articles</strong><span>Explore guides that follow Paul\'s argument, context, and theology across the whole letter.</span><em>Open <span aria-hidden="true">&rarr;</span></em>';
+    grid.appendChild(card);
+  }
+
+  function syncHomeTitle() {
+    if (routePath() !== '/') return;
+    const title = document.querySelector('.home-showcase-copy h1');
+    if (!title || title.previousElementSibling?.classList.contains('home-title-prefix')) return;
+    const prefix = document.createElement('p');
+    prefix.className = 'home-title-prefix';
+    prefix.textContent = 'The Epistle to the';
+    title.insertAdjacentElement('beforebegin', prefix);
+  }
+
+  function syncIntroductionContentsLabel() {
+    if (routePath() !== '/introduction') return;
+    const heading = document.querySelector('.background-section-nav-heading');
+    if (!heading || heading.dataset.romansContentsLabel === 'true') return;
+    const label = Array.from(heading.childNodes).find((node) => (
+      node.nodeType === Node.TEXT_NODE && node.textContent.trim()
+    ));
+    if (label) label.textContent = 'On This Page';
+    heading.dataset.romansContentsLabel = 'true';
+  }
+
+  function installArticlesNavigation() {
+    if (window.__romansArticlesNavigationInstalled) return;
+    window.__romansArticlesNavigationInstalled = true;
+    document.addEventListener('click', (event) => {
+      if (!(event.target instanceof Element)) return;
+      if (event.target.closest('.reader-menu-button')) {
+        window.setTimeout(syncArticlesNavigation, 0);
+      }
+    });
+  }
+
+  function installArticleReadingBar() {
+    const path = routePath();
+    const isArticle = path.startsWith('/articles/') && path !== '/articles';
+    if (!isArticle) {
+      document.querySelectorAll('[data-romans-article-reading-bar]').forEach((node) => node.remove());
+      return;
+    }
+
+    if (document.querySelector('[data-romans-article-reading-bar]')) return;
+
+    const reader = document.querySelector('.article-reader');
+    const documentCard = reader ? reader.querySelector('.article-document') : null;
+    const sidebar = reader ? reader.querySelector('.article-related') : null;
+    const contents = sidebar ? sidebar.querySelector('.article-related-list') : null;
+    if (!reader || !documentCard || !sidebar || !contents) return;
+
+    const kicker = sidebar.querySelector(':scope > .articles-kicker');
+    const heading = sidebar.querySelector(':scope > h2');
+    const nextArticle = sidebar.querySelector('.article-related-next');
+    if (nextArticle) {
+      nextArticle.classList.add('article-end-navigation');
+      documentCard.appendChild(nextArticle);
+    }
+
+    const bar = document.createElement('aside');
+    bar.className = 'article-reading-bar no-print';
+    bar.setAttribute('data-romans-article-reading-bar', 'true');
+    if (heading && heading.id) bar.setAttribute('aria-labelledby', heading.id);
+
+    const inner = document.createElement('div');
+    inner.className = 'article-reading-bar-inner';
+
+    const barHeading = document.createElement('div');
+    barHeading.className = 'article-reading-bar-heading';
+    if (kicker) barHeading.appendChild(kicker);
+    if (heading) barHeading.appendChild(heading);
+
+    contents.classList.add('article-reading-links');
+
+    const status = document.createElement('span');
+    status.className = 'article-reading-status';
+    status.innerHTML = 'Read <strong data-romans-reading-percent>0%</strong>';
+
+    const progress = document.createElement('span');
+    progress.className = 'article-reading-progress';
+    progress.setAttribute('role', 'progressbar');
+    progress.setAttribute('aria-label', 'Article reading progress');
+    progress.setAttribute('aria-valuemin', '0');
+    progress.setAttribute('aria-valuemax', '100');
+    progress.setAttribute('aria-valuenow', '0');
+    progress.innerHTML = '<span data-romans-reading-progress></span>';
+
+    inner.appendChild(barHeading);
+    inner.appendChild(contents);
+    inner.appendChild(status);
+    bar.appendChild(inner);
+    bar.appendChild(progress);
+    sidebar.remove();
+    reader.insertAdjacentElement('beforebegin', bar);
+
+    const progressFill = progress.querySelector('[data-romans-reading-progress]');
+    const progressPercent = status.querySelector('[data-romans-reading-percent]');
+    const links = Array.from(contents.querySelectorAll('a[href^="#"]'));
+    const sectionLinks = links.map((link) => {
+      const section = document.getElementById(link.getAttribute('href').slice(1));
+      return section ? { link, section } : null;
+    }).filter(Boolean);
+    let ticking = false;
+    let activeLink = null;
+
+    const stickyOffset = () => {
+      const globalShell = document.querySelector('.mbe-global-shell');
+      const readerHeader = document.querySelector('.reader-header');
+      return (globalShell ? globalShell.getBoundingClientRect().height : 0)
+        + (readerHeader ? readerHeader.getBoundingClientRect().height : 0)
+        + bar.getBoundingClientRect().height;
+    };
+
+    const updateReadingBar = () => {
+      if (!bar.isConnected) return;
+      const readerTop = reader.getBoundingClientRect().top + window.scrollY;
+      const finish = Math.max(readerTop + reader.offsetHeight - window.innerHeight, readerTop + 1);
+      const ratio = Math.min(1, Math.max(0, (window.scrollY - readerTop) / (finish - readerTop)));
+      const percent = Math.round(ratio * 100);
+      progressFill.style.width = percent + '%';
+      progressPercent.textContent = percent + '%';
+      progress.setAttribute('aria-valuenow', String(percent));
+
+      const marker = window.scrollY + stickyOffset() + 24;
+      let active = sectionLinks.length ? sectionLinks[0] : null;
+      sectionLinks.forEach((item) => {
+        const sectionTop = item.section.getBoundingClientRect().top + window.scrollY;
+        if (sectionTop <= marker) active = item;
+      });
+      sectionLinks.forEach((item) => {
+        const isActive = item === active;
+        item.link.classList.toggle('is-active', isActive);
+        if (isActive) item.link.setAttribute('aria-current', 'location');
+        else item.link.removeAttribute('aria-current');
+      });
+      if (active && active.link !== activeLink) {
+        activeLink = active.link;
+        const targetLeft = active.link.offsetLeft - ((contents.clientWidth - active.link.offsetWidth) / 2);
+        contents.scrollTo({
+          left: Math.max(0, targetLeft),
+          behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+        });
+      }
+      ticking = false;
+    };
+
+    const scheduleReadingBarUpdate = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(updateReadingBar);
+    };
+
+    window.addEventListener('scroll', scheduleReadingBarUpdate, { passive: true });
+    window.addEventListener('resize', scheduleReadingBarUpdate);
+    window.addEventListener('hashchange', scheduleReadingBarUpdate);
+    updateReadingBar();
+  }
+
+  function installStaticMobileMenu() {
+    const button = document.querySelector('[data-romans-static-menu-button]');
+    const menu = document.querySelector('[data-romans-static-menu]');
+    if (!button || !menu || button.hasAttribute('data-romans-menu-ready')) return;
+    button.setAttribute('data-romans-menu-ready', 'true');
+    button.addEventListener('click', () => {
+      const willOpen = menu.hidden;
+      menu.hidden = !willOpen;
+      button.setAttribute('aria-expanded', String(willOpen));
+      button.setAttribute('aria-label', willOpen ? 'Close menu' : 'Open menu');
+    });
+    window.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape' || menu.hidden) return;
+      menu.hidden = true;
+      button.setAttribute('aria-expanded', 'false');
+      button.setAttribute('aria-label', 'Open menu');
+      button.focus();
+    });
   }
 
   function syncChapterTopicPills() {
@@ -867,6 +1092,12 @@
     forceDarkTheme();
     ensureIllustratedAssets();
     syncRomansRouteMeta();
+    syncArticlesNavigation();
+    syncHomeTitle();
+    syncIntroductionContentsLabel();
+    syncHomeArticlesCard();
+    installArticlesNavigation();
+    installStaticMobileMenu();
     syncChapterTopicPills();
     installRomansInlineNotes();
     if (!isMobileInlineNoteViewport()) removeRomansInlineNotes();
@@ -878,6 +1109,7 @@
     if (!document.querySelector('.mbe-global-shell[data-tool="' + tool + '"][data-embedded="true"]')) {
       document.body.insertAdjacentHTML('afterbegin', headerMarkup);
     }
+    installArticleReadingBar();
     const existingFooters = Array.from(document.querySelectorAll('.mbe-global-footer'));
     let footer = existingFooters.find((node) => node.getAttribute('data-tool') === tool) || null;
     existingFooters.forEach((node) => {
