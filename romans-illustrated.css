@@ -2599,3 +2599,73 @@ body[data-romans-chapter] {
   overflow-x: hidden !important;
   overflow-y: auto !important;
 }
+
+/* Desktop reader footer reveal. The panes remain the scroll containers; the
+   full-width footer appears only at either pane's end and claims its own space. */
+@media (min-width: 981px) {
+  html:has(body[data-romans-chapter]),
+  body[data-romans-chapter] {
+    height: 100dvh !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  body[data-romans-chapter] > main.reader-page {
+    min-height: 0 !important;
+    flex: 1 1 auto !important;
+    overflow: hidden !important;
+  }
+
+  body[data-romans-chapter] .mbe-ref-strip {
+    position: relative !important;
+    top: auto !important;
+  }
+
+  body[data-romans-chapter] .split-reader {
+    height: calc(
+      100dvh - var(--mbe-ribbon-occupied-height, 47px) - 4.35rem - var(--chapter-strip-height)
+    ) !important;
+    min-height: 0 !important;
+  }
+
+  body.mbe-shell-managed[data-romans-chapter][data-reader-footer-visible]:has(> .reader-header)
+    > main.reader-page:has(> .split-reader)
+    > .split-reader {
+    height: calc(
+      100dvh - var(--mbe-ribbon-occupied-height, 47px) - 4.35rem - var(--chapter-strip-height) -
+        var(--reader-footer-height, 10rem)
+    ) !important;
+  }
+
+  body[data-romans-chapter] > .mbe-global-footer {
+    position: fixed !important;
+    z-index: 80 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    display: block !important;
+    margin: 0 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translateY(8px);
+    transition:
+      opacity 160ms ease,
+      transform 160ms ease,
+      visibility 0s linear 160ms !important;
+  }
+
+  body[data-romans-chapter][data-reader-footer-visible] > .mbe-global-footer {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateY(0);
+    transition-delay: 0s !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    body[data-romans-chapter] > .mbe-global-footer {
+      transition: none !important;
+    }
+  }
+}

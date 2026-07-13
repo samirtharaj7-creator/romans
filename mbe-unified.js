@@ -1,6 +1,6 @@
 (() => {
   const tool = "romans";
-  const illustratedVersion = "romans-footer-fit-46";
+  const illustratedVersion = "romans-pane-footer-52";
   const danielFontsHref = "https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@400;500;600&display=swap";
   const headerMarkup = "<header class=\"mbe-global-shell\" data-tool=\"romans\" data-embedded=\"true\">\n      <div class=\"mbe-shell-wrap\">\n        <div class=\"mbe-ribbon-left\">\n          <a class=\"mbe-ribbon-brand\" href=\"https://mybibleexplorer.com\" aria-label=\"My Bible Explorer home\"><img class=\"mbe-ribbon-logo\" src=\"/assets/my-bible-explorer-logo.png\" alt=\"My Bible Explorer\"></a>\n          <a class=\"mbe-ribbon-back\" href=\"https://mybibleexplorer.com/#journeys\">Back to Library</a>\n        </div>\n        <nav class=\"mbe-global-nav\" aria-label=\"My Bible Explorer\">\n          <details class=\"mbe-library-menu\">\n            <summary class=\"mbe-library-toggle\">Library</summary>\n            <div class=\"mbe-library-panel\">\n              <div class=\"mbe-library-grid\">\n            <a class=\"mbe-library-item\" href=\"https://hermeneutics.mybibleexplorer.com\"><span class=\"mbe-library-name\">Hermeneutics</span><span class=\"mbe-library-desc\">Learn to read Scripture faithfully</span></a>\n            <a class=\"mbe-library-item\" href=\"https://psalms.mybibleexplorer.com\"><span class=\"mbe-library-name\">Psalms</span><span class=\"mbe-library-desc\">Worship, lament, praise, and prayer</span></a>\n            <a class=\"mbe-library-item\" href=\"https://daniel.mybibleexplorer.com\"><span class=\"mbe-library-name\">Daniel</span><span class=\"mbe-library-desc\">Prophecy and providence</span></a>\n            <a class=\"mbe-library-item\" href=\"https://revelation.mybibleexplorer.com/\"><span class=\"mbe-library-name\">Revelation</span><span class=\"mbe-library-desc\">Symbols, judgment, and final hope</span></a>\n            <a class=\"mbe-library-item\" href=\"https://sanctuary.mybibleexplorer.com/#structure\"><span class=\"mbe-library-name\">Sanctuary</span><span class=\"mbe-library-desc\">A blueprint of salvation</span></a>\n            <a class=\"mbe-library-item\" href=\"https://lastdayevents.mybibleexplorer.com/index.html\"><span class=\"mbe-library-name\">Last Day Events</span><span class=\"mbe-library-desc\">Earth's final chapter</span></a>\n            <a class=\"mbe-library-item\" href=\"https://romans.mybibleexplorer.com\" aria-current=\"page\"><span class=\"mbe-library-name\">Romans</span><span class=\"mbe-library-desc\">Righteousness by faith and life in the Spirit</span></a>\n              </div>\n            </div>\n          </details>\n          <a class=\"mbe-ribbon-give\" href=\"https://mybibleexplorer.com/#donate\">Support</a>\n        </nav>\n      </div>\n    </header>\n";
   const footerMarkup = "<footer class=\"mbe-global-footer\" data-tool=\"romans\">\n      <div class=\"mbe-shell-wrap mbe-footer-wrap\">\n        <a class=\"mbe-footer-brand\" href=\"https://mybibleexplorer.com\" aria-label=\"My Bible Explorer home\"><img class=\"mbe-footer-logo\" src=\"/assets/my-bible-explorer-logo.png\" alt=\"My Bible Explorer\"></a>\n        <span>Know the Word. Live the Word.</span>\n        <span>To contact, email <a class=\"mbe-footer-link\" href=\"mailto:admin@mybibleexplorer.com\">admin@mybibleexplorer.com</a></span>\n        <a class=\"mbe-footer-link\" href=\"https://mybibleexplorer.com/#donate\">Support</a>\n        <span>&copy; <span data-mbe-year></span> My Bible Explorer</span>\n      </div>\n    </footer>\n    ";
@@ -331,6 +331,195 @@
 
   function isMobileInlineNoteViewport() {
     return window.matchMedia ? window.matchMedia('(max-width: 1023.98px)').matches : window.innerWidth < 1024;
+  }
+
+  function isDesktopChapterReader() {
+    const isDesktop = window.matchMedia ? window.matchMedia('(min-width: 1024px)').matches : window.innerWidth >= 1024;
+    return isDesktop && Boolean(document.querySelector('.split-reader'));
+  }
+
+  function pinDesktopChapterReader() {
+    if (!isDesktopChapterReader()) return;
+    if (document.body.scrollTop) document.body.scrollTop = 0;
+    if (document.documentElement.scrollTop) document.documentElement.scrollTop = 0;
+    if (window.scrollY) window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }
+
+  function scheduleDesktopChapterReaderPin() {
+    if (!isDesktopChapterReader()) return;
+    pinDesktopChapterReader();
+    window.requestAnimationFrame(() => {
+      pinDesktopChapterReader();
+      window.requestAnimationFrame(pinDesktopChapterReader);
+    });
+    [40, 140, 320].forEach((delay) => {
+      window.setTimeout(pinDesktopChapterReader, delay);
+    });
+  }
+
+  function scrollVerseWithinScripturePane(button) {
+    if (!button) return;
+    if (!isDesktopChapterReader()) {
+      button.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      return;
+    }
+
+    const pane = button.closest('.scripture-pane-body');
+    if (pane) {
+      const buttonRect = button.getBoundingClientRect();
+      const paneRect = pane.getBoundingClientRect();
+      const centeredOffset = Math.max(24, (pane.clientHeight - buttonRect.height) / 2);
+      const targetTop = pane.scrollTop + buttonRect.top - paneRect.top - centeredOffset;
+      pane.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
+    }
+    scheduleDesktopChapterReaderPin();
+  }
+
+  function installDesktopVerseScrollContainment() {
+    if (window.__romansDesktopVerseScrollContainmentInstalled) return;
+    window.__romansDesktopVerseScrollContainmentInstalled = true;
+
+    document.addEventListener('click', (event) => {
+      if (!(event.target instanceof Element)) return;
+      const verseButton = event.target.closest('.scripture-pane button.scripture-card[id^="romans-"]');
+      if (!verseButton) return;
+      const reference = verseReferenceFromButton(verseButton);
+      if (reference) referenceScheduleInputSync(Number(reference.chapter), Number(reference.verse));
+      if (!isDesktopChapterReader()) return;
+      window.requestAnimationFrame(() => scrollVerseWithinScripturePane(verseButton));
+      scheduleDesktopChapterReaderPin();
+    });
+
+    window.addEventListener('hashchange', scheduleDesktopChapterReaderPin);
+  }
+
+  function clearReaderFooterState() {
+    if (!document.body) return;
+    document.body.removeAttribute('data-reader-footer-visible');
+    document.body.style.removeProperty('--reader-footer-height');
+  }
+
+  function installRomansReaderFooterReveal() {
+    const reader = document.querySelector('body[data-romans-chapter] main.reader-page > .split-reader');
+    const footer = document.querySelector('body > .mbe-global-footer[data-tool="romans"]');
+    const installed = window.__romansReaderFooterReveal;
+
+    if (!reader || !footer) {
+      if (installed) installed.dispose();
+      window.__romansReaderFooterReveal = null;
+      clearReaderFooterState();
+      return;
+    }
+
+    if (installed && installed.reader === reader && installed.footer === footer) {
+      installed.refresh();
+      return;
+    }
+
+    if (installed) installed.dispose();
+
+    const body = document.body;
+    const desktopQuery = window.matchMedia('(min-width: 981px)');
+    let disposeDesktop = null;
+    let refreshDesktop = () => {};
+
+    function installDesktopFooterReveal() {
+      const panes = Array.from(reader.querySelectorAll('.scripture-pane-body, .commentary-pane-body'));
+      const content = Array.from(reader.querySelectorAll('.scripture-list, .commentary-shell'));
+      const atEnd = new Map(panes.map((pane) => [pane, false]));
+      let animationFrame = 0;
+      let pinFrame = 0;
+      let footerHeight = 0;
+
+      function syncFooterVisibility() {
+        const shouldShow = Array.from(atEnd.values()).some(Boolean);
+        const wasVisible = body.hasAttribute('data-reader-footer-visible');
+        body.toggleAttribute('data-reader-footer-visible', shouldShow);
+
+        if (shouldShow && !wasVisible) {
+          window.cancelAnimationFrame(pinFrame);
+          pinFrame = window.requestAnimationFrame(() => {
+            panes.forEach((pane) => {
+              if (atEnd.get(pane)) pane.scrollTop = pane.scrollHeight - pane.clientHeight;
+            });
+          });
+        }
+      }
+
+      function measureFooter() {
+        const height = Math.ceil(footer.getBoundingClientRect().height);
+        if (height > 0) {
+          footerHeight = height;
+          body.style.setProperty('--reader-footer-height', height + 'px');
+        }
+      }
+
+      function updatePane(pane) {
+        const maximumScroll = pane.scrollHeight - pane.clientHeight;
+        const distanceFromEnd = maximumScroll - pane.scrollTop;
+        const exitThreshold = Math.max(24, footerHeight + 16);
+        const threshold = atEnd.get(pane) ? exitThreshold : 4;
+        atEnd.set(pane, maximumScroll > 8 && distanceFromEnd <= threshold);
+      }
+
+      function updateAll() {
+        measureFooter();
+        panes.forEach(updatePane);
+        syncFooterVisibility();
+      }
+
+      function scheduleUpdate() {
+        window.cancelAnimationFrame(animationFrame);
+        animationFrame = window.requestAnimationFrame(updateAll);
+      }
+
+      function handlePaneScroll(event) {
+        updatePane(event.currentTarget);
+        syncFooterVisibility();
+      }
+
+      panes.forEach((pane) => pane.addEventListener('scroll', handlePaneScroll, { passive: true }));
+      const resizeObserver = typeof ResizeObserver === 'function' ? new ResizeObserver(scheduleUpdate) : null;
+      if (resizeObserver) {
+        resizeObserver.observe(footer);
+        panes.forEach((pane) => resizeObserver.observe(pane));
+        content.forEach((element) => resizeObserver.observe(element));
+      }
+      window.addEventListener('resize', scheduleUpdate);
+      scheduleUpdate();
+      refreshDesktop = scheduleUpdate;
+
+      return () => {
+        window.cancelAnimationFrame(animationFrame);
+        window.cancelAnimationFrame(pinFrame);
+        if (resizeObserver) resizeObserver.disconnect();
+        window.removeEventListener('resize', scheduleUpdate);
+        panes.forEach((pane) => pane.removeEventListener('scroll', handlePaneScroll));
+      };
+    }
+
+    function syncViewportMode() {
+      if (disposeDesktop) disposeDesktop();
+      disposeDesktop = null;
+      refreshDesktop = () => {};
+      clearReaderFooterState();
+      if (desktopQuery.matches) disposeDesktop = installDesktopFooterReveal();
+    }
+
+    syncViewportMode();
+    desktopQuery.addEventListener('change', syncViewportMode);
+
+    const controller = {
+      reader,
+      footer,
+      refresh: () => refreshDesktop(),
+      dispose: () => {
+        desktopQuery.removeEventListener('change', syncViewportMode);
+        if (disposeDesktop) disposeDesktop();
+        clearReaderFooterState();
+      }
+    };
+    window.__romansReaderFooterReveal = controller;
   }
 
   function verseReferenceFromButton(button) {
@@ -789,6 +978,19 @@
     return 1;
   }
 
+  function referenceSyncInput(chapter, verse) {
+    const input = document.querySelector('[data-mbe-ref-input]');
+    if (input) input.value = referenceFormat(chapter, verse);
+  }
+
+  function referenceScheduleInputSync(chapter, verse) {
+    referenceSyncInput(chapter, verse);
+    window.requestAnimationFrame(() => referenceSyncInput(chapter, verse));
+    [80, 240].forEach((delay) => {
+      window.setTimeout(() => referenceSyncInput(chapter, verse), delay);
+    });
+  }
+
   function referenceReadRecent() {
     try {
       const value = JSON.parse(localStorage.getItem(referenceNavConfig.storageKey) || '[]');
@@ -851,12 +1053,11 @@
     const button = referenceVerseButton(chapter, verse);
     if (button) {
       button.click();
-      button.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      scrollVerseWithinScripturePane(button);
     }
     const hash = '#v' + verse;
     if (window.location.hash !== hash) history.replaceState(null, '', hash);
-    const input = document.querySelector('[data-mbe-ref-input]');
-    if (input) input.value = referenceFormat(chapter, verse);
+    referenceScheduleInputSync(chapter, verse);
   }
 
   function referenceFindStrip() {
@@ -1100,6 +1301,7 @@
     installStaticMobileMenu();
     syncChapterTopicPills();
     installRomansInlineNotes();
+    installDesktopVerseScrollContainment();
     if (!isMobileInlineNoteViewport()) removeRomansInlineNotes();
     removeThemeToggle();
     document.body.classList.add('mbe-shell-managed');
@@ -1124,6 +1326,7 @@
     }
     removeThemeToggle();
     updateYear();
+    installRomansReaderFooterReveal();
   }
 
   function installRouteWatcher() {
@@ -1135,6 +1338,7 @@
       history[method] = function patchedHistoryMethod() {
         const result = original.apply(this, arguments);
         refresh();
+        scheduleDesktopChapterReaderPin();
         return result;
       };
     });
