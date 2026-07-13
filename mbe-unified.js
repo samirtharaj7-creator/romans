@@ -1,6 +1,6 @@
 (() => {
   const tool = "romans";
-  const illustratedVersion = "romans-pane-footer-52";
+  const illustratedVersion = "romans-intro-no-eyebrow-61";
   const danielFontsHref = "https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@400;500;600&display=swap";
   const headerMarkup = "<header class=\"mbe-global-shell\" data-tool=\"romans\" data-embedded=\"true\">\n      <div class=\"mbe-shell-wrap\">\n        <div class=\"mbe-ribbon-left\">\n          <a class=\"mbe-ribbon-brand\" href=\"https://mybibleexplorer.com\" aria-label=\"My Bible Explorer home\"><img class=\"mbe-ribbon-logo\" src=\"/assets/my-bible-explorer-logo.png\" alt=\"My Bible Explorer\"></a>\n          <a class=\"mbe-ribbon-back\" href=\"https://mybibleexplorer.com/#journeys\">Back to Library</a>\n        </div>\n        <nav class=\"mbe-global-nav\" aria-label=\"My Bible Explorer\">\n          <details class=\"mbe-library-menu\">\n            <summary class=\"mbe-library-toggle\">Library</summary>\n            <div class=\"mbe-library-panel\">\n              <div class=\"mbe-library-grid\">\n            <a class=\"mbe-library-item\" href=\"https://hermeneutics.mybibleexplorer.com\"><span class=\"mbe-library-name\">Hermeneutics</span><span class=\"mbe-library-desc\">Learn to read Scripture faithfully</span></a>\n            <a class=\"mbe-library-item\" href=\"https://psalms.mybibleexplorer.com\"><span class=\"mbe-library-name\">Psalms</span><span class=\"mbe-library-desc\">Worship, lament, praise, and prayer</span></a>\n            <a class=\"mbe-library-item\" href=\"https://daniel.mybibleexplorer.com\"><span class=\"mbe-library-name\">Daniel</span><span class=\"mbe-library-desc\">Prophecy and providence</span></a>\n            <a class=\"mbe-library-item\" href=\"https://revelation.mybibleexplorer.com/\"><span class=\"mbe-library-name\">Revelation</span><span class=\"mbe-library-desc\">Symbols, judgment, and final hope</span></a>\n            <a class=\"mbe-library-item\" href=\"https://sanctuary.mybibleexplorer.com/#structure\"><span class=\"mbe-library-name\">Sanctuary</span><span class=\"mbe-library-desc\">A blueprint of salvation</span></a>\n            <a class=\"mbe-library-item\" href=\"https://lastdayevents.mybibleexplorer.com/index.html\"><span class=\"mbe-library-name\">Last Day Events</span><span class=\"mbe-library-desc\">Earth's final chapter</span></a>\n            <a class=\"mbe-library-item\" href=\"https://romans.mybibleexplorer.com\" aria-current=\"page\"><span class=\"mbe-library-name\">Romans</span><span class=\"mbe-library-desc\">Righteousness by faith and life in the Spirit</span></a>\n              </div>\n            </div>\n          </details>\n          <a class=\"mbe-ribbon-give\" href=\"https://mybibleexplorer.com/#donate\">Support</a>\n        </nav>\n      </div>\n    </header>\n";
   const footerMarkup = "<footer class=\"mbe-global-footer\" data-tool=\"romans\">\n      <div class=\"mbe-shell-wrap mbe-footer-wrap\">\n        <a class=\"mbe-footer-brand\" href=\"https://mybibleexplorer.com\" aria-label=\"My Bible Explorer home\"><img class=\"mbe-footer-logo\" src=\"/assets/my-bible-explorer-logo.png\" alt=\"My Bible Explorer\"></a>\n        <span>Know the Word. Live the Word.</span>\n        <span>To contact, email <a class=\"mbe-footer-link\" href=\"mailto:admin@mybibleexplorer.com\">admin@mybibleexplorer.com</a></span>\n        <a class=\"mbe-footer-link\" href=\"https://mybibleexplorer.com/#donate\">Support</a>\n        <span>&copy; <span data-mbe-year></span> My Bible Explorer</span>\n      </div>\n    </footer>\n    ";
@@ -158,14 +158,48 @@
     title.insertAdjacentElement('beforebegin', prefix);
   }
 
-  function syncIntroductionContentsLabel() {
+  function syncIntroductionHero() {
     if (routePath() !== '/introduction') return;
+    document.querySelector('.background-kicker')?.remove();
+    document.querySelector('.background-summary')?.remove();
+    document.querySelector('.background-fact-grid')?.remove();
+
+    const title = document.querySelector('#introduction-title');
+    if (title && title.dataset.romansIntroTitle !== 'split') {
+      title.setAttribute('aria-label', 'Introduction to the Epistle to the Romans');
+      title.dataset.romansIntroTitle = 'split';
+      title.innerHTML = '<span class="background-title-kicker">Introduction to the Epistle to the</span><span class="background-title-main">Romans</span>';
+    }
+
+    const subtitle = document.querySelector('.background-subtitle');
+    if (subtitle) {
+      subtitle.textContent = "A concise guide to Romans' name, author, date, setting, structure, and central burden.";
+    }
+
+    const sectionLabels = [
+      'Author',
+      'Recipients',
+      'Date & Place',
+      'Setting',
+      'Historical Context',
+      'Central Theme',
+      'Theology',
+      'Outline',
+      'Why Romans Matters',
+    ];
+    document.querySelectorAll('.background-section-nav a').forEach((link, index) => {
+      const label = Array.from(link.childNodes).find((node) => (
+        node.nodeType === Node.TEXT_NODE && node.textContent.trim()
+      ));
+      if (label && sectionLabels[index]) label.textContent = sectionLabels[index];
+    });
+
     const heading = document.querySelector('.background-section-nav-heading');
     if (!heading || heading.dataset.romansContentsLabel === 'true') return;
     const label = Array.from(heading.childNodes).find((node) => (
       node.nodeType === Node.TEXT_NODE && node.textContent.trim()
     ));
-    if (label) label.textContent = 'On This Page';
+    if (label) label.textContent = 'Read This Page';
     heading.dataset.romansContentsLabel = 'true';
   }
 
@@ -1295,7 +1329,7 @@
     syncRomansRouteMeta();
     syncArticlesNavigation();
     syncHomeTitle();
-    syncIntroductionContentsLabel();
+    syncIntroductionHero();
     syncHomeArticlesCard();
     installArticlesNavigation();
     installStaticMobileMenu();
