@@ -2584,3 +2584,18 @@ body[data-romans-route="introduction"] .background-section-nav a:focus-visible {
 .home-showcase .home-showcase-context {
   display: none !important;
 }
+
+/* Keep chapter overflow inside the two reader panes. Without an explicit root
+   scroll container, deeply scrolled pane content can extend the document's
+   visual overflow and leave empty space below the global footer. */
+html:has(body[data-romans-chapter]) {
+  height: 100% !important;
+  overflow: hidden !important;
+}
+
+body[data-romans-chapter] {
+  height: 100% !important;
+  min-height: 100% !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
