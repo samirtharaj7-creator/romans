@@ -3,7 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const VERSION = 'romans-gospel-menu-72';
+const VERSION = 'romans-home-static-73';
 const FONT_HREF = 'https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@400;500;600&display=swap';
 const LEGACY_STUDY_SLUGS = [
   'gospel-unfolded',
