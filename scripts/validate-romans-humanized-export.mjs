@@ -165,7 +165,7 @@ for (let chapterNumber = 1; chapterNumber <= 16; chapterNumber += 1) {
   if (count(html, /<script src="\/romans-initial-notes\.js/gu) !== 0) {
     errors.push(`Romans ${chapterNumber} still loads the obsolete initial-note map.`);
   }
-  if (count(html, /<script src="\/romans-theology-notes\.js\?v=romans-mobile-inline-notes-68"><\/script>/gu) !== 1) {
+  if (count(html, /<script src="\/romans-theology-notes\.js\?v=romans-search-cleanup-71"><\/script>/gu) !== 1) {
     errors.push(`Romans ${chapterNumber} does not load the commentary enhancement exactly once.`);
   }
   if (/romans-theology-pass-2/iu.test(html)) errors.push(`Romans ${chapterNumber} still loads the old theology runtime.`);

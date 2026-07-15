@@ -18,15 +18,17 @@
     const progressLinkFor = (stage) => progressLinks.find((link) => link.getAttribute('href') === `#${stage.id}`) || null;
 
     const setCurrentProgress = (stage, reveal = false) => {
+      const currentLink = progressLinkFor(stage);
       progressLinks.forEach((link) => {
-        if (link === progressLinkFor(stage)) link.setAttribute('aria-current', 'step');
+        if (link === currentLink) link.setAttribute('aria-current', 'step');
         else link.removeAttribute('aria-current');
       });
-      if (reveal) {
-        progressLinkFor(stage)?.scrollIntoView({
+      const scroller = progress?.firstElementChild;
+      if (reveal && currentLink && scroller) {
+        const targetLeft = currentLink.offsetLeft - ((scroller.clientWidth - currentLink.offsetWidth) / 2);
+        scroller.scrollTo({
+          left: Math.max(0, targetLeft),
           behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
-          block: 'nearest',
-          inline: 'center',
         });
       }
     };

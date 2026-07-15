@@ -3,7 +3,17 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const REQUIRED_STUDIES = [
+const REQUIRED_STEP_IDS = [
+  'power-of-the-message',
+  'universal-problem',
+  'flaw-of-self-effort',
+  'ultimate-remedy',
+  'gift-versus-wage',
+  'personal-response',
+  'open-guarantee',
+  'complete-spiritual-security',
+];
+const LEGACY_STUDY_SLUGS = [
   'gospel-unfolded',
   'righteousness-by-faith',
   'adam-and-christ',
@@ -11,18 +21,18 @@ const REQUIRED_STUDIES = [
   'israel-and-the-nations',
   'a-living-sacrifice',
 ];
-const REQUIRED_STAGE_FIELDS = [
+const REQUIRED_STEP_FIELDS = [
   'id',
-  'phase',
-  'reference',
+  'number',
   'title',
-  'brief',
+  'reference',
+  'quote',
+  'paragraphs',
+  'coreTruth',
+  'takeaway',
+  'commentaryHref',
   'icon',
   'tone',
-  'expandedStudy',
-  'crossReferences',
-  'commentaryHref',
-  'excerpt',
 ];
 
 function assert(condition, message) {
@@ -31,6 +41,15 @@ function assert(condition, message) {
 
 function wordCount(value) {
   return String(value).trim().split(/\s+/).filter(Boolean).length;
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
 }
 
 function assertUniqueHtmlIds(html, pageName) {
@@ -44,49 +63,49 @@ function assertUniqueHtmlIds(html, pageName) {
 
 async function main() {
   const dataPath = path.join(ROOT, 'data', 'gospel-studies.json');
-  const studies = JSON.parse(await fs.readFile(dataPath, 'utf8'));
-  assert(studies.length === 6, `Expected 6 studies, found ${studies.length}`);
-  assert(studies.map((study) => study.slug).join('|') === REQUIRED_STUDIES.join('|'), 'Study order or slugs do not match the approved library.');
+  const road = JSON.parse(await fs.readFile(dataPath, 'utf8'));
+  const html = await fs.readFile(path.join(ROOT, 'gospel', 'index.html'), 'utf8');
 
-  const stageIds = new Set();
-  let stageCount = 0;
-  for (const study of studies) {
-    assert(study.title && study.passage && study.summary && study.introduction, `${study.slug} is missing study metadata.`);
-    assert(study.stages.length >= 8 && study.stages.length <= 10, `${study.slug} has an unexpected stage count.`);
-    const htmlPath = path.join(ROOT, 'gospel', study.slug, 'index.html');
-    const html = await fs.readFile(htmlPath, 'utf8');
-    assert(!/coming soon|placeholder|todo/i.test(html), `${study.slug} contains unfinished public copy.`);
-    assert(html.includes('<blockquote>'), `${study.slug} is missing Scripture excerpts.`);
-    assert(html.includes('/gospel/gospel.js'), `${study.slug} is missing the timeline enhancement.`);
-    assert((html.match(/data-gospel-stage-expanded/g) || []).length === study.stages.length, `${study.slug} is missing static expanded content.`);
-    assert(!/data-gospel-stage-expanded[^>]*\shidden(?:\s|=|>)/.test(html), `${study.slug} hides study content before JavaScript runs.`);
-    assertUniqueHtmlIds(html, study.slug);
+  assert(road.title === 'Walking the Romans Road', 'Romans Road title is missing or incorrect.');
+  assert(road.subtitle === 'Understanding the Gospel Message in 8 Verses', 'Romans Road subtitle is missing or incorrect.');
+  assert(Array.isArray(road.introduction) && road.introduction.length === 2, 'Romans Road introduction must contain two paragraphs.');
+  assert(Array.isArray(road.steps) && road.steps.length === 8, `Expected 8 Romans Road steps, found ${road.steps?.length || 0}.`);
+  assert(road.steps.map((step) => step.id).join('|') === REQUIRED_STEP_IDS.join('|'), 'Romans Road step order or IDs are incorrect.');
+  assert(!/publishing tip|wordpress|squarespace/i.test(html), 'Publisher-only guidance leaked into the public Gospel page.');
+  assert(!/six visual studies|visual study library|all gospel studies/i.test(html), 'Old Gospel library copy remains on the public page.');
+  assert((html.match(/data-gospel-stage(?:\s|>)/g) || []).length === 8, 'Generated Gospel page does not contain exactly eight timeline stages.');
+  assert((html.match(/<tbody>[\s\S]*?<tr>/g) || []).length >= 1, 'Romans Road summary table is missing.');
+  assert(/<script src="\/gospel\/gospel\.js\?v=[^"]+"><\/script>/.test(html), 'Romans Road page is missing its timeline enhancement.');
+  assertUniqueHtmlIds(html, 'Romans Road');
 
-    for (const stage of study.stages) {
-      stageCount += 1;
-      REQUIRED_STAGE_FIELDS.forEach((field) => assert(stage[field] !== undefined, `${study.slug}/${stage.id} is missing ${field}.`));
-      const globalId = `${study.slug}-${stage.id}`;
-      assert(!stageIds.has(globalId), `Duplicate stage ID: ${globalId}`);
-      stageIds.add(globalId);
-      const words = wordCount(stage.expandedStudy);
-      assert(words >= 150 && words <= 250, `${globalId} expanded study has ${words} words; expected 150-250.`);
-      assert(stage.crossReferences.length >= 2 && stage.crossReferences.length <= 4, `${globalId} must have 2-4 cross references.`);
-      assert(stage.excerpt.length >= 1 && stage.excerpt.length <= 3, `${globalId} must have 1-3 excerpt verses.`);
-      assert(/^\/romans\/(?:[1-9]|1[0-6])\/#romans-\d+-\d+$/.test(stage.commentaryHref), `${globalId} has an invalid commentary link.`);
-      assert(html.includes(`id="${globalId}"`), `${globalId} is absent from generated HTML.`);
+  for (const [index, step] of road.steps.entries()) {
+    REQUIRED_STEP_FIELDS.forEach((field) => assert(step[field] !== undefined, `${step.id || `Step ${index + 1}`} is missing ${field}.`));
+    assert(step.number === index + 1, `${step.id} has the wrong step number.`);
+    assert(step.quote.length >= 45, `${step.id} has an unexpectedly short Scripture quotation.`);
+    assert(step.paragraphs.length >= 1, `${step.id} is missing explanatory prose.`);
+    const explanatoryText = [
+      ...step.paragraphs,
+      ...(step.contrasts || []).flat(),
+    ].join(' ');
+    assert(wordCount(explanatoryText) >= 35, `${step.id} explanation is not substantive.`);
+    assert(/^\/romans\/(?:[1-9]|1[0-6])\/#romans-\d+-\d+$/.test(step.commentaryHref), `${step.id} has an invalid commentary link.`);
+    assert(html.includes(`id="romans-road-${step.id}"`), `${step.id} is absent from generated HTML.`);
+    assert(html.includes(step.commentaryHref), `${step.id} commentary link is absent from generated HTML.`);
+    assert(html.includes(escapeHtml(step.coreTruth)), `${step.id} core truth is absent from the summary table.`);
+    assert(html.includes(escapeHtml(step.takeaway)), `${step.id} takeaway is absent from the summary table.`);
 
-      const commentaryMatch = stage.commentaryHref.match(/^\/romans\/(\d+)\/#(romans-\d+-\d+)$/);
-      const chapterHtml = await fs.readFile(path.join(ROOT, 'romans', commentaryMatch[1], 'index.html'), 'utf8');
-      assert(chapterHtml.includes(`id="${commentaryMatch[2]}"`), `${globalId} links to a missing commentary verse.`);
-    }
+    const match = step.commentaryHref.match(/^\/romans\/(\d+)\/#(romans-\d+-\d+)$/);
+    const chapterHtml = await fs.readFile(path.join(ROOT, 'romans', match[1], 'index.html'), 'utf8');
+    assert(chapterHtml.includes(`id="${match[2]}"`), `${step.id} links to a missing commentary verse.`);
   }
 
-  const libraryHtml = await fs.readFile(path.join(ROOT, 'gospel', 'index.html'), 'utf8');
-  REQUIRED_STUDIES.forEach((slug) => assert(libraryHtml.includes(`/gospel/${slug}/`), `Library is missing ${slug}.`));
-  assert(!/coming soon|placeholder|todo/i.test(libraryHtml), 'Library contains unfinished public copy.');
-  assertUniqueHtmlIds(libraryHtml, 'gospel library');
-  assert(stageCount === 56, `Expected 56 stages, found ${stageCount}.`);
-  process.stdout.write(`Validated ${studies.length} Gospel studies and ${stageCount} substantive timeline stages.\n`);
+  for (const slug of LEGACY_STUDY_SLUGS) {
+    const redirectHtml = await fs.readFile(path.join(ROOT, 'gospel', slug, 'index.html'), 'utf8');
+    assert(redirectHtml.includes('content="0; url=/gospel/"'), `${slug} is not redirected to the Romans Road.`);
+    assert(!redirectHtml.includes('data-gospel-stage'), `${slug} still exposes the former study content.`);
+  }
+
+  process.stdout.write('Validated the 8-step Romans Road, summary table, commentary links, and 6 legacy redirects.\n');
 }
 
 await main();

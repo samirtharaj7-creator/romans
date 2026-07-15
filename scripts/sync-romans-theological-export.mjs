@@ -305,7 +305,7 @@ for (let chapterNumber = 1; chapterNumber <= 16; chapterNumber += 1) {
     }
 
     if (exportFile === "index.html") {
-      const enhancementScript = '<script src="/romans-theology-notes.js?v=romans-mobile-inline-notes-68"></script>';
+      const enhancementScript = '<script src="/romans-theology-notes.js?v=romans-search-cleanup-71"></script>';
       output = output.replace(/<script src="\/romans-initial-notes\.js\?v=[^"]+"><\/script>/gu, "");
       output = output.replace(/<script src="\/romans-theology-notes\.js\?v=[^"]+"><\/script>/gu, "");
       if (!output.includes(enhancementScript)) {

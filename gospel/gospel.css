@@ -11,13 +11,15 @@
 }
 
 body[data-romans-static-page="gospel-library"],
-body[data-romans-static-page="gospel-study"] {
+body[data-romans-static-page="gospel-study"],
+body[data-romans-static-page="gospel-road"] {
   background: var(--gospel-navy) !important;
   color: var(--gospel-ivory);
 }
 
 body[data-romans-static-page="gospel-library"] .reader-nav,
-body[data-romans-static-page="gospel-study"] .reader-nav {
+body[data-romans-static-page="gospel-study"] .reader-nav,
+body[data-romans-static-page="gospel-road"] .reader-nav {
   gap: 1.5rem !important;
 }
 
@@ -26,6 +28,113 @@ body[data-romans-static-page="gospel-study"] .reader-nav {
   overflow: clip;
   background: linear-gradient(180deg, #0b1f3a 0%, #0e2540 48%, #091a2f 100%);
   color: var(--gospel-ivory);
+}
+
+.gospel-road-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  min-height: 36rem;
+  align-items: center;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(211, 170, 79, .25);
+  background: #0b1f3a;
+}
+
+.gospel-road-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image: url("/assets/romans-hero-engraving-filled.webp?v=mbe-20260715-1");
+  background-position: center 42%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: .68;
+}
+
+.gospel-road-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(7, 23, 42, .99) 0%, rgba(8, 26, 47, .95) 38%, rgba(8, 26, 47, .5) 70%, rgba(8, 26, 47, .74) 100%),
+    linear-gradient(180deg, rgba(11, 31, 58, .08) 42%, #0b1f3a 100%);
+}
+
+.gospel-road-hero-copy {
+  width: min(100% - 3rem, 80rem);
+  margin-inline: auto;
+  padding-block: 5rem;
+}
+
+.gospel-road-hero-copy > p,
+.gospel-road-kicker,
+.gospel-road-summary-heading > p {
+  margin: 0;
+  color: var(--gospel-gold);
+  font-family: "Jost", system-ui, sans-serif;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+.gospel-road-hero h1 {
+  display: flex;
+  max-width: 62rem;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin: 1.25rem 0 0;
+  color: #fff0cd;
+  font-size: 4.5rem;
+  font-weight: 500;
+  line-height: 1.04 !important;
+}
+
+.gospel-road-hero h1 small {
+  max-width: 48rem;
+  color: #d6c8a8;
+  font-family: "Jost", system-ui, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.gospel-road-introduction {
+  display: grid;
+  grid-template-columns: minmax(15rem, .7fr) minmax(0, 1.3fr);
+  width: min(100% - 3rem, 72rem);
+  margin-inline: auto;
+  gap: 2.5rem 4rem;
+  padding-block: 4.5rem;
+}
+
+.gospel-road-introduction > h2 {
+  grid-column: 1;
+  margin: .8rem 0 0;
+  color: #f2e7d1;
+  font-size: 2.25rem;
+  font-weight: 500;
+  line-height: 1.25 !important;
+}
+
+.gospel-road-introduction > div {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+.gospel-road-introduction > div p {
+  margin: 0;
+  color: #d5c8ae;
+  font-family: "EB Garamond", Georgia, serif;
+  font-size: 1.25rem;
+  line-height: 1.75;
+}
+
+.gospel-road-introduction > div p + p {
+  margin-top: 1.25rem;
 }
 
 .gospel-page h1,
@@ -60,7 +169,7 @@ body[data-romans-static-page="gospel-study"] .reader-nav {
   position: absolute;
   inset: 0;
   z-index: -2;
-  background-image: url("/assets/romans-hero-engraving-filled.webp?v=3");
+  background-image: url("/assets/romans-hero-engraving-filled.webp?v=mbe-20260715-1");
   background-position: center 42%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -465,6 +574,125 @@ body[data-romans-static-page="gospel-study"] .reader-nav {
   line-height: 1.35 !important;
 }
 
+.gospel-road-copy {
+  margin-top: 1rem;
+  color: #d8ccb4;
+  font-family: "Jost", system-ui, sans-serif;
+  font-size: .98rem;
+  line-height: 1.75;
+}
+
+.gospel-road-copy > p {
+  margin: 0;
+}
+
+.gospel-road-copy > p + p {
+  margin-top: 1rem;
+}
+
+.gospel-road-contrast {
+  display: grid;
+  gap: .75rem;
+  margin: 1.25rem 0 0;
+}
+
+.gospel-road-contrast > div {
+  display: grid;
+  grid-template-columns: 5rem minmax(0, 1fr);
+  gap: 1rem;
+  padding-top: .75rem;
+  border-top: 1px solid color-mix(in srgb, var(--stage-accent) 26%, transparent);
+}
+
+.gospel-road-contrast dt {
+  color: var(--stage-accent);
+  font-weight: 600;
+}
+
+.gospel-road-contrast dd {
+  margin: 0;
+}
+
+.gospel-road-stage.gospel-stage-active .gospel-stage-scripture,
+.gospel-road-stage.gospel-stage-active .gospel-stage-explanation {
+  border-color: color-mix(in srgb, var(--stage-accent) 72%, #334357);
+}
+
+.gospel-road-summary {
+  width: min(100% - 3rem, 80rem);
+  margin-inline: auto;
+  padding-block: 4rem 6rem;
+  border-top: 1px solid rgba(211, 170, 79, .24);
+}
+
+.gospel-road-summary-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 1fr);
+  gap: 2rem;
+  align-items: end;
+  margin-bottom: 2rem;
+}
+
+.gospel-road-summary-heading h2 {
+  margin: 0;
+  color: #f2e7d1;
+  font-size: 2.25rem;
+  font-weight: 500;
+}
+
+.gospel-road-table-wrap {
+  overflow-x: auto;
+  border-block: 1px solid rgba(211, 170, 79, .28);
+}
+
+.gospel-road-table-wrap table {
+  width: 100%;
+  min-width: 44rem;
+  border-collapse: collapse;
+  color: #d8ccb4;
+  font-family: "Jost", system-ui, sans-serif;
+  font-size: .98rem;
+  line-height: 1.5;
+}
+
+.gospel-road-table-wrap th,
+.gospel-road-table-wrap td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(211, 170, 79, .16);
+  text-align: left;
+  vertical-align: top;
+}
+
+.gospel-road-table-wrap thead th {
+  color: var(--gospel-gold);
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.gospel-road-table-wrap tbody th {
+  width: 10rem;
+  font-weight: 600;
+}
+
+.gospel-road-table-wrap tbody tr:last-child th,
+.gospel-road-table-wrap tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.gospel-road-table-wrap a {
+  color: #efc764;
+  text-decoration: none;
+}
+
+.gospel-road-table-wrap a:hover,
+.gospel-road-table-wrap a:focus-visible {
+  color: #fff0cd;
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
 .gospel-stage-brief {
   margin: 1rem 0 0;
   color: #c9bda4;
@@ -554,19 +782,30 @@ body[data-romans-static-page="gospel-study"] .reader-nav {
   border-top: 1px solid rgba(211, 170, 79, .22);
 }
 
-@media (max-width: 1180px) {
+@media (max-width: 980px) {
   body[data-romans-static-page="gospel-library"] .reader-nav,
-  body[data-romans-static-page="gospel-study"] .reader-nav {
+  body[data-romans-static-page="gospel-study"] .reader-nav,
+  body[data-romans-static-page="gospel-road"] .reader-nav {
     display: none !important;
   }
 
   body[data-romans-static-page="gospel-library"] .reader-menu-button,
-  body[data-romans-static-page="gospel-study"] .reader-menu-button {
+  body[data-romans-static-page="gospel-study"] .reader-menu-button,
+  body[data-romans-static-page="gospel-road"] .reader-menu-button {
     display: inline-flex !important;
   }
 }
 
 @media (max-width: 960px) {
+  .gospel-road-introduction {
+    grid-template-columns: 1fr;
+  }
+
+  .gospel-road-introduction > div {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
   .gospel-library-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -611,6 +850,57 @@ body[data-romans-static-page="gospel-study"] .reader-nav {
 }
 
 @media (max-width: 640px) {
+  .gospel-road-hero {
+    min-height: 29rem;
+  }
+
+  .gospel-road-hero-copy,
+  .gospel-road-introduction,
+  .gospel-road-summary {
+    width: min(100% - 2rem, 80rem);
+  }
+
+  .gospel-road-hero-copy {
+    padding-block: 3.5rem;
+  }
+
+  .gospel-road-hero h1 {
+    gap: 1rem;
+    font-size: 3rem;
+  }
+
+  .gospel-road-hero h1 small {
+    font-size: 1rem;
+  }
+
+  .gospel-road-introduction {
+    gap: 1.5rem;
+    padding-block: 3rem;
+  }
+
+  .gospel-road-introduction > h2,
+  .gospel-road-summary-heading h2 {
+    font-size: 1.5rem;
+  }
+
+  .gospel-road-introduction > div p {
+    font-size: 1.125rem;
+  }
+
+  .gospel-road-summary {
+    padding-block: 3rem 4rem;
+  }
+
+  .gospel-road-summary-heading {
+    grid-template-columns: 1fr;
+    gap: .75rem;
+  }
+
+  .gospel-road-contrast > div {
+    grid-template-columns: 1fr;
+    gap: .35rem;
+  }
+
   .gospel-library-hero {
     min-height: 30rem;
   }
