@@ -86,6 +86,59 @@ function validateHtmlFlightLengths(html, label) {
     position = newline + 1;
   }
 }
+
+function htmlFlightStream(html) {
+  const scriptPattern = /<script>self\.__next_f\.push\((\[1,[\s\S]*?\])\)<\/script>/gu;
+  const payloads = [];
+  let match;
+  while ((match = scriptPattern.exec(html))) {
+    try {
+      const tuple = JSON.parse(match[1]);
+      if (tuple[0] === 1 && typeof tuple[1] === "string") payloads.push(tuple[1]);
+    } catch {
+      // Non-JSON payloads do not contribute to the Flight stream.
+    }
+  }
+  return payloads.join("");
+}
+
+function findJsonObjectEnd(value, start) {
+  let depth = 0;
+  let inString = false;
+  let escaped = false;
+  for (let index = start; index < value.length; index += 1) {
+    const character = value[index];
+    if (inString) {
+      if (escaped) escaped = false;
+      else if (character === "\\") escaped = true;
+      else if (character === '"') inString = false;
+      continue;
+    }
+    if (character === '"') inString = true;
+    else if (character === "{") depth += 1;
+    else if (character === "}") {
+      depth -= 1;
+      if (depth === 0) return index + 1;
+    }
+  }
+  throw new Error("Could not find the end of an embedded chapter object.");
+}
+
+function embeddedChapter(value, label) {
+  const marker = '"chapter":';
+  const markerIndex = value.indexOf(marker);
+  if (markerIndex === -1) {
+    errors.push(`${label} is missing its embedded chapter payload.`);
+    return null;
+  }
+  const start = markerIndex + marker.length;
+  try {
+    return JSON.parse(value.slice(start, findJsonObjectEnd(value, start)));
+  } catch (error) {
+    errors.push(`${label} has an invalid embedded chapter payload: ${error.message}`);
+    return null;
+  }
+}
 let embeddedNotes = 0;
 let staleNotes = 0;
 
@@ -99,10 +152,20 @@ for (let chapterNumber = 1; chapterNumber <= 16; chapterNumber += 1) {
   const pageText = readFileSync(join(chapterDir, "__next.romans.$d$chapter.__PAGE__.txt"), "utf8");
   const exportText = `${html}\n${indexText}\n${pageText}`;
 
+  for (const [label, embedded] of [
+    [`Romans ${chapterNumber} HTML`, embeddedChapter(htmlFlightStream(html), `Romans ${chapterNumber} HTML`)],
+    [`Romans ${chapterNumber} index.txt`, embeddedChapter(indexText, `Romans ${chapterNumber} index.txt`)],
+    [`Romans ${chapterNumber} PAGE payload`, embeddedChapter(pageText, `Romans ${chapterNumber} PAGE payload`)]
+  ]) {
+    if (embedded && JSON.stringify(embedded) !== JSON.stringify(chapter)) {
+      errors.push(`${label} does not exactly match the canonical chapter JSON.`);
+    }
+  }
+
   if (count(html, /<script src="\/romans-initial-notes\.js/gu) !== 0) {
     errors.push(`Romans ${chapterNumber} still loads the obsolete initial-note map.`);
   }
-  if (count(html, /<script src="\/romans-theology-notes\.js\?v=romans-humanization-pass-2"><\/script>/gu) !== 1) {
+  if (count(html, /<script src="\/romans-theology-notes\.js\?v=romans-mobile-inline-notes-68"><\/script>/gu) !== 1) {
     errors.push(`Romans ${chapterNumber} does not load the commentary enhancement exactly once.`);
   }
   if (/romans-theology-pass-2/iu.test(html)) errors.push(`Romans ${chapterNumber} still loads the old theology runtime.`);
@@ -117,7 +180,11 @@ for (let chapterNumber = 1; chapterNumber <= 16; chapterNumber += 1) {
     const variants = [note, jsonInner(note), htmlEscape(note)];
     if (!variants.some((variant) => exportText.includes(variant))) errors.push(`${verse.verse} is absent from the static payload.`);
     else embeddedNotes += 1;
-    if (oldNote !== note && [oldNote, jsonInner(oldNote), htmlEscape(oldNote)].some((variant) => exportText.includes(variant))) {
+    if (
+      oldNote !== note &&
+      !note.includes(oldNote) &&
+      [oldNote, jsonInner(oldNote), htmlEscape(oldNote)].some((variant) => exportText.includes(variant))
+    ) {
       staleNotes += 1;
       errors.push(`${verse.verse} retains its pre-humanized detailed note.`);
     }

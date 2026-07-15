@@ -1,0 +1,698 @@
+:root {
+  --gospel-navy: #0b1f3a;
+  --gospel-panel: #142a43;
+  --gospel-panel-deep: #10243a;
+  --gospel-ivory: #efe6d5;
+  --gospel-muted: #b9ad90;
+  --gospel-gold: #d3aa4f;
+  --gospel-crimson: #a95b61;
+  --gospel-sage: #7f9b78;
+  --gospel-copper: #b97952;
+}
+
+body[data-romans-static-page="gospel-library"],
+body[data-romans-static-page="gospel-study"] {
+  background: var(--gospel-navy) !important;
+  color: var(--gospel-ivory);
+}
+
+body[data-romans-static-page="gospel-library"] .reader-nav,
+body[data-romans-static-page="gospel-study"] .reader-nav {
+  gap: 1.5rem !important;
+}
+
+.gospel-page {
+  min-height: 100vh;
+  overflow: clip;
+  background: linear-gradient(180deg, #0b1f3a 0%, #0e2540 48%, #091a2f 100%);
+  color: var(--gospel-ivory);
+}
+
+.gospel-page h1,
+.gospel-page h2,
+.gospel-page h3 {
+  font-family: "Cinzel", Georgia, serif !important;
+  letter-spacing: 0 !important;
+}
+
+.gospel-library-hero,
+.gospel-study-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(211, 170, 79, .25);
+  background: #0b1f3a;
+}
+
+.gospel-library-hero {
+  min-height: 34rem;
+}
+
+.gospel-study-hero {
+  min-height: 27rem;
+}
+
+.gospel-library-hero::before,
+.gospel-study-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image: url("/assets/romans-hero-engraving-filled.webp?v=3");
+  background-position: center 42%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: .62;
+}
+
+.gospel-library-hero::after,
+.gospel-study-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(7, 23, 42, .99) 0%, rgba(8, 26, 47, .94) 38%, rgba(8, 26, 47, .56) 68%, rgba(8, 26, 47, .78) 100%),
+    linear-gradient(180deg, rgba(11, 31, 58, .1) 40%, #0b1f3a 100%);
+}
+
+.gospel-library-hero-copy,
+.gospel-study-hero-copy {
+  width: min(100% - 3rem, 80rem);
+  margin-inline: auto;
+  padding-block: 5rem;
+}
+
+.gospel-library-hero-copy {
+  max-width: 80rem;
+}
+
+.gospel-study-hero-copy {
+  max-width: 76rem;
+}
+
+.gospel-library-hero-copy > p,
+.gospel-study-hero-copy > p,
+.gospel-section-heading p,
+.gospel-next-studies > p {
+  margin: 0;
+  color: var(--gospel-gold);
+  font-family: "Jost", system-ui, sans-serif;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+.gospel-library-hero h1,
+.gospel-study-hero h1 {
+  max-width: 58rem;
+  margin: 1.25rem 0 0;
+  color: #fff0cd;
+  font-size: 4.5rem;
+  font-weight: 500;
+  line-height: 1.06 !important;
+}
+
+.gospel-library-hero-copy > span,
+.gospel-study-hero-copy > span {
+  display: block;
+  max-width: 48rem;
+  margin-top: 1.75rem;
+  color: #d4c7ac;
+  font-family: "EB Garamond", Georgia, serif;
+  font-size: 1.5rem;
+  line-height: 1.55;
+}
+
+.gospel-study-hero-copy > a {
+  display: inline-flex;
+  margin-bottom: 1.75rem;
+  color: #c7b897;
+  font-family: "Jost", system-ui, sans-serif;
+  font-size: .78rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.gospel-study-hero-copy > a:hover {
+  color: #fff0cd;
+}
+
+.gospel-library-section,
+.gospel-next-studies {
+  width: min(100% - 3rem, 80rem);
+  margin-inline: auto;
+  padding-block: 4.5rem 5.5rem;
+}
+
+.gospel-section-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2rem;
+  align-items: end;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(211, 170, 79, .24);
+}
+
+.gospel-section-heading h2,
+.gospel-next-studies h2 {
+  margin: .75rem 0 0;
+  color: #f2e7d1;
+  font-size: 2.25rem;
+  font-weight: 500;
+}
+
+.gospel-section-heading > span {
+  color: var(--gospel-muted);
+  font-family: "Jost", system-ui, sans-serif;
+  font-size: .875rem;
+}
+
+.gospel-library-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  padding-top: 2rem;
+}
+
+.gospel-library-card {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 25rem;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 2rem;
+  border: 1px solid rgba(211, 170, 79, .26);
+  border-radius: 8px;
+  background: linear-gradient(145deg, rgba(25, 49, 76, .96), rgba(15, 36, 59, .98));
+  box-shadow: 0 24px 44px -38px rgba(0, 0, 0, .9);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.gospel-library-card::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gospel-gold), var(--gospel-copper));
+  opacity: .7;
+}
+
+.gospel-library-card:hover,
+.gospel-library-card:focus-visible {
+  border-color: rgba(211, 170, 79, .62);
+  box-shadow: 0 28px 52px -36px rgba(0, 0, 0, .95);
+  transform: translateY(-3px);
+}
+
+.gospel-library-card:focus-visible,
+.gospel-stage-toggle:focus-visible,
+.gospel-progress-strip a:focus-visible,
+.gospel-stage-commentary-link:focus-visible {
+  outline: 2px solid #f0c967;
+  outline-offset: 3px;
+}
+
+.gospel-library-card-number {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  color: rgba(239, 230, 213, .38);
+  font-family: "Jost", system-ui, sans-serif;
+  font-size: .875rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+}
+
+.gospel-library-card-icon {
+  display: inline-flex;
+  width: 3.5rem;
+  height: 3.5rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(211, 170, 79, .28);
+  border-radius: 8px;
+  background: rgba(211, 170, 79, .1);
+  color: var(--gospel-gold);
+}
+
+.gospel-library-card > p {
+  margin: 0;
+  color: var(--gospel-gold);
+  font-family: "Jost", system-ui, sans-serif;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.gospel-library-card h2 {
+  margin: .8rem 0 0;
+  color: #f4e9d2;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.3 !important;
+}
+
+.gospel-library-card > span:not(.gospel-library-card-number):not(.gospel-library-card-icon) {
+  margin-top: 1.25rem;
+  color: #c2b69d;
+  font-family: "Jost", system-ui, sans-serif;
+  font-size: .98rem;
+  line-height: 1.7;
+}
+
+.gospel-library-card strong {
+  display: inline-flex;
+  gap: .65rem;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 2rem;
+  color: #e0bb62;
+  font-family: "Jost", system-ui, sans-serif;
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.gospel-progress-strip {
+  position: sticky;
+  top: 0;
+  z-index: 35;
+  border-bottom: 1px solid rgba(211, 170, 79, .22);
+  background: rgba(11, 31, 58, .96);
+  box-shadow: 0 20px 40px -34px #000;
+  backdrop-filter: blur(16px);
+}
+
+.gospel-progress-strip > div {
+  display: flex;
+  width: min(100% - 2rem, 80rem);
+  margin-inline: auto;
+  gap: .4rem;
+  overflow-x: auto;
+  padding: .8rem 0;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(211, 170, 79, .38) transparent;
+}
+
+.gospel-progress-strip a {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: .6rem;
+  min-height: 2.6rem;
+  padding: .45rem .75rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: #9f947e;
+  font-family: "Jost", system-ui, sans-serif;
+  text-decoration: none;
+  transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
+}
+
+.gospel-progress-strip a > span {
+  color: var(--gospel-gold);
+  font-size: .72rem;
+  font-weight: 600;
+}
+
+.gospel-progress-strip a > strong {
+  max-width: 10rem;
+  overflow: hidden;
+  font-size: .75rem;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gospel-progress-strip a[aria-current="step"] {
+  border-color: rgba(211, 170, 79, .38);
+  background: rgba(211, 170, 79, .1);
+  color: #fff0cd;
+}
+
+.gospel-timeline {
+  width: min(100% - 3rem, 80rem);
+  margin-inline: auto;
+  padding-block: 5rem;
+}
+
+.gospel-timeline-stage {
+  --stage-accent: var(--gospel-gold);
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 5rem minmax(0, 1.12fr);
+  gap: 1rem;
+  align-items: start;
+  min-width: 0;
+  padding-block: 1.4rem;
+}
+
+.gospel-timeline-stage[data-tone="crimson"] { --stage-accent: var(--gospel-crimson); }
+.gospel-timeline-stage[data-tone="sage"] { --stage-accent: var(--gospel-sage); }
+.gospel-timeline-stage[data-tone="copper"] { --stage-accent: var(--gospel-copper); }
+
+.gospel-stage-scripture,
+.gospel-stage-explanation {
+  min-width: 0;
+  padding: 1.6rem;
+  border: 1px solid color-mix(in srgb, var(--stage-accent) 42%, #334357);
+  border-radius: 8px;
+  background: rgba(20, 42, 67, .94);
+  box-shadow: 0 22px 42px -36px rgba(0, 0, 0, .95);
+}
+
+.gospel-stage-scripture {
+  border-left: 4px solid var(--stage-accent);
+}
+
+.gospel-stage-scripture > p,
+.gospel-stage-phase {
+  margin: 0;
+  color: var(--stage-accent);
+  font-family: "Jost", system-ui, sans-serif;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+}
+
+.gospel-stage-scripture h2 {
+  margin: .75rem 0 0;
+  color: #f0e5cf;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.35 !important;
+}
+
+.gospel-stage-scripture blockquote {
+  margin: 1.25rem 0 0;
+  color: #eee2ca;
+  font-family: "EB Garamond", Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.gospel-stage-scripture blockquote span {
+  display: inline;
+}
+
+.gospel-stage-scripture sup {
+  margin-right: .35rem;
+  color: var(--stage-accent);
+  font-family: "Jost", system-ui, sans-serif;
+  font-size: .65rem;
+  font-weight: 600;
+}
+
+.gospel-stage-rail {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-self: stretch;
+}
+
+.gospel-stage-rail::before {
+  content: "";
+  position: absolute;
+  top: -1.5rem;
+  bottom: -1.5rem;
+  left: 50%;
+  width: 3px;
+  background: color-mix(in srgb, var(--stage-accent) 72%, #4a5564);
+  transform: translateX(-50%);
+}
+
+.gospel-timeline-stage:first-child .gospel-stage-rail::before {
+  top: 2rem;
+}
+
+.gospel-timeline-stage:last-child .gospel-stage-rail::before {
+  bottom: calc(100% - 2rem);
+}
+
+.gospel-stage-rail > span {
+  position: sticky;
+  top: 5.5rem;
+  z-index: 2;
+  display: inline-flex;
+  width: 4rem;
+  height: 4rem;
+  align-items: center;
+  justify-content: center;
+  border: 6px solid #0b1f3a;
+  border-radius: 50%;
+  background: var(--stage-accent);
+  color: #0a1829;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--stage-accent) 70%, #0b1f3a), 0 18px 34px -20px #000;
+}
+
+.gospel-stage-explanation h3 {
+  margin: .75rem 0 0;
+  color: #f1e6d0;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.35 !important;
+}
+
+.gospel-stage-brief {
+  margin: 1rem 0 0;
+  color: #c9bda4;
+  font-family: "Jost", system-ui, sans-serif;
+  font-size: .98rem;
+  line-height: 1.7;
+}
+
+.gospel-stage-toggle {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: .6rem;
+  margin-top: 1.25rem;
+  padding: .5rem 0;
+  border: 0;
+  background: transparent;
+  color: var(--stage-accent);
+  cursor: pointer;
+  font-family: "Jost", system-ui, sans-serif;
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.gospel-stage-toggle svg {
+  flex: 0 0 auto;
+  transition: transform 180ms ease;
+}
+
+.gospel-stage-toggle[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
+.gospel-stage-expanded {
+  padding-top: 1.25rem;
+  border-top: 1px solid color-mix(in srgb, var(--stage-accent) 24%, transparent);
+}
+
+.gospel-stage-expanded[hidden] {
+  display: none;
+}
+
+.gospel-stage-expanded > p {
+  margin: 0;
+  color: #ddd1b9;
+  font-family: "Jost", system-ui, sans-serif;
+  font-size: .98rem;
+  line-height: 1.75;
+}
+
+.gospel-stage-references {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: 1.25rem;
+}
+
+.gospel-stage-references span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: .25rem .65rem;
+  border: 1px solid color-mix(in srgb, var(--stage-accent) 42%, #334357);
+  border-radius: 999px;
+  color: #d7c9ad;
+  font-family: "Jost", system-ui, sans-serif;
+  font-size: .72rem;
+  font-weight: 500;
+}
+
+.gospel-stage-commentary-link,
+.gospel-next-studies > a {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  margin-top: 1.25rem;
+  color: #e1b85b;
+  font-family: "Jost", system-ui, sans-serif;
+  font-size: .78rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.gospel-next-studies {
+  border-top: 1px solid rgba(211, 170, 79, .22);
+}
+
+@media (max-width: 1180px) {
+  body[data-romans-static-page="gospel-library"] .reader-nav,
+  body[data-romans-static-page="gospel-study"] .reader-nav {
+    display: none !important;
+  }
+
+  body[data-romans-static-page="gospel-library"] .reader-menu-button,
+  body[data-romans-static-page="gospel-study"] .reader-menu-button {
+    display: inline-flex !important;
+  }
+}
+
+@media (max-width: 960px) {
+  .gospel-library-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gospel-timeline {
+    width: min(100% - 2rem, 46rem);
+    padding-block: 3.5rem;
+  }
+
+  .gospel-timeline-stage {
+    grid-template-columns: 3rem minmax(0, 1fr);
+    gap: .75rem;
+    padding-block: 1rem;
+  }
+
+  .gospel-stage-scripture {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .gospel-stage-rail {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+
+  .gospel-stage-explanation {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .gospel-stage-rail > span {
+    top: 4.5rem;
+    width: 3rem;
+    height: 3rem;
+    border-width: 5px;
+  }
+
+  .gospel-stage-rail > span svg {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .gospel-library-hero {
+    min-height: 30rem;
+  }
+
+  .gospel-study-hero {
+    min-height: 25rem;
+  }
+
+  .gospel-library-hero-copy,
+  .gospel-study-hero-copy,
+  .gospel-library-section,
+  .gospel-next-studies {
+    width: min(100% - 2rem, 80rem);
+  }
+
+  .gospel-library-hero-copy,
+  .gospel-study-hero-copy {
+    padding-block: 3.5rem;
+  }
+
+  .gospel-library-hero h1,
+  .gospel-study-hero h1 {
+    font-size: 1.875rem;
+  }
+
+  .gospel-library-hero-copy > span,
+  .gospel-study-hero-copy > span {
+    font-size: 1.25rem;
+  }
+
+  .gospel-section-heading {
+    grid-template-columns: 1fr;
+  }
+
+  .gospel-section-heading h2,
+  .gospel-next-studies h2 {
+    font-size: 1.5rem;
+  }
+
+  .gospel-library-section {
+    padding-block: 3rem 4rem;
+  }
+
+  .gospel-library-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gospel-library-card {
+    min-height: 22rem;
+    padding: 1.5rem;
+  }
+
+  .gospel-progress-strip a > strong {
+    display: none;
+  }
+
+  .gospel-progress-strip a {
+    min-width: 2.75rem;
+    justify-content: center;
+    padding-inline: .5rem;
+  }
+
+  .gospel-stage-scripture,
+  .gospel-stage-explanation {
+    padding: 1.25rem;
+  }
+
+  .gospel-stage-scripture blockquote {
+    font-size: 1.125rem;
+  }
+
+  .gospel-stage-expanded > p,
+  .gospel-stage-brief {
+    font-size: .92rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gospel-library-card,
+  .gospel-stage-toggle svg,
+  .gospel-progress-strip a {
+    scroll-behavior: auto;
+    transition: none;
+  }
+}

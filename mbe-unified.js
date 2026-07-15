@@ -1,6 +1,7 @@
 (() => {
   const tool = "romans";
-  const illustratedVersion = "romans-hero-fast-62";
+  const illustratedVersion = "romans-mobile-inline-notes-68";
+  const referencePreviewDataUrl = "/data/romans-reference-previews.json?v=" + illustratedVersion;
   const danielFontsHref = "https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@400;500;600&display=swap";
   const headerMarkup = "<header class=\"mbe-global-shell\" data-tool=\"romans\" data-embedded=\"true\">\n      <div class=\"mbe-shell-wrap\">\n        <div class=\"mbe-ribbon-left\">\n          <a class=\"mbe-ribbon-brand\" href=\"https://mybibleexplorer.com\" aria-label=\"My Bible Explorer home\"><img class=\"mbe-ribbon-logo\" src=\"/assets/my-bible-explorer-logo.png\" alt=\"My Bible Explorer\"></a>\n          <a class=\"mbe-ribbon-back\" href=\"https://mybibleexplorer.com/#journeys\">Back to Library</a>\n        </div>\n        <nav class=\"mbe-global-nav\" aria-label=\"My Bible Explorer\">\n          <details class=\"mbe-library-menu\">\n            <summary class=\"mbe-library-toggle\">Library</summary>\n            <div class=\"mbe-library-panel\">\n              <div class=\"mbe-library-grid\">\n            <a class=\"mbe-library-item\" href=\"https://hermeneutics.mybibleexplorer.com\"><span class=\"mbe-library-name\">Hermeneutics</span><span class=\"mbe-library-desc\">Learn to read Scripture faithfully</span></a>\n            <a class=\"mbe-library-item\" href=\"https://psalms.mybibleexplorer.com\"><span class=\"mbe-library-name\">Psalms</span><span class=\"mbe-library-desc\">Worship, lament, praise, and prayer</span></a>\n            <a class=\"mbe-library-item\" href=\"https://daniel.mybibleexplorer.com\"><span class=\"mbe-library-name\">Daniel</span><span class=\"mbe-library-desc\">Prophecy and providence</span></a>\n            <a class=\"mbe-library-item\" href=\"https://revelation.mybibleexplorer.com/\"><span class=\"mbe-library-name\">Revelation</span><span class=\"mbe-library-desc\">Symbols, judgment, and final hope</span></a>\n            <a class=\"mbe-library-item\" href=\"https://sanctuary.mybibleexplorer.com/#structure\"><span class=\"mbe-library-name\">Sanctuary</span><span class=\"mbe-library-desc\">A blueprint of salvation</span></a>\n            <a class=\"mbe-library-item\" href=\"https://lastdayevents.mybibleexplorer.com/index.html\"><span class=\"mbe-library-name\">Last Day Events</span><span class=\"mbe-library-desc\">Earth's final chapter</span></a>\n            <a class=\"mbe-library-item\" href=\"https://romans.mybibleexplorer.com\" aria-current=\"page\"><span class=\"mbe-library-name\">Romans</span><span class=\"mbe-library-desc\">Righteousness by faith and life in the Spirit</span></a>\n              </div>\n            </div>\n          </details>\n          <a class=\"mbe-ribbon-give\" href=\"https://mybibleexplorer.com/#donate\">Support</a>\n        </nav>\n      </div>\n    </header>\n";
   const footerMarkup = "<footer class=\"mbe-global-footer\" data-tool=\"romans\">\n      <div class=\"mbe-shell-wrap mbe-footer-wrap\">\n        <a class=\"mbe-footer-brand\" href=\"https://mybibleexplorer.com\" aria-label=\"My Bible Explorer home\"><img class=\"mbe-footer-logo\" src=\"/assets/my-bible-explorer-logo.png\" alt=\"My Bible Explorer\"></a>\n        <span>Know the Word. Live the Word.</span>\n        <span>To contact, email <a class=\"mbe-footer-link\" href=\"mailto:admin@mybibleexplorer.com\">admin@mybibleexplorer.com</a></span>\n        <a class=\"mbe-footer-link\" href=\"https://mybibleexplorer.com/#donate\">Support</a>\n        <span>&copy; <span data-mbe-year></span> My Bible Explorer</span>\n      </div>\n    </footer>\n    ";
@@ -92,6 +93,10 @@
       document.body.setAttribute('data-romans-route', 'articles');
       return;
     }
+    if (path === '/gospel' || path.startsWith('/gospel/')) {
+      document.body.setAttribute('data-romans-route', 'gospel');
+      return;
+    }
     if (chapterMatch) {
       document.body.setAttribute('data-romans-route', 'commentary');
       document.body.setAttribute('data-romans-chapter', chapterMatch[1]);
@@ -136,6 +141,44 @@
     });
   }
 
+  function syncGospelNavigation() {
+    const isGospelRoute = routePath() === '/gospel' || routePath().startsWith('/gospel/');
+    document.querySelectorAll('.reader-nav, .reader-menu').forEach((nav) => {
+      let gospelLink = Array.from(nav.querySelectorAll('a')).find((link) => {
+        const href = link.getAttribute('href') || '';
+        return href === '/gospel' || href === '/gospel/';
+      });
+      if (!gospelLink) {
+        gospelLink = document.createElement('a');
+        gospelLink.href = '/gospel/';
+        gospelLink.textContent = 'Gospel';
+        gospelLink.className = nav.classList.contains('reader-menu') ? 'reader-menu-link' : 'reader-nav-link';
+        const articlesLink = Array.from(nav.querySelectorAll('a')).find((link) => {
+          const href = link.getAttribute('href') || '';
+          return href === '/articles' || href === '/articles/';
+        });
+        const searchLink = Array.from(nav.querySelectorAll('a')).find((link) => {
+          const href = link.getAttribute('href') || '';
+          return href === '/search' || href === '/search/';
+        });
+        nav.insertBefore(gospelLink, articlesLink || searchLink || null);
+      }
+
+      gospelLink.classList.toggle('reader-nav-link-active', isGospelRoute && nav.classList.contains('reader-nav'));
+      gospelLink.classList.toggle('reader-menu-link-active', isGospelRoute && nav.classList.contains('reader-menu'));
+      if (isGospelRoute) {
+        nav.querySelectorAll('a').forEach((link) => {
+          if (link === gospelLink) return;
+          link.classList.remove('reader-nav-link-active', 'reader-menu-link-active');
+          link.removeAttribute('aria-current');
+        });
+        gospelLink.setAttribute('aria-current', 'page');
+      } else {
+        gospelLink.removeAttribute('aria-current');
+      }
+    });
+  }
+
   function syncHomeArticlesCard() {
     if (routePath() !== '/') return;
     const grid = document.querySelector('.home-action-grid');
@@ -146,6 +189,19 @@
     card.setAttribute('data-romans-articles-card', 'true');
     card.innerHTML = '<span class="home-action-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><path d="M8 7h8"></path><path d="M8 11h6"></path></svg></span><strong>Read the Articles</strong><span>Explore guides that follow Paul\'s argument, context, and theology across the whole letter.</span><em>Open <span aria-hidden="true">&rarr;</span></em>';
     grid.appendChild(card);
+  }
+
+  function syncHomeGospelCard() {
+    if (routePath() !== '/') return;
+    const grid = document.querySelector('.home-action-grid');
+    if (!grid || grid.querySelector('[data-romans-gospel-card]')) return;
+    const card = document.createElement('a');
+    card.className = 'home-action-card';
+    card.href = '/gospel/';
+    card.setAttribute('data-romans-gospel-card', 'true');
+    card.innerHTML = '<span class="home-action-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><line x1="6" x2="6" y1="3" y2="15"></line><circle cx="18" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><path d="M18 9a9 9 0 0 1-9 9"></path></svg></span><strong>Explore the Gospel</strong><span>Follow Paul\'s argument through six connected visual studies spanning the whole epistle.</span><em>Open <span aria-hidden="true">&rarr;</span></em>';
+    const articlesCard = grid.querySelector('[data-romans-articles-card]');
+    grid.insertBefore(card, articlesCard || null);
   }
 
   function syncHomeTitle() {
@@ -571,6 +627,11 @@
     document.querySelectorAll('[data-romans-inline-note]').forEach((node) => {
       node.remove();
     });
+    document.querySelectorAll('[data-romans-inline-toggle="true"]').forEach((button) => {
+      button.removeAttribute('data-romans-inline-toggle');
+      button.removeAttribute('aria-controls');
+      button.removeAttribute('aria-expanded');
+    });
   }
 
   function sanitizeInlineNoteIds(note, reference) {
@@ -605,6 +666,26 @@
     const verseBlock = verseButton.closest('.scripture-list-item') || verseButton.parentElement;
     if (!verseBlock) return false;
 
+    const existingInlineNote = Array.from(verseBlock.children).find((node) => {
+      return node instanceof Element && node.hasAttribute('data-romans-inline-note');
+    });
+    if (existingInlineNote && existingInlineNote.getAttribute('data-romans-inline-note') === reference.text) {
+      document.querySelectorAll('[data-romans-inline-note]').forEach((node) => {
+        if (node !== existingInlineNote) node.remove();
+      });
+      document.querySelectorAll('[data-romans-inline-toggle="true"]').forEach((button) => {
+        if (button === verseButton) return;
+        button.removeAttribute('data-romans-inline-toggle');
+        button.removeAttribute('aria-controls');
+        button.removeAttribute('aria-expanded');
+      });
+      verseButton.setAttribute('data-romans-inline-toggle', 'true');
+      verseButton.setAttribute('aria-controls', reference.inlineId);
+      verseButton.setAttribute('aria-expanded', 'true');
+      hideMobileCommentaryDrawer();
+      return true;
+    }
+
     removeRomansInlineNotes();
     const inlineNote = source.cloneNode(true);
     inlineNote.classList.add('romans-inline-note');
@@ -613,6 +694,9 @@
     inlineNote.setAttribute('aria-label', reference.text + ' study note');
     sanitizeInlineNoteIds(inlineNote, reference);
     verseBlock.appendChild(inlineNote);
+    verseButton.setAttribute('data-romans-inline-toggle', 'true');
+    verseButton.setAttribute('aria-controls', reference.inlineId);
+    verseButton.setAttribute('aria-expanded', 'true');
     hideMobileCommentaryDrawer();
     return true;
   }
@@ -625,18 +709,37 @@
       return;
     }
     if (cloneCurrentCommentaryForVerse(verseButton, reference)) return;
-    if ((attempt || 0) < 16) {
+    if ((attempt || 0) < 48) {
       window.setTimeout(() => syncRomansInlineNoteForVerse(verseButton, (attempt || 0) + 1), 60);
     }
   }
 
-  function syncRomansInlineNoteFromActiveVerse() {
-    const active = document.querySelector('.scripture-pane .scripture-card-active[id^="romans-"]');
-    if (active) syncRomansInlineNoteForVerse(active, 0);
+  function syncRomansInlineNoteFromActiveVerse(attempt) {
+    if (!isMobileInlineNoteViewport()) {
+      removeRomansInlineNotes();
+      return;
+    }
+    const hashId = decodeURIComponent(window.location.hash.replace(/^#/, ''));
+    const hashVerse = hashId ? document.getElementById(hashId) : null;
+    const active = hashVerse && hashVerse.matches('.scripture-pane button.scripture-card[id^="romans-"]')
+      ? hashVerse
+      : document.querySelector('.scripture-pane .scripture-card-active[id^="romans-"]');
+    if (active) {
+      syncRomansInlineNoteForVerse(active, 0);
+      return;
+    }
+    if ((attempt || 0) < 48) {
+      window.setTimeout(() => syncRomansInlineNoteFromActiveVerse((attempt || 0) + 1), 60);
+    }
   }
 
   function installRomansInlineNotes() {
-    if (window.__romansInlineNotesInstalled) return;
+    if (window.__romansInlineNotesInstalled) {
+      if (isMobileInlineNoteViewport()) {
+        window.setTimeout(() => syncRomansInlineNoteFromActiveVerse(0), 0);
+      }
+      return;
+    }
     window.__romansInlineNotesInstalled = true;
     document.addEventListener('click', (event) => {
       if (!(event.target instanceof Element)) return;
@@ -645,15 +748,226 @@
       window.setTimeout(() => syncRomansInlineNoteForVerse(verseButton, 0), 0);
     });
     window.addEventListener('hashchange', () => {
-      window.setTimeout(syncRomansInlineNoteFromActiveVerse, 0);
+      window.setTimeout(() => syncRomansInlineNoteFromActiveVerse(0), 0);
     });
     window.addEventListener('resize', () => {
       if (isMobileInlineNoteViewport()) {
-        syncRomansInlineNoteFromActiveVerse();
+        syncRomansInlineNoteFromActiveVerse(0);
       } else {
         removeRomansInlineNotes();
       }
     });
+
+    const reader = document.querySelector('.split-reader');
+    if (reader) {
+      let syncFrame = 0;
+      const observer = new MutationObserver((records) => {
+        const commentaryChanged = records.some((record) => {
+          const target = record.target instanceof Element ? record.target : record.target.parentElement;
+          if (target && target.closest('.commentary-pane')) return true;
+          return Array.from(record.addedNodes).some((node) => {
+            return node instanceof Element && (node.matches('.commentary-pane') || node.querySelector('.commentary-pane'));
+          });
+        });
+        if (!commentaryChanged || !isMobileInlineNoteViewport()) return;
+        window.cancelAnimationFrame(syncFrame);
+        syncFrame = window.requestAnimationFrame(() => syncRomansInlineNoteFromActiveVerse(0));
+      });
+      observer.observe(reader, { childList: true, subtree: true, characterData: true });
+      window.__romansInlineNotesObserver = observer;
+    }
+    [0, 350, 1000, 2000].forEach((delay) => {
+      window.setTimeout(() => syncRomansInlineNoteFromActiveVerse(0), delay);
+    });
+  }
+
+  let referencePreviewDataPromise = null;
+  let referencePreviewTrigger = null;
+  let referencePreviewPinned = false;
+  let referencePreviewHideTimer = 0;
+  let referencePreviewEnhanceFrame = 0;
+
+  function normalizeCrossReferenceLabel(value) {
+    return String(value || '').replace(/\s+/g, ' ').trim();
+  }
+
+  function loadReferencePreviewData() {
+    if (referencePreviewDataPromise) return referencePreviewDataPromise;
+    referencePreviewDataPromise = fetch(referencePreviewDataUrl, { credentials: 'same-origin' })
+      .then((response) => {
+        if (!response.ok) throw new Error('Unable to load local KJV reference text.');
+        return response.json();
+      })
+      .then((payload) => payload && payload.references ? payload.references : {})
+      .catch(() => ({}));
+    return referencePreviewDataPromise;
+  }
+
+  function referencePreviewElement() {
+    let preview = document.getElementById('mbe-reference-preview');
+    if (preview) return preview;
+    preview = document.createElement('aside');
+    preview.id = 'mbe-reference-preview';
+    preview.className = 'mbe-reference-preview';
+    preview.setAttribute('role', 'tooltip');
+    preview.hidden = true;
+    preview.innerHTML =
+      '<div class="mbe-reference-preview-heading">' +
+      '<span class="mbe-reference-preview-badge">KJV</span>' +
+      '<strong data-mbe-reference-preview-label></strong>' +
+      '</div>' +
+      '<p data-mbe-reference-preview-text aria-live="polite"></p>';
+    document.body.appendChild(preview);
+    return preview;
+  }
+
+  function crossReferenceTriggerFromTarget(target) {
+    if (!(target instanceof Element)) return null;
+    return target.closest(
+      '.reference-chip[data-mbe-reference-preview-trigger], ' +
+      '.word-reference-chip[data-mbe-reference-preview-trigger], ' +
+      '.symbol-reference-chip[data-mbe-reference-preview-trigger]'
+    );
+  }
+
+  function positionReferencePreview(trigger, preview) {
+    if (!trigger || !preview || preview.hidden) return;
+    const margin = 12;
+    const gap = 10;
+    const triggerRect = trigger.getBoundingClientRect();
+    const previewRect = preview.getBoundingClientRect();
+    const availableWidth = Math.max(0, window.innerWidth - margin * 2);
+    const left = Math.min(
+      Math.max(margin, triggerRect.left),
+      Math.max(margin, window.innerWidth - Math.min(previewRect.width, availableWidth) - margin)
+    );
+    const placeAbove = triggerRect.top >= previewRect.height + gap + margin;
+    const top = placeAbove
+      ? triggerRect.top - previewRect.height - gap
+      : Math.min(window.innerHeight - previewRect.height - margin, triggerRect.bottom + gap);
+    preview.style.left = left + 'px';
+    preview.style.top = Math.max(margin, top) + 'px';
+    preview.setAttribute('data-placement', placeAbove ? 'above' : 'below');
+  }
+
+  function clearReferencePreviewTrigger() {
+    if (!referencePreviewTrigger) return;
+    referencePreviewTrigger.removeAttribute('aria-describedby');
+    referencePreviewTrigger.removeAttribute('data-mbe-reference-preview-open');
+    referencePreviewTrigger = null;
+  }
+
+  function hideReferencePreview(force) {
+    window.clearTimeout(referencePreviewHideTimer);
+    if (referencePreviewPinned && !force) return;
+    referencePreviewPinned = false;
+    clearReferencePreviewTrigger();
+    const preview = document.getElementById('mbe-reference-preview');
+    if (preview) preview.hidden = true;
+  }
+
+  function scheduleReferencePreviewHide() {
+    window.clearTimeout(referencePreviewHideTimer);
+    referencePreviewHideTimer = window.setTimeout(() => hideReferencePreview(false), 90);
+  }
+
+  function showReferencePreview(trigger, pin) {
+    if (!trigger) return;
+    window.clearTimeout(referencePreviewHideTimer);
+    const label = normalizeCrossReferenceLabel(trigger.textContent);
+    if (!label) return;
+
+    const preview = referencePreviewElement();
+    clearReferencePreviewTrigger();
+    referencePreviewTrigger = trigger;
+    referencePreviewPinned = Boolean(pin);
+    trigger.setAttribute('aria-describedby', preview.id);
+    trigger.setAttribute('data-mbe-reference-preview-open', 'true');
+    preview.querySelector('[data-mbe-reference-preview-label]').textContent = label;
+    preview.querySelector('[data-mbe-reference-preview-text]').textContent = 'Loading Bible text...';
+    preview.hidden = false;
+    positionReferencePreview(trigger, preview);
+
+    loadReferencePreviewData().then((references) => {
+      if (referencePreviewTrigger !== trigger) return;
+      const text = references[label];
+      preview.querySelector('[data-mbe-reference-preview-text]').textContent =
+        text || 'Bible text is not available for this reference.';
+      window.requestAnimationFrame(() => positionReferencePreview(trigger, preview));
+    });
+  }
+
+  function enhanceCrossReferenceTriggers() {
+    document.querySelectorAll('.reference-chip, .word-reference-chip, .symbol-reference-chip').forEach((chip) => {
+      if (chip.hasAttribute('data-mbe-reference-preview-trigger')) return;
+      chip.setAttribute('data-mbe-reference-preview-trigger', 'true');
+      if (chip.tagName !== 'A') chip.setAttribute('tabindex', '0');
+      chip.setAttribute('aria-label', normalizeCrossReferenceLabel(chip.textContent) + '. Show King James Version text.');
+    });
+    if (referencePreviewTrigger && !referencePreviewTrigger.isConnected) hideReferencePreview(true);
+  }
+
+  function scheduleCrossReferenceEnhancement() {
+    window.cancelAnimationFrame(referencePreviewEnhanceFrame);
+    referencePreviewEnhanceFrame = window.requestAnimationFrame(enhanceCrossReferenceTriggers);
+  }
+
+  function installCrossReferencePreviews() {
+    if (window.__romansCrossReferencePreviewsInstalled) {
+      scheduleCrossReferenceEnhancement();
+      return;
+    }
+    window.__romansCrossReferencePreviewsInstalled = true;
+    enhanceCrossReferenceTriggers();
+    loadReferencePreviewData();
+
+    document.addEventListener('pointerover', (event) => {
+      if (event.pointerType === 'touch') return;
+      const trigger = crossReferenceTriggerFromTarget(event.target);
+      if (!trigger || trigger.contains(event.relatedTarget)) return;
+      showReferencePreview(trigger, false);
+    });
+    document.addEventListener('pointerout', (event) => {
+      if (event.pointerType === 'touch') return;
+      const trigger = crossReferenceTriggerFromTarget(event.target);
+      if (!trigger || trigger.contains(event.relatedTarget)) return;
+      scheduleReferencePreviewHide();
+    });
+    document.addEventListener('focusin', (event) => {
+      const trigger = crossReferenceTriggerFromTarget(event.target);
+      if (trigger) showReferencePreview(trigger, false);
+    });
+    document.addEventListener('focusout', (event) => {
+      const trigger = crossReferenceTriggerFromTarget(event.target);
+      if (trigger && !trigger.contains(event.relatedTarget)) scheduleReferencePreviewHide();
+    });
+    document.addEventListener('click', (event) => {
+      const trigger = crossReferenceTriggerFromTarget(event.target);
+      if (!trigger) {
+        hideReferencePreview(true);
+        return;
+      }
+      if (trigger.tagName === 'A' && !window.matchMedia('(hover: none)').matches) return;
+      event.preventDefault();
+      if (referencePreviewTrigger === trigger && referencePreviewPinned) hideReferencePreview(true);
+      else showReferencePreview(trigger, true);
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        hideReferencePreview(true);
+        return;
+      }
+      const trigger = crossReferenceTriggerFromTarget(event.target);
+      if (!trigger || (event.key !== 'Enter' && event.key !== ' ')) return;
+      event.preventDefault();
+      if (referencePreviewTrigger === trigger && referencePreviewPinned) hideReferencePreview(true);
+      else showReferencePreview(trigger, true);
+    });
+    document.addEventListener('scroll', () => hideReferencePreview(true), true);
+    window.addEventListener('resize', () => hideReferencePreview(true));
+
+    const observer = new MutationObserver(scheduleCrossReferenceEnhancement);
+    observer.observe(document.body, { childList: true, subtree: true });
   }
 
 
@@ -1328,13 +1642,16 @@
     ensureIllustratedAssets();
     syncRomansRouteMeta();
     syncArticlesNavigation();
+    syncGospelNavigation();
     syncHomeTitle();
     syncIntroductionHero();
+    syncHomeGospelCard();
     syncHomeArticlesCard();
     installArticlesNavigation();
     installStaticMobileMenu();
     syncChapterTopicPills();
     installRomansInlineNotes();
+    installCrossReferencePreviews();
     installDesktopVerseScrollContainment();
     if (!isMobileInlineNoteViewport()) removeRomansInlineNotes();
     removeThemeToggle();

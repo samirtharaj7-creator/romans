@@ -1478,6 +1478,19 @@ body[data-romans-route="articles"] .reader-menu-button {
   }
 }
 
+/* The home study paths now include Introduction, Commentary, Gospel, and Articles. */
+@media (min-width: 1241px) {
+  body[data-romans-route="home"] .home-action-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (min-width: 981px) and (max-width: 1240px) {
+  body[data-romans-route="home"] .home-action-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
 @media (max-width: 980px) {
   body[data-romans-route="articles"] .articles-hero {
     min-height: 24rem;
@@ -2089,8 +2102,13 @@ body[data-romans-chapter] .commentary-reading p + p {
 }
 
 @media (max-width: 1023.98px) {
+  body[data-romans-chapter] .split-reader > .commentary-pane {
+    display: none !important;
+  }
+
   body[data-romans-chapter] .romans-inline-note {
     display: block !important;
+    box-sizing: border-box !important;
     width: 100% !important;
     margin: .9rem 0 .35rem !important;
     padding: 1rem !important;
@@ -2329,6 +2347,99 @@ body[data-romans-chapter] .reader-pane-toolbar-notes .reader-pane-kicker span {
   font-size: .875rem !important;
   font-weight: 600 !important;
   letter-spacing: .16em !important;
+}
+
+.reference-chip[data-mbe-reference-preview-trigger],
+.word-reference-chip[data-mbe-reference-preview-trigger],
+.symbol-reference-chip[data-mbe-reference-preview-trigger] {
+  cursor: help !important;
+  outline: none;
+  transition: border-color 150ms ease, background-color 150ms ease, color 150ms ease !important;
+}
+
+.reference-chip[data-mbe-reference-preview-trigger]:hover,
+.reference-chip[data-mbe-reference-preview-open],
+.word-reference-chip[data-mbe-reference-preview-trigger]:hover,
+.word-reference-chip[data-mbe-reference-preview-open],
+.symbol-reference-chip[data-mbe-reference-preview-trigger]:hover,
+.symbol-reference-chip[data-mbe-reference-preview-open] {
+  border-color: rgba(224, 182, 69, .72) !important;
+  background: rgba(201, 164, 76, .16) !important;
+  color: #fff8e6 !important;
+}
+
+.reference-chip[data-mbe-reference-preview-trigger]:focus-visible,
+.word-reference-chip[data-mbe-reference-preview-trigger]:focus-visible,
+.symbol-reference-chip[data-mbe-reference-preview-trigger]:focus-visible {
+  outline: 2px solid rgba(224, 182, 69, .9) !important;
+  outline-offset: 3px !important;
+}
+
+.mbe-reference-preview {
+  position: fixed;
+  z-index: 120;
+  width: min(28rem, calc(100vw - 1.5rem));
+  border: 1px solid rgba(224, 182, 69, .62);
+  border-radius: .5rem;
+  background: rgba(7, 20, 34, .98);
+  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, .38);
+  color: #f3e8cc;
+  padding: .875rem 1rem 1rem;
+  pointer-events: none;
+}
+
+.mbe-reference-preview[hidden] {
+  display: none !important;
+}
+
+.mbe-reference-preview-heading {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  margin-bottom: .55rem;
+  color: #f8edcf;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: .875rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.25;
+}
+
+.mbe-reference-preview-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.15rem;
+  min-height: 1.65rem;
+  border-radius: .35rem;
+  background: #d8b04d;
+  color: #0b1d31;
+  font-size: .72rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.mbe-reference-preview p {
+  margin: 0;
+  color: #e9dcc0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.125rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.55;
+}
+
+@media (max-width: 640px) {
+  .mbe-reference-preview {
+    top: auto !important;
+    right: .75rem;
+    bottom: max(.75rem, env(safe-area-inset-bottom));
+    left: .75rem !important;
+    width: auto;
+    max-height: min(42vh, 22rem);
+    overflow-y: auto;
+    pointer-events: auto;
+  }
 }
 
 .reader-brand-text {

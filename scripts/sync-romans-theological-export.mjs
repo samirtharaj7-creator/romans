@@ -70,6 +70,13 @@ function repairRawFlightTextLength(value, text) {
   while (searchFrom < value.length) {
     const textIndex = value.indexOf(text, searchFrom);
     if (textIndex === -1) break;
+    const textEnd = textIndex + text.length;
+    const remainder = value.slice(textEnd, textEnd + 64);
+    const endsAtRowBoundary = textEnd === value.length || /^(?:\r?\n)*[0-9a-f]*:/u.test(remainder);
+    if (!endsAtRowBoundary) {
+      searchFrom = textEnd;
+      continue;
+    }
     const prefixStart = Math.max(0, textIndex - 64);
     const prefix = value.slice(prefixStart, textIndex);
     const match = prefix.match(/([0-9a-f]+):T([0-9a-f]+),$/u);
@@ -105,7 +112,9 @@ function validateFlightStream(value) {
   while (position < value.length) {
     const colon = value.indexOf(":", position);
     if (colon === -1 || !/^[0-9a-f]*$/u.test(value.slice(position, colon))) {
-      throw new Error(`Invalid Flight row identifier at offset ${position}.`);
+      throw new Error(
+        `Invalid Flight row identifier at offset ${position}: ${JSON.stringify(value.slice(position, position + 160))}`
+      );
     }
     if (value[colon + 1] === "T") {
       const comma = value.indexOf(",", colon + 2);
@@ -223,10 +232,16 @@ for (let chapterNumber = 1; chapterNumber <= 16; chapterNumber += 1) {
     .slice(0, -1)
     .map(([, replacement]) => replacement)
     .filter((replacement) => replacement.length >= 18);
-  const repairTexts = [
+  const repairSourceTexts = [
     ...changes.map((change) => change.after),
     ...collectPublicStrings(after).filter((text) => languageMarkers.some((marker) => text.includes(marker)))
   ];
+  const repairTexts = [...new Set(
+    repairSourceTexts.flatMap((text) => [
+      text,
+      ...text.split(/\n\s*\n/gu).map((paragraph) => paragraph.trim()).filter(Boolean)
+    ])
+  )];
   changedPairs += changes.length;
   const pairHits = new Map(changes.map((change) => [change.before, 0]));
   const pairPresent = new Map(changes.map((change) => [change.before, false]));
@@ -290,7 +305,7 @@ for (let chapterNumber = 1; chapterNumber <= 16; chapterNumber += 1) {
     }
 
     if (exportFile === "index.html") {
-      const enhancementScript = '<script src="/romans-theology-notes.js?v=romans-humanization-pass-2"></script>';
+      const enhancementScript = '<script src="/romans-theology-notes.js?v=romans-mobile-inline-notes-68"></script>';
       output = output.replace(/<script src="\/romans-initial-notes\.js\?v=[^"]+"><\/script>/gu, "");
       output = output.replace(/<script src="\/romans-theology-notes\.js\?v=[^"]+"><\/script>/gu, "");
       if (!output.includes(enhancementScript)) {

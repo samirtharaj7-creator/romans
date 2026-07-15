@@ -1,0 +1,476 @@
+{
+  "title": "Romans Teaching-Page Natural-Flow Audit",
+  "generatedOn": "2026-07-14",
+  "scope": {
+    "homepage": 1,
+    "introduction": 1,
+    "articleIndex": 1,
+    "articles": 19,
+    "totalPages": 22
+  },
+  "severeFindings": [],
+  "pages": [
+    {
+      "path": "index.html",
+      "title": "Romans",
+      "headings": 6,
+      "paragraphs": 9,
+      "words": 114,
+      "severe": [],
+      "phraseCounts": {
+        "In practice": 0,
+        "Within Christian practice": 0,
+        "At the level of discipleship": 0,
+        "For the reader": 0,
+        "practical force": 0,
+        "formulaic contrast": 0
+      },
+      "closingParagraphs": [
+        "Romans 5-8",
+        "Romans 9-11",
+        "Romans 12-16"
+      ]
+    },
+    {
+      "path": "introduction/index.html",
+      "title": "Romans",
+      "headings": 25,
+      "paragraphs": 47,
+      "words": 2812,
+      "severe": [],
+      "phraseCounts": {
+        "In practice": 0,
+        "Within Christian practice": 0,
+        "At the level of discipleship": 0,
+        "For the reader": 0,
+        "practical force": 0,
+        "formulaic contrast": 9
+      },
+      "closingParagraphs": [
+        "The letter also matters because pride still divides the people of God. Romans humbles every claim of superiority, whether moral, religious, ethnic, or intellectual, and calls believers into one body shaped by mercy. It teaches that God is faithful, Christ is sufficient, the Spirit gives life, and the church must live in the truth of the gospel.",
+        "For readers today, Romans remains one of Scripture's clearest and strongest guides into the heart of salvation: guilty sinners declared righteous through Christ, transformed by grace, and gathered into a people who belong wholly to God.",
+        "Further Study"
+      ]
+    },
+    {
+      "path": "articles/index.html",
+      "title": "Articles",
+      "headings": 21,
+      "paragraphs": 23,
+      "words": 564,
+      "severe": [],
+      "phraseCounts": {
+        "In practice": 0,
+        "Within Christian practice": 0,
+        "At the level of discipleship": 0,
+        "For the reader": 0,
+        "practical force": 0,
+        "formulaic contrast": 0
+      },
+      "closingParagraphs": [
+        "Read Romans 9 with Paul's tears and within Romans 9-11, tracing God's faithfulness, mercy, hardening, responsibility, and hope.",
+        "Read Christ as the end of law for righteousness without turning grace into lawlessness or Moses into an enemy of the gospel.",
+        "Follow Paul's answer through the remnant, the olive tree, Gentile humility, Israel's hope, and the mercy and wisdom of God."
+      ]
+    },
+    {
+      "path": "articles/abraham-and-righteousness-by-faith/index.html",
+      "title": "Abraham and Righteousness by Faith",
+      "headings": 10,
+      "paragraphs": 34,
+      "words": 2616,
+      "severe": [],
+      "phraseCounts": {
+        "In practice": 0,
+        "Within Christian practice": 0,
+        "At the level of discipleship": 0,
+        "For the reader": 0,
+        "practical force": 0,
+        "formulaic contrast": 11
+      },
+      "closingParagraphs": [
+        "That is why Romans 4 continues to steady the church. It humbles the proud, comforts the weak, draws Jew and Gentile into one family of promise, and directs all confidence away from self to the God who justifies the ungodly and raises the dead. In Abraham's story, Paul teaches every believer where to stand: not in boasting, but in grace; not in self-trust, but in faith; not in human ability, but in the God who keeps His word through Jesus Christ our Lord.",
+        "On this page",
+        "Next article"
+      ]
+    },
+    {
+      "path": "articles/adam-and-christ-romans-5/index.html",
+      "title": "Adam and Christ: The Two Humanities in Romans 5",
+      "headings": 17,
+      "paragraphs": 41,
+      "words": 2726,
+      "severe": [],
+      "phraseCounts": {
+        "In practice": 0,
+        "Within Christian practice": 0,
+        "At the level of discipleship": 0,
+        "For the reader": 0,
+        "practical force": 0,
+        "formulaic contrast": 4
+      },
+      "closingParagraphs": [
+        "It explains the depth of humanity's problem, strengthens the doctrine of justification, and prepares for the call to new life in Romans 6-8. It shows that the gospel is God's answer to the reign of sin and death through Jesus Christ.",
+        "On this page",
+        "Next article"
+      ]
+    },
+    {
+      "path": "articles/does-faith-make-void-the-law-romans-3-31/index.html",
+      "title": "Does Faith Make Void the Law? Romans 3:31 Explained",
+      "headings": 18,
+      "paragraphs": 56,
+      "words": 4159,
+      "severe": [],
+      "phraseCounts": {
+        "In practice": 2,
+        "Within Christian practice": 0,
+        "At the level of discipleship": 0,
+        "For the reader": 0,
+        "practical force": 0,
+        "formulaic contrast": 11
+      },
+      "closingParagraphs": [
+        "No. In Romans 13, Paul names specific commandments and shows that love moves in their direction. Love is not the removal of moral content; it is the lived expression of God's will in relation to others.",
+        "On this page",
+        "Next article"
+      ]
+    },
+    {
+      "path": "articles/does-romans-10-4-abolish-the-law/index.html",
+      "title": "Does Romans 10:4 Abolish the Law?",
+      "headings": 19,
+      "paragraphs": 50,
+      "words": 2803,
+      "severe": [],
+      "phraseCounts": {
+        "In practice": 1,
+        "Within Christian practice": 0,
+        "At the level of discipleship": 0,
+        "For the reader": 0,
+        "practical force": 0,
+        "formulaic contrast": 11
+      },
+      "closingParagraphs": [
+        "Obedience is not the basis of justification, but it remains the fruit of belonging to Christ. Romans never treats grace as permission for sin. Instead, grace frees believers from self-righteous striving so they can live in love, holiness, and truthful obedience.",
+        "On this page",
+        "Next article"
+      ]
+    },
+    {
+      "path": "articles/has-god-rejected-israel-romans-11/index.html",
+      "title": "Has God Rejected Israel? Romans 11 Explained",
+      "headings": 12,
+      "paragraphs": 54,
+      "words": 2553,
+      "severe": [],
+      "phraseCounts": {
+        "In practice": 0,
+        "Within Christian practice": 0,
+        "At the level of discipleship": 0,
+        "For the reader": 0,
+        "practical force": 0,
+        "formulaic contrast": 7
+      },
+      "closingParagraphs": [
+        "To Him be glory forever. Amen.",
+        "On this page",
+        "Previous article"
+      ]
+    },
+    {
+      "path": "articles/historical-background-of-romans/index.html",
+      "title": "The Historical Background of Romans",
+      "headings": 9,
+      "paragraphs": 32,
+      "words": 2175,
+      "severe": [],
+      "phraseCounts": {
+        "In practice": 0,
+        "Within Christian practice": 0,
+        "At the level of discipleship": 0,
+        "For the reader": 0,
+        "practical force": 0,
+        "formulaic contrast": 4
+      },
+      "closingParagraphs": [
+        "Romans becomes easier to read when it is seen this way. Behind the great doctrines stands an apostle with a missionary burden, a church with mixed backgrounds, a call to unity, a journey toward Jerusalem, a hoped-for visit to Rome, and a longing that the gospel would continue to move outward. That setting does not reduce the force of Romans. It lets the reader feel it more fully.",
+        "On this page",
+        "Next article"
+      ]
+    },
+    {
+      "path": "articles/how-romans-uses-the-old-testament/index.html",
+      "title": "How Romans Uses the Old Testament",
+      "headings": 8,
+      "paragraphs": 31,
+      "words": 2023,
+      "severe": [],
+      "phraseCounts": {
+        "In practice": 0,
+        "Within Christian practice": 0,
+        "At the level of discipleship": 0,
+        "For the reader": 0,
+        "practical force": 0,
+        "formulaic contrast": 1
+      },
+      "closingParagraphs": [
+        "Romans is filled with Scripture because the gospel is not a break with God's earlier word. It is the glory of that word brought to light in Jesus Christ.",
+        "On this page",
+        "Next article"
+      ]
+    },
+    {
+      "path": "articles/how-to-read-romans-without-misreading-paul/index.html",
+      "title": "How to Read Romans Without Misreading Paul",
+      "headings": 16,
+      "paragraphs": 46,
+      "words": 2400,
+      "severe": [],
+      "phraseCounts": {
+        "In practice": 0,
+        "Within Christian practice": 0,
+        "At the level of discipleship": 0,
+        "For the reader": 0,
+        "practical force": 0,
+        "formulaic contrast": 5
+      },
+      "closingParagraphs": [
+        "Because Paul is dealing with God's faithfulness, Israel, Gentile inclusion, mercy, and responsibility across the whole section, not in one chapter alone.",
+        "On this page",
+        "Next article"
+      ]
+    },
+    {
+      "path": "articles/judgment-according-to-works-romans-2/index.html",
+      "title": "Does Romans 2 Teach Judgment According to Works?",
+      "headings": 9,
+      "paragraphs": 31,
+      "words": 2425,
+      "severe": [],
+      "phraseCounts": {
+        "In practice": 0,
+        "Within Christian practice": 0,
+        "At the level of discipleship": 0,
+        "For the reader": 0,
+        "practical force": 0,
+        "formulaic contrast": 7
+      },
+      "closingParagraphs": [
+        "Romans 2 does not contradict grace. It protects grace from being turned into a lie. It tells the moralist that he is not safe because he condemns others. It tells the religious person that privilege without obedience cannot shelter him. It tells the careless professor that conduct still matters eternally. And it tells the humbled sinner that the only safe place is in Christ, whose grace forgives, whose Spirit renews, and before whose judgment seat every life will finally be made plain.",
+        "On this page",
+        "Next article"
+      ]
+    },
+    {
+      "path": "articles/justification-by-faith-romans-3/index.html",
+      "title": "Justification by Faith in Romans 3",
+      "headings": 18,
+      "paragraphs": 48,
+      "words": 3410,
+      "severe": [],
+      "phraseCounts": {
+        "In practice": 1,
+        "Within Christian practice": 0,
+        "At the level of discipleship": 0,
+        "For the reader": 0,
+        "practical force": 0,
+        "formulaic contrast": 10
+      },
+      "closingParagraphs": [
+        "No. Romans 3 presents Christ's redemptive death as the place where God's justice and mercy meet. God remains righteous even as He justifies the one who believes in Jesus.",
+        "On this page",
+        "Next article"
+      ]
+    },
+    {
+      "path": "articles/life-in-the-spirit-romans-8/index.html",
+      "title": "Life in the Spirit: Victory, Adoption, and Hope",
+      "headings": 10,
+      "paragraphs": 37,
+      "words": 2851,
+      "severe": [],
+      "phraseCounts": {
+        "In practice": 0,
+        "Within Christian practice": 0,
+        "At the level of discipleship": 0,
+        "For the reader": 0,
+        "practical force": 0,
+        "formulaic contrast": 10
+      },
+      "closingParagraphs": [
+        "In context, the &ldquo;good&rdquo; is not merely immediate comfort or visible success. It is God's saving purpose to conform believers to the image of His Son. Romans 8 teaches that even suffering does not fall outside that purpose. God is at work through all things to bring His people toward Christlikeness and final glory.",
+        "On this page",
+        "Next article"
+      ]
+    },
+    {
+      "path": "articles/main-message-of-romans/index.html",
+      "title": "What Is the Main Message of Romans?",
+      "headings": 16,
+      "paragraphs": 44,
+      "words": 2667,
+      "severe": [],
+      "phraseCounts": {
+        "In practice": 0,
+        "Within Christian practice": 0,
+        "At the level of discipleship": 0,
+        "For the reader": 0,
+        "practical force": 0,
+        "formulaic contrast": 7
+      },
+      "closingParagraphs": [
+        "Read Romans as one unified letter. Start with Romans 1:16-17 as the governing theme, follow Paul's argument from human guilt to justification and new life, and let the practical chapters be read as the fruit of the mercies of God already unfolded.",
+        "On this page",
+        "Next article"
+      ]
+    },
+    {
+      "path": "articles/no-condemnation-in-christ-romans-8/index.html",
+      "title": "No Condemnation in Christ: Assurance Without Presumption",
+      "headings": 17,
+      "paragraphs": 55,
+      "words": 3084,
+      "severe": [],
+      "phraseCounts": {
+        "In practice": 0,
+        "Within Christian practice": 0,
+        "At the level of discipleship": 0,
+        "For the reader": 0,
+        "practical force": 0,
+        "formulaic contrast": 9
+      },
+      "closingParagraphs": [
+        "If your heart is burdened, Romans 8 does not tell you to become your own savior. It tells you to look to Christ. If your heart is careless, Romans 8 does not flatter you. It calls you back to life in Him. And if you belong to Him, then neither accusation nor weakness nor suffering nor death itself can separate you from the love of God in Christ Jesus our Lord.",
+        "On this page",
+        "Next article"
+      ]
+    },
+    {
+      "path": "articles/peace-with-god-through-jesus-christ-romans-5/index.html",
+      "title": "Peace With God Through Jesus Christ",
+      "headings": 17,
+      "paragraphs": 44,
+      "words": 2755,
+      "severe": [],
+      "phraseCounts": {
+        "In practice": 0,
+        "Within Christian practice": 0,
+        "At the level of discipleship": 0,
+        "For the reader": 0,
+        "practical force": 0,
+        "formulaic contrast": 12
+      },
+      "closingParagraphs": [
+        "Reconciliation is the ending of estrangement between sinners and God through the death of Christ. It means believers are not only pardoned but brought back into fellowship, joy, and peace with God.",
+        "On this page",
+        "Next article"
+      ]
+    },
+    {
+      "path": "articles/romans-7-explained-struggle-with-sin/index.html",
+      "title": "Romans 7 Explained: The Struggle With Sin",
+      "headings": 10,
+      "paragraphs": 36,
+      "words": 2567,
+      "severe": [],
+      "phraseCounts": {
+        "In practice": 0,
+        "Within Christian practice": 0,
+        "At the level of discipleship": 0,
+        "For the reader": 0,
+        "practical force": 0,
+        "formulaic contrast": 9
+      },
+      "closingParagraphs": [
+        "That is why Romans 7 should never be read as the final description of the Christian life. Its anguish is real, but it is not ultimate. The law is holy. Sin is deadly. The flesh is powerless. Christ is the deliverer. And the Spirit opens the life that the law could name but could not create. When Romans 7 is read that way, it does not end in despair. It becomes part of Paul's larger gospel movement from exposure to rescue, from helplessness to hope, and from the cry of the wretched to the freedom of those who are in Christ.",
+        "On this page",
+        "Next article"
+      ]
+    },
+    {
+      "path": "articles/romans-9-and-predestination-explained/index.html",
+      "title": "Romans 9 and Predestination Explained",
+      "headings": 9,
+      "paragraphs": 41,
+      "words": 2495,
+      "severe": [],
+      "phraseCounts": {
+        "In practice": 0,
+        "Within Christian practice": 0,
+        "At the level of discipleship": 0,
+        "For the reader": 0,
+        "practical force": 0,
+        "formulaic contrast": 2
+      },
+      "closingParagraphs": [
+        "Romans 9 is difficult because it presses beyond human comfort. But its purpose is not to make readers despair. It is to make them trust that God remains faithful, righteous, and free, even where His ways are too deep to master. Read with Romans 10 and 11, the chapter does not close the door of mercy. It sets mercy in the hands of God, where it is safe from human boasting and wide enough to humble the world.",
+        "On this page",
+        "Next article"
+      ]
+    },
+    {
+      "path": "articles/shall-we-continue-in-sin-romans-6/index.html",
+      "title": "Shall We Continue in Sin? Grace and Victory in Romans 6",
+      "headings": 17,
+      "paragraphs": 47,
+      "words": 2836,
+      "severe": [],
+      "phraseCounts": {
+        "In practice": 0,
+        "Within Christian practice": 0,
+        "At the level of discipleship": 0,
+        "For the reader": 0,
+        "practical force": 0,
+        "formulaic contrast": 8
+      },
+      "closingParagraphs": [
+        "He uses slavery language to show that human beings always live under some mastery. The gospel does not create neutral independence. It frees people from slavery to sin and brings them into the life-giving service of righteousness and of God.",
+        "On this page",
+        "Next article"
+      ]
+    },
+    {
+      "path": "articles/the-just-shall-live-by-faith/index.html",
+      "title": "The Just Shall Live by Faith: The Heart of Romans",
+      "headings": 13,
+      "paragraphs": 38,
+      "words": 2433,
+      "severe": [],
+      "phraseCounts": {
+        "In practice": 0,
+        "Within Christian practice": 0,
+        "At the level of discipleship": 0,
+        "For the reader": 0,
+        "practical force": 0,
+        "formulaic contrast": 4
+      },
+      "closingParagraphs": [
+        "The righteous shall live by faith. That is where Romans begins, and it is the heartbeat that can still be heard in every major movement of the book.",
+        "On this page",
+        "Next article"
+      ]
+    },
+    {
+      "path": "articles/wrath-of-god-in-romans-1/index.html",
+      "title": "The Wrath of God, Sin, and Human Accountability",
+      "headings": 9,
+      "paragraphs": 35,
+      "words": 2873,
+      "severe": [],
+      "phraseCounts": {
+        "In practice": 0,
+        "Within Christian practice": 0,
+        "At the level of discipleship": 0,
+        "For the reader": 0,
+        "practical force": 0,
+        "formulaic contrast": 3
+      },
+      "closingParagraphs": [
+        "Most of all, these verses make the gospel necessary. Paul begins with wrath because he intends to lead his readers to grace that is not sentimental, pardon that is not cheap, and salvation that reaches the truth of the human condition. The God who reveals wrath against sin is the same God who reveals righteousness in the gospel. Only when sin is faced honestly can mercy be cherished properly. Only when excuses are gone can faith lay hold of Christ without boasting. Only when the darkness is named can the light of the gospel be welcomed for what it is: the saving power of God.",
+        "On this page",
+        "Next article"
+      ]
+    }
+  ]
+}
