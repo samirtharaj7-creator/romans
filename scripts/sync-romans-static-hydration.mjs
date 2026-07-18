@@ -5,6 +5,11 @@ import { fileURLToPath } from "node:url";
 const root = fileURLToPath(new URL("..", import.meta.url));
 const checkOnly = process.argv.includes("--check");
 const layoutMarker = "/_next/static/chunks/app/layout-7a59849285855451.js";
+const legacyLayoutReference = `${layoutMarker}?v=search-cleanup-71`;
+const currentLayoutReference = `${layoutMarker}?v=reader-menu-label-76`;
+const layoutChunkPath = join(root, layoutMarker.slice(1));
+const staticMenuLabel = '"aria-label":"Open menu","aria-expanded":r';
+const statefulMenuLabel = '"aria-label":r?"Close menu":"Open menu","aria-expanded":r';
 const legacyAssetVersion = "romans-home-static-74";
 const currentAssetVersion = "romans-home-static-75";
 const actionsMarker = '<div class="reader-header-actions"><button';
@@ -36,6 +41,17 @@ for (const file of htmlFiles) {
   if (!html.includes(layoutMarker)) continue;
   targets.push(file);
 
+  if (html.includes(legacyLayoutReference)) {
+    if (checkOnly) {
+      throw new Error(`${relative(root, file)} still references the pre-fix layout asset`);
+    }
+    html = html.replaceAll(legacyLayoutReference, currentLayoutReference);
+    await writeFile(file, html);
+  }
+  if (!html.includes(currentLayoutReference)) {
+    throw new Error(`${relative(root, file)} is missing the current layout asset version`);
+  }
+
   const themeCount = html.split(themeMarker).length - 1;
   if (themeCount === 1) continue;
   if (themeCount > 1) {
@@ -54,6 +70,18 @@ for (const file of htmlFiles) {
 
 if (targets.length !== 19) {
   throw new Error(`Expected 19 Next-rendered HTML artifacts; found ${targets.length}`);
+}
+
+let layoutChunk = await readFile(layoutChunkPath, "utf8");
+if (layoutChunk.includes(staticMenuLabel)) {
+  if (checkOnly) {
+    throw new Error("The React reader menu label does not reflect its expanded state");
+  }
+  layoutChunk = layoutChunk.replace(staticMenuLabel, statefulMenuLabel);
+  await writeFile(layoutChunkPath, layoutChunk);
+}
+if (!layoutChunk.includes(statefulMenuLabel) || layoutChunk.includes(staticMenuLabel)) {
+  throw new Error("The React reader menu label state repair is missing or ambiguous");
 }
 
 const unifiedScript = await readFile(join(root, "mbe-unified.js"), "utf8");
