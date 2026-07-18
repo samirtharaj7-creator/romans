@@ -1,20 +1,45 @@
 import { createHash } from "node:crypto";
 import { readFileSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+import { join, resolve } from "node:path";
 
-const [sourceTextPath, contentRoot = join(process.cwd(), "content", "romans"), reportPath] = process.argv.slice(2);
+const siteRoot = process.cwd();
+const defaultContentRoot = join(siteRoot, "content", "romans");
+// No arguments run all public controls. Private page mapping remains an explicit opt-in.
+const argumentsList = process.argv.slice(2);
+let sourceTextPath = null;
+let contentRoot = defaultContentRoot;
+let reportPath = null;
 
-if (!sourceTextPath) {
-  throw new Error(
-    "Usage: validate-romans-source-agreement.mjs <private-source-text> [content-root] [report-path]"
-  );
+if (argumentsList[0] === "--public-only") {
+  if (argumentsList.length > 3) {
+    throw new Error(
+      "Usage: validate-romans-source-agreement.mjs --public-only [content-root] [report-path]"
+    );
+  }
+  if (argumentsList[1]) contentRoot = resolve(siteRoot, argumentsList[1]);
+  if (argumentsList[2]) reportPath = resolve(siteRoot, argumentsList[2]);
+} else if (argumentsList[0] === "--private-source") {
+  if (!argumentsList[1] || argumentsList.length > 4) {
+    throw new Error(
+      "Usage: validate-romans-source-agreement.mjs --private-source <source-text> [content-root] [report-path]"
+    );
+  }
+  sourceTextPath = resolve(siteRoot, argumentsList[1]);
+  if (argumentsList[2]) contentRoot = resolve(siteRoot, argumentsList[2]);
+  if (argumentsList[3]) reportPath = resolve(siteRoot, argumentsList[3]);
+} else if (argumentsList.length > 0) {
+  if (argumentsList.length > 3) {
+    throw new Error(
+      "Usage: validate-romans-source-agreement.mjs <private-source-text> [content-root] [report-path]"
+    );
+  }
+  sourceTextPath = resolve(siteRoot, argumentsList[0]);
+  if (argumentsList[1]) contentRoot = resolve(siteRoot, argumentsList[1]);
+  if (argumentsList[2]) reportPath = resolve(siteRoot, argumentsList[2]);
 }
-
-const sourceText = readFileSync(sourceTextPath, "utf8");
-const sourceLines = sourceText.split(/\r?\n/u);
-const sourceHash = createHash("sha256").update(sourceText).digest("hex");
 const chapters = new Map();
 const verses = new Map();
+const expectedVerseCounts = [32, 29, 31, 25, 21, 23, 25, 39, 33, 21, 36, 21, 14, 23, 33, 27];
 
 for (let chapterNumber = 1; chapterNumber <= 16; chapterNumber += 1) {
   const path = join(contentRoot, `chapter-${String(chapterNumber).padStart(2, "0")}.json`);
@@ -22,8 +47,16 @@ for (let chapterNumber = 1; chapterNumber <= 16; chapterNumber += 1) {
   if (chapter.chapterNumber !== chapterNumber) {
     throw new Error(`${path} reports chapter ${chapter.chapterNumber}.`);
   }
+  const expectedVerseCount = expectedVerseCounts[chapterNumber - 1];
+  if (chapter.verses?.length !== expectedVerseCount) {
+    throw new Error(`${path} has ${chapter.verses?.length ?? 0} verses; expected ${expectedVerseCount}.`);
+  }
   chapters.set(chapterNumber, chapter);
-  for (const verse of chapter.verses) {
+  for (const [index, verse] of chapter.verses.entries()) {
+    const expectedReference = `Romans ${chapterNumber}:${index + 1}`;
+    if (verse.verse !== expectedReference) {
+      throw new Error(`${path} verse ${index + 1} is labeled ${verse.verse}; expected ${expectedReference}.`);
+    }
     if (verses.has(verse.verse)) throw new Error(`Duplicate note ${verse.verse}.`);
     verses.set(verse.verse, verse);
   }
@@ -31,80 +64,88 @@ for (let chapterNumber = 1; chapterNumber <= 16; chapterNumber += 1) {
 
 if (verses.size !== 433) throw new Error(`Expected 433 Romans notes; found ${verses.size}.`);
 
-let currentPage = null;
-const pageAtLine = [];
-const pageNumbers = new Set();
-for (let index = 0; index < sourceLines.length; index += 1) {
-  const pageMatch = sourceLines[index].match(/^===== PDF PAGE (\d+) =====$/u);
-  if (pageMatch) {
-    currentPage = Number.parseInt(pageMatch[1], 10);
-    pageNumbers.add(currentPage);
-  }
-  pageAtLine[index] = currentPage;
-}
-
-if (pageNumbers.size !== 210) {
-  throw new Error(`Expected 210 extracted source pages; found ${pageNumbers.size}.`);
-}
-
-const chapterStarts = [];
-for (let index = 0; index < sourceLines.length; index += 1) {
-  const chapterMatch = sourceLines[index].match(/^CHAPTER ([1-9]|1[0-6])$/u);
-  if (chapterMatch) chapterStarts.push({ chapter: Number.parseInt(chapterMatch[1], 10), line: index });
-}
-
-if (chapterStarts.length !== 16) {
-  throw new Error(`Expected 16 source chapter boundaries; found ${chapterStarts.length}.`);
-}
-
+let sourceHash = null;
+let sourcePageCount = 0;
 const sourceCoverage = [];
 const sourceChapterRanges = [];
 let exactVerseHeadings = 0;
 let groupedVerseHeadings = 0;
 
-for (let chapterIndex = 0; chapterIndex < chapterStarts.length; chapterIndex += 1) {
-  const start = chapterStarts[chapterIndex];
-  const endLine = chapterStarts[chapterIndex + 1]?.line ?? sourceLines.length;
-  const chapter = chapters.get(start.chapter);
-  let cursor = start.line;
-  let previousPage = pageAtLine[start.line];
-
-  sourceChapterRanges.push({
-    chapter: start.chapter,
-    startPage: pageAtLine[start.line],
-    endPage: pageAtLine[Math.max(start.line, endLine - 1)]
-  });
-
-  for (let verseNumber = 1; verseNumber <= chapter.verses.length; verseNumber += 1) {
-    let headingLine = -1;
-    const headingPattern = new RegExp(`^${verseNumber}\\.\\s`, "u");
-    for (let index = cursor; index < endLine; index += 1) {
-      if (headingPattern.test(sourceLines[index])) {
-        headingLine = index;
-        break;
-      }
+if (sourceTextPath) {
+  const sourceText = readFileSync(sourceTextPath, "utf8");
+  const sourceLines = sourceText.split(/\r?\n/u);
+  sourceHash = createHash("sha256").update(sourceText).digest("hex");
+  let currentPage = null;
+  const pageAtLine = [];
+  const pageNumbers = new Set();
+  for (let index = 0; index < sourceLines.length; index += 1) {
+    const pageMatch = sourceLines[index].match(/^===== PDF PAGE (\d+) =====$/u);
+    if (pageMatch) {
+      currentPage = Number.parseInt(pageMatch[1], 10);
+      pageNumbers.add(currentPage);
     }
-
-    const exactHeading = headingLine !== -1;
-    if (exactHeading) {
-      cursor = headingLine + 1;
-      previousPage = pageAtLine[headingLine] ?? previousPage;
-      exactVerseHeadings += 1;
-    } else {
-      groupedVerseHeadings += 1;
-    }
-
-    const reference = `Romans ${start.chapter}:${verseNumber}`;
-    sourceCoverage.push({
-      reference,
-      sourcePage: previousPage,
-      sourceMapping: exactHeading ? "explicit-verse-heading" : "grouped-with-adjacent-comment"
-    });
+    pageAtLine[index] = currentPage;
   }
-}
 
-if (sourceCoverage.length !== 433) {
-  throw new Error(`Expected source coverage for 433 notes; mapped ${sourceCoverage.length}.`);
+  if (pageNumbers.size !== 210) {
+    throw new Error(`Expected 210 extracted source pages; found ${pageNumbers.size}.`);
+  }
+
+  const chapterStarts = [];
+  for (let index = 0; index < sourceLines.length; index += 1) {
+    const chapterMatch = sourceLines[index].match(/^CHAPTER ([1-9]|1[0-6])$/u);
+    if (chapterMatch) chapterStarts.push({ chapter: Number.parseInt(chapterMatch[1], 10), line: index });
+  }
+
+  if (chapterStarts.length !== 16) {
+    throw new Error(`Expected 16 source chapter boundaries; found ${chapterStarts.length}.`);
+  }
+
+  for (let chapterIndex = 0; chapterIndex < chapterStarts.length; chapterIndex += 1) {
+    const start = chapterStarts[chapterIndex];
+    const endLine = chapterStarts[chapterIndex + 1]?.line ?? sourceLines.length;
+    const chapter = chapters.get(start.chapter);
+    let cursor = start.line;
+    let previousPage = pageAtLine[start.line];
+
+    sourceChapterRanges.push({
+      chapter: start.chapter,
+      startPage: pageAtLine[start.line],
+      endPage: pageAtLine[Math.max(start.line, endLine - 1)]
+    });
+
+    for (let verseNumber = 1; verseNumber <= chapter.verses.length; verseNumber += 1) {
+      let headingLine = -1;
+      const headingPattern = new RegExp(`^${verseNumber}\\.\\s`, "u");
+      for (let index = cursor; index < endLine; index += 1) {
+        if (headingPattern.test(sourceLines[index])) {
+          headingLine = index;
+          break;
+        }
+      }
+
+      const exactHeading = headingLine !== -1;
+      if (exactHeading) {
+        cursor = headingLine + 1;
+        previousPage = pageAtLine[headingLine] ?? previousPage;
+        exactVerseHeadings += 1;
+      } else {
+        groupedVerseHeadings += 1;
+      }
+
+      const reference = `Romans ${start.chapter}:${verseNumber}`;
+      sourceCoverage.push({
+        reference,
+        sourcePage: previousPage,
+        sourceMapping: exactHeading ? "explicit-verse-heading" : "grouped-with-adjacent-comment"
+      });
+    }
+  }
+
+  if (sourceCoverage.length !== 433) {
+    throw new Error(`Expected source coverage for 433 notes; mapped ${sourceCoverage.length}.`);
+  }
+  sourcePageCount = pageNumbers.size;
 }
 
 function publicNoteText(verse) {
@@ -212,11 +253,17 @@ for (const [reference, verse] of verses) {
 
 const report = {
   generatedAt: new Date().toISOString(),
-  source: {
-    sha256: sourceHash,
-    pages: pageNumbers.size,
-    chapters: sourceChapterRanges
-  },
+  source: sourceTextPath
+    ? {
+        mode: "private-source",
+        sha256: sourceHash,
+        pages: sourcePageCount,
+        chapters: sourceChapterRanges
+      }
+    : {
+        mode: "public-only",
+        status: "not-run-private-source-required"
+      },
   coverage: {
     chapters: chapters.size,
     notes: verses.size,
@@ -251,6 +298,9 @@ if (failures.length > 0) {
 }
 
 console.log(
-  `Romans source agreement passed: ${verses.size} notes mapped to ${pageNumbers.size} source pages; ` +
-  `${controls.length} theological controls passed; no public source leakage or contradiction markers found.`
+  sourceTextPath
+    ? `Romans source agreement passed: ${verses.size} notes mapped to ${sourcePageCount} private source pages; ` +
+        `${controls.length} theological controls passed; no public source leakage or contradiction markers found.`
+    : `Romans public source controls passed: ${verses.size} canonical notes and ${controls.length} theological controls; ` +
+        `no public source leakage or contradiction markers found. Private source-page mapping was not run.`
 );

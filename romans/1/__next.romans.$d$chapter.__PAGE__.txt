@@ -1,7 +1,7 @@
 1:"$Sreact.fragment"
-2:I[1715,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","67","static/chunks/app/romans/%5Bchapter%5D/page-9c5d13d87ac1de6d.js"],"default"]
-3:I[4090,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","67","static/chunks/app/romans/%5Bchapter%5D/page-9c5d13d87ac1de6d.js"],""]
-4:I[940,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","67","static/chunks/app/romans/%5Bchapter%5D/page-9c5d13d87ac1de6d.js"],"ChapterStudy"]
+2:I[1715,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","67","static/chunks/app/romans/%5Bchapter%5D/page-5306a8b334882b98.js"],"default"]
+3:I[4090,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","67","static/chunks/app/romans/%5Bchapter%5D/page-5306a8b334882b98.js"],""]
+4:I[940,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","67","static/chunks/app/romans/%5Bchapter%5D/page-5306a8b334882b98.js"],"ChapterStudy"]
 28:I[4826,[],"OutletBoundary"]
 29:"$Sreact.suspense"
 5:T607,Paul does not ease into Romans. He introduces himself in a way that immediately places his life under Christ's lordship and the gospel's claim. He is "a servant of Jesus Christ," and the force of that language is stronger than a polite title of religious service. It carries the sense of belonging wholly to another. His authority, then, is not self-made. He is "called to be an apostle," not self-appointed; the office rests on divine summons, not personal ambition. He is also "separated unto the gospel of God." That separation is not a call to withdraw from human need, as though holiness meant distance from sinners.

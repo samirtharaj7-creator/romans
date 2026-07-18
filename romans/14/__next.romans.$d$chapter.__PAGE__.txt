@@ -1,7 +1,7 @@
 1:"$Sreact.fragment"
-2:I[1715,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","67","static/chunks/app/romans/%5Bchapter%5D/page-9c5d13d87ac1de6d.js"],"default"]
-3:I[4090,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","67","static/chunks/app/romans/%5Bchapter%5D/page-9c5d13d87ac1de6d.js"],""]
-4:I[940,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","67","static/chunks/app/romans/%5Bchapter%5D/page-9c5d13d87ac1de6d.js"],"ChapterStudy"]
+2:I[1715,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","67","static/chunks/app/romans/%5Bchapter%5D/page-5306a8b334882b98.js"],"default"]
+3:I[4090,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","67","static/chunks/app/romans/%5Bchapter%5D/page-5306a8b334882b98.js"],""]
+4:I[940,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","67","static/chunks/app/romans/%5Bchapter%5D/page-5306a8b334882b98.js"],"ChapterStudy"]
 1e:I[4826,[],"OutletBoundary"]
 1f:"$Sreact.suspense"
 5:Tad6,The believer who is "weak in the faith" is not to be shut out, ridiculed, or treated as a problem to be managed. Paul says such a person is to be received. That word carries warmth. It means welcomed into fellowship, not merely tolerated at a distance. Yet Paul immediately adds a limit to what this welcome should not become: it is not an invitation to drag the person into disputes over doubtful matters. The issue in this chapter is not denial of the gospel, not open immorality, and not contempt for God's commandments.

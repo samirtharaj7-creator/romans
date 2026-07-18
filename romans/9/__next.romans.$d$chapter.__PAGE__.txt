@@ -1,7 +1,7 @@
 1:"$Sreact.fragment"
-2:I[1715,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","67","static/chunks/app/romans/%5Bchapter%5D/page-9c5d13d87ac1de6d.js"],"default"]
-3:I[4090,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","67","static/chunks/app/romans/%5Bchapter%5D/page-9c5d13d87ac1de6d.js"],""]
-4:I[940,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","67","static/chunks/app/romans/%5Bchapter%5D/page-9c5d13d87ac1de6d.js"],"ChapterStudy"]
+2:I[1715,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","67","static/chunks/app/romans/%5Bchapter%5D/page-5306a8b334882b98.js"],"default"]
+3:I[4090,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","67","static/chunks/app/romans/%5Bchapter%5D/page-5306a8b334882b98.js"],""]
+4:I[940,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","67","static/chunks/app/romans/%5Bchapter%5D/page-5306a8b334882b98.js"],"ChapterStudy"]
 28:I[4826,[],"OutletBoundary"]
 29:"$Sreact.suspense"
 5:T851,Paul opens this chapter by placing himself under the searching light of Christ, the Spirit, and his own conscience. He is not beginning a cold theological argument. He is telling the truth "in Christ," and that means his words are spoken as one who lives under Christ's lordship and in conscious union with Him. His conscience bears witness "in the Holy Ghost," which shows that Christian sincerity is not mere intensity of feeling.

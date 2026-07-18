@@ -1,7 +1,7 @@
 1:"$Sreact.fragment"
-2:I[1715,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","67","static/chunks/app/romans/%5Bchapter%5D/page-9c5d13d87ac1de6d.js"],"default"]
-3:I[4090,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","67","static/chunks/app/romans/%5Bchapter%5D/page-9c5d13d87ac1de6d.js"],""]
-4:I[940,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","67","static/chunks/app/romans/%5Bchapter%5D/page-9c5d13d87ac1de6d.js"],"ChapterStudy"]
+2:I[1715,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","67","static/chunks/app/romans/%5Bchapter%5D/page-5306a8b334882b98.js"],"default"]
+3:I[4090,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","67","static/chunks/app/romans/%5Bchapter%5D/page-5306a8b334882b98.js"],""]
+4:I[940,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","67","static/chunks/app/romans/%5Bchapter%5D/page-5306a8b334882b98.js"],"ChapterStudy"]
 2e:I[4826,[],"OutletBoundary"]
 2f:"$Sreact.suspense"
 5:T81e,Romans 8 opens by gathering up the ache of chapter 7 and answering it with the gospel: there is now no condemnation for those who are in Christ Jesus. Paul has just described the misery of a life that knows the good yet cannot produce it by its own power. He does not answer that misery by lowering God's standard, excusing sin, or treating settled bondage as the believer's final home. He answers it with Christ Himself.

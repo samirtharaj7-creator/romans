@@ -1,7 +1,7 @@
 1:"$Sreact.fragment"
-2:I[1715,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","67","static/chunks/app/romans/%5Bchapter%5D/page-9c5d13d87ac1de6d.js"],"default"]
-3:I[4090,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","67","static/chunks/app/romans/%5Bchapter%5D/page-9c5d13d87ac1de6d.js"],""]
-4:I[940,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","67","static/chunks/app/romans/%5Bchapter%5D/page-9c5d13d87ac1de6d.js"],"ChapterStudy"]
+2:I[1715,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","67","static/chunks/app/romans/%5Bchapter%5D/page-5306a8b334882b98.js"],"default"]
+3:I[4090,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","67","static/chunks/app/romans/%5Bchapter%5D/page-5306a8b334882b98.js"],""]
+4:I[940,["48","static/chunks/48-bbd362f4bcda8b88.js","62","static/chunks/62-eb17e3f0100c5a99.js","67","static/chunks/app/romans/%5Bchapter%5D/page-5306a8b334882b98.js"],"ChapterStudy"]
 26:I[4826,[],"OutletBoundary"]
 27:"$Sreact.suspense"
 5:T6b3,Paul opens with a question that naturally rises from the end of chapter 2. If outward circumcision does not secure righteousness, and if merely possessing the law does not shield anyone from judgment, then what advantage is there in being a Jew at all? The question is not hostile. It is the honest question raised when religious privilege has been stripped of its false security.

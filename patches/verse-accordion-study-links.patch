@@ -1,0 +1,88 @@
+--- a/components/verse-accordion.tsx
++++ b/components/verse-accordion.tsx
+@@ -284,6 +284,8 @@ function VerseStudyCard({
+   const hasReferences = crossReferences.length > 0;
+   const hasWordNotes = wordNotes.length > 0;
+ 
++  if (!hasReferences && !hasWordNotes) return null;
++
+   return (
+     <section className="verse-study-card" aria-label="Cross references and word notes">
+       <div className="verse-study-card-header">
+@@ -293,43 +295,37 @@ function VerseStudyCard({
+-      {hasReferences || hasWordNotes ? (
+-        <div className="verse-study-grid">
++      <div className="verse-study-grid">
++        {hasReferences ? (
+           <div className="study-card-section">
+             <h3>Cross References</h3>
+-            {hasReferences ? (
+-              <div className="reference-chip-list">
+-                {crossReferences.map((reference) => (
+-                  <span className="reference-chip" key={reference}>
+-                    {reference}
+-                  </span>
+-                ))}
+-              </div>
+-            ) : (
+-              <p className="study-card-empty">No cross references added yet.</p>
+-            )}
++            <div className="reference-chip-list">
++              {crossReferences.map((reference) => (
++                <span className="reference-chip" key={reference}>
++                  {reference}
++                </span>
++              ))}
++            </div>
+           </div>
+-          {hasWordNotes ? (
+-            <div className="study-card-section study-card-section-wide">
+-              <h3>Word / Phrase Notes</h3>
+-              <div className="word-note-list">
+-                {wordNotes.map((note) => (
+-                  <article className="word-note" key={`${note.term}-${note.scriptureReferences.join("-")}`}>
+-                    <div className="word-note-title">{note.term}</div>
+-                    <p>{note.explanation}</p>
+-                    {note.scriptureReferences.length > 0 ? (
+-                      <div className="word-reference-list" aria-label={`${note.term} Scripture references`}>
+-                        {note.scriptureReferences.map((reference) => (
+-                          <span className="word-reference-chip" key={`${note.term}-${reference}`}>
+-                            {reference}
+-                          </span>
+-                        ))}
+-                      </div>
+-                    ) : null}
+-                  </article>
+-                ))}
+-              </div>
++        ) : null}
++        {hasWordNotes ? (
++          <div className="study-card-section study-card-section-wide">
++            <h3>Word / Phrase Notes</h3>
++            <div className="word-note-list">
++              {wordNotes.map((note) => (
++                <article className="word-note" key={`${note.term}-${note.scriptureReferences.join("-")}`}>
++                  <div className="word-note-title">{note.term}</div>
++                  <p>{note.explanation}</p>
++                  {note.scriptureReferences.length > 0 ? (
++                    <div className="word-reference-list" aria-label={`${note.term} Scripture references`}>
++                      {note.scriptureReferences.map((reference) => (
++                        <span className="word-reference-chip" key={`${note.term}-${reference}`}>
++                          {reference}
++                        </span>
++                      ))}
++                    </div>
++                  ) : null}
++                </article>
++              ))}
+             </div>
+-          ) : null}
+-        </div>
+-      ) : (
+-        <p className="study-card-empty">Study links are ready to be added for this verse.</p>
+-      )}
++          </div>
++        ) : null}
++      </div>
+     </section>
+

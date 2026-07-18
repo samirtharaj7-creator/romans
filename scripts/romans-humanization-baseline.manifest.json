@@ -1,0 +1,1746 @@
+{
+  "schemaVersion": 1,
+  "description": "SHA-256 fingerprints of the last public Romans export before the humanization pass.",
+  "source": {
+    "kind": "public-git-revision",
+    "revision": "b1252db1afa7832f3254b8e9ddac6eb66a875f1d",
+    "committedAt": "2026-07-12T08:06:20+05:30"
+  },
+  "hashAlgorithm": "sha256",
+  "chapters": 16,
+  "notes": 433,
+  "baseline": [
+    {
+      "reference": "Romans 1:1",
+      "detailedExplanationSha256": "cc52507be54b6d47f1354faf9a0c0d60ef4b7f2ab837d80d7a055aa98c413920"
+    },
+    {
+      "reference": "Romans 1:2",
+      "detailedExplanationSha256": "1668fd53a5ba4066c2cde8bf80bfd394ddddeeb202272510e67f06e0add54f90"
+    },
+    {
+      "reference": "Romans 1:3",
+      "detailedExplanationSha256": "74fad60c986745625c2576a9d266cceddd26df27d2056a37bb2c1c2e2cace567"
+    },
+    {
+      "reference": "Romans 1:4",
+      "detailedExplanationSha256": "f0a845191098839881d3936972e7a64a6b3641ba3b1c104911c80ae53e68f14d"
+    },
+    {
+      "reference": "Romans 1:5",
+      "detailedExplanationSha256": "f2782db16d919508c8c1289171ea573f60730408d6b4d4d7153f7e82a081c463"
+    },
+    {
+      "reference": "Romans 1:6",
+      "detailedExplanationSha256": "8d45df7e8d93b748d531632c45e76a5b7fcd686e3085534611056d1a7d28db5e"
+    },
+    {
+      "reference": "Romans 1:7",
+      "detailedExplanationSha256": "7743d433790cc223ef0bd713bbaa26d5407e6f3ce2022be7327ead54421efaf9"
+    },
+    {
+      "reference": "Romans 1:8",
+      "detailedExplanationSha256": "d2e4c9c389dc37f732f930abe35785f0b08b16077b9f4392653742e15155950d"
+    },
+    {
+      "reference": "Romans 1:9",
+      "detailedExplanationSha256": "6cb329ded07767a83c3c2931342d7daaa030e0c14a87aca2edab9dc7b3620ee2"
+    },
+    {
+      "reference": "Romans 1:10",
+      "detailedExplanationSha256": "f91ed74f4e863563da1dc90d7ef68889cabe66bbb3e86d6f89c437cf9c83e0dc"
+    },
+    {
+      "reference": "Romans 1:11",
+      "detailedExplanationSha256": "3c458b5153d31d1fd80fc9fc00ec33b5c5d944212f3d6fe383718b2bf581380f"
+    },
+    {
+      "reference": "Romans 1:12",
+      "detailedExplanationSha256": "53558a0036a7c5fa9eddd63437569d9957626c2e925aad579d4b96c03952f341"
+    },
+    {
+      "reference": "Romans 1:13",
+      "detailedExplanationSha256": "e95128d628fac8402733f8036922796e80b90b2f8ee98b399efa3a4d54a47e1a"
+    },
+    {
+      "reference": "Romans 1:14",
+      "detailedExplanationSha256": "c55d6a6b90fa4ad81111d772fe432e578ea0c3d127201d86ca73f7988ce6ab15"
+    },
+    {
+      "reference": "Romans 1:15",
+      "detailedExplanationSha256": "d41300f01e77e6664017cb1acbf06d6213b529c83d687d2a83c30263fe21a2a5"
+    },
+    {
+      "reference": "Romans 1:16",
+      "detailedExplanationSha256": "8cacae7370121b7916666ea1354dbdf4f5575c4c29ef69f8687750c7101ea38c"
+    },
+    {
+      "reference": "Romans 1:17",
+      "detailedExplanationSha256": "152cca5739fca7b24ac747700361b8c02faf1b49c9f9a7b38ec258184df5b045"
+    },
+    {
+      "reference": "Romans 1:18",
+      "detailedExplanationSha256": "773b4b2b4bef71b76fec1d0868c02969a14ad61c22d7fac5a4398a46f8933093"
+    },
+    {
+      "reference": "Romans 1:19",
+      "detailedExplanationSha256": "81166019199893f76c7d491e6d8eb58a4912113349e9c330a506475496ba0551"
+    },
+    {
+      "reference": "Romans 1:20",
+      "detailedExplanationSha256": "a4d5514aaee90eb771cdbc82c64913608847f837374cbccf9e45297e18223ae3"
+    },
+    {
+      "reference": "Romans 1:21",
+      "detailedExplanationSha256": "28875d59407054b6fd50d34a95b87ad9910f6d452478c785a602859f711095ff"
+    },
+    {
+      "reference": "Romans 1:22",
+      "detailedExplanationSha256": "64f7504ed0faba5d22c31aa4b662b31603ecca8ee82c58bd8845e0decc255f84"
+    },
+    {
+      "reference": "Romans 1:23",
+      "detailedExplanationSha256": "f953222f4c5f8f31995c7055523057f6cd552f0d13a4e6236997209b45aa7a71"
+    },
+    {
+      "reference": "Romans 1:24",
+      "detailedExplanationSha256": "6ca24fb8db0f90557c0e1b9bd488559e26f6525d8b1dc0e30a1893416279962e"
+    },
+    {
+      "reference": "Romans 1:25",
+      "detailedExplanationSha256": "8b47f027f72904f654823a022f63f113205f7e830b187e2431fb80e52fb0a969"
+    },
+    {
+      "reference": "Romans 1:26",
+      "detailedExplanationSha256": "25a47bf634af4527e143fb05f6812d84686f629e2721f5fe09272dbef4262bca"
+    },
+    {
+      "reference": "Romans 1:27",
+      "detailedExplanationSha256": "73b70cc5dbbbb9f7b61652ccdbdd72e11ae25b5f97aa0aab1e49875411b72f9e"
+    },
+    {
+      "reference": "Romans 1:28",
+      "detailedExplanationSha256": "9dcc8498b7bba92c29380e7ea2df141ead4532df893cd28a8e3925a9eee67e8c"
+    },
+    {
+      "reference": "Romans 1:29",
+      "detailedExplanationSha256": "e5db79556a9e7de929ef8d647ddcad3f598ce6c2b78b3107efefcb3cf2452b77"
+    },
+    {
+      "reference": "Romans 1:30",
+      "detailedExplanationSha256": "b021a270035d472a793f3affae97028ac16d9c875a2b6324f48b0eddbdc8a511"
+    },
+    {
+      "reference": "Romans 1:31",
+      "detailedExplanationSha256": "74433e74b8593db08d1dc9c49ec40967ecbc14e3e40f27e6f72dcbe8d13f9b07"
+    },
+    {
+      "reference": "Romans 1:32",
+      "detailedExplanationSha256": "0d4c39bb406c72440e7c2ab0a300a77c365e563bf7805207a80c8f8523b1c4c2"
+    },
+    {
+      "reference": "Romans 2:1",
+      "detailedExplanationSha256": "e4f1c28e657c467243f7312fe68f29e01f4c5da578e156152be5c96e4350b39e"
+    },
+    {
+      "reference": "Romans 2:2",
+      "detailedExplanationSha256": "32c15f33f99f481af943cbb961bea737060ba39900291a3ddb8f152c67d5ea1d"
+    },
+    {
+      "reference": "Romans 2:3",
+      "detailedExplanationSha256": "5c0d87aa45b7179c3a345864695a567a073dfd05c87cde1c31871b55e01b991a"
+    },
+    {
+      "reference": "Romans 2:4",
+      "detailedExplanationSha256": "a80c4ef95c06d0578678cb5447fc44f8d42a166718b8c1682967758b52e709dd"
+    },
+    {
+      "reference": "Romans 2:5",
+      "detailedExplanationSha256": "d25a6f2bb176de509c6043b2877f2dad6df32de50ca75ca1213b11f0c9fcc220"
+    },
+    {
+      "reference": "Romans 2:6",
+      "detailedExplanationSha256": "0e179362c8ee9cf88a78f94c18c8fafbcd0c1932c3959b42f1919c39e893a247"
+    },
+    {
+      "reference": "Romans 2:7",
+      "detailedExplanationSha256": "ddde9c23ec7eaf84de116d6c239dde3f3c17b43ac4b12ddb2517537b1bb7614a"
+    },
+    {
+      "reference": "Romans 2:8",
+      "detailedExplanationSha256": "df6df06eb5d45f7ee7feb8eaf07b0b598b97f21a6cecdad8c6b3dbad116c6cb6"
+    },
+    {
+      "reference": "Romans 2:9",
+      "detailedExplanationSha256": "d0a4a0acd6b7d8d3f4cd3c0c32a4310e5fdc700065f35e149fb204e0518cfeff"
+    },
+    {
+      "reference": "Romans 2:10",
+      "detailedExplanationSha256": "8ee443fb839c9bf81b16b40bdeb133186fc04c0101f6a874020d2876f39fa7f3"
+    },
+    {
+      "reference": "Romans 2:11",
+      "detailedExplanationSha256": "648bacae66a341d12fe4792f38579594295fda0a7bd838fd9868f513072ff5bb"
+    },
+    {
+      "reference": "Romans 2:12",
+      "detailedExplanationSha256": "bf0ac819359cd8169701a457d46f43375b491e3b94ce35d483764e77caa29483"
+    },
+    {
+      "reference": "Romans 2:13",
+      "detailedExplanationSha256": "9227b184c05ff3ed6076ad727b57898b68bb91056806acb9bad5c403144cbe9d"
+    },
+    {
+      "reference": "Romans 2:14",
+      "detailedExplanationSha256": "816d640ac22825eae76976f3ad981248ebb4098813fbdefdf881564bbe9c5a95"
+    },
+    {
+      "reference": "Romans 2:15",
+      "detailedExplanationSha256": "db4113447dfd812c7d2525312494331f7508fcf727821597cf82fdc3504c6ee8"
+    },
+    {
+      "reference": "Romans 2:16",
+      "detailedExplanationSha256": "77f5b9123cbdbf214a2efc15f7e51e3d8999853e0b3b58137a4db1537985d189"
+    },
+    {
+      "reference": "Romans 2:17",
+      "detailedExplanationSha256": "cdc3a53333bc11ac957ac29b488d765da1b32dcee7f27ab491ee11dcfa766b7b"
+    },
+    {
+      "reference": "Romans 2:18",
+      "detailedExplanationSha256": "73a83dc0be5e19dfc0e77a1f94976612ead4ad5ca358c022053f40a3f16a9d6d"
+    },
+    {
+      "reference": "Romans 2:19",
+      "detailedExplanationSha256": "0337649929e9319595286a930c920d4ce5b1a3678dea13c26bf1d3d5b278064c"
+    },
+    {
+      "reference": "Romans 2:20",
+      "detailedExplanationSha256": "310b5c94901d884dd120713d2d50bc55358687b7e95941be7091818b5f5c9a7e"
+    },
+    {
+      "reference": "Romans 2:21",
+      "detailedExplanationSha256": "436b662d66389967073e19bca629306dbb675a535f3d4b2697085e936100802f"
+    },
+    {
+      "reference": "Romans 2:22",
+      "detailedExplanationSha256": "95ab2e0cbb1ae682f7fd5173fbbf0da2db4c1aa9d7ff7c1916e56f5cbace7fe7"
+    },
+    {
+      "reference": "Romans 2:23",
+      "detailedExplanationSha256": "a0e74633283c53a2cb6e39a4d2642a0944d6f90696882a1499b4e6bb776e2298"
+    },
+    {
+      "reference": "Romans 2:24",
+      "detailedExplanationSha256": "bb44b3136d45fade7a3bb5ea452ce8e25f8e1e625e2506fb4b9133a17a4c3432"
+    },
+    {
+      "reference": "Romans 2:25",
+      "detailedExplanationSha256": "fef917ea43cebd8d738dcb358bd1532dea5e20fff735317781e0dc2efbce37af"
+    },
+    {
+      "reference": "Romans 2:26",
+      "detailedExplanationSha256": "1a1f044feb5b069346b36ebb949f0c79515d92e2c4095ca399eb6430241c5942"
+    },
+    {
+      "reference": "Romans 2:27",
+      "detailedExplanationSha256": "a510a621d0dd7a779a00626fe292b6d1e1f6c69b92197867a1257000466a65fa"
+    },
+    {
+      "reference": "Romans 2:28",
+      "detailedExplanationSha256": "456172972277fe59c60f6b6404c3015ba6cb8a62b653d2e492b9ca8c600764fb"
+    },
+    {
+      "reference": "Romans 2:29",
+      "detailedExplanationSha256": "3750fcdc44b96fa3bb835cd5ff1e0e815ab74a299b6bfb0005dc49a1dc926ac6"
+    },
+    {
+      "reference": "Romans 3:1",
+      "detailedExplanationSha256": "19a3fe928069697c43a2c4c023dded3ce197fa3212af2f014a65aa7c4628b31f"
+    },
+    {
+      "reference": "Romans 3:2",
+      "detailedExplanationSha256": "f6cea53ec5f635ef8c16b62ef8ab1241e68c6f8965fb3d4ff2398a018654450a"
+    },
+    {
+      "reference": "Romans 3:3",
+      "detailedExplanationSha256": "e7fed6bf3ac710c17f163f36194ca4fba4822097121d759a3b8050a20d9533b0"
+    },
+    {
+      "reference": "Romans 3:4",
+      "detailedExplanationSha256": "7f97b8c8bef445e4f684f28dd2c8431065cc7158033006a50c674b5595a8f105"
+    },
+    {
+      "reference": "Romans 3:5",
+      "detailedExplanationSha256": "6d3e8ea65d20a44dd25d4225a0f88ca3670c25d788cb849e0328de543bb377ea"
+    },
+    {
+      "reference": "Romans 3:6",
+      "detailedExplanationSha256": "3f3da363afe7434a9b7e150077a4b0fc0e231bcab2303d42726b163aa1f8e974"
+    },
+    {
+      "reference": "Romans 3:7",
+      "detailedExplanationSha256": "6924b4a63de6020bf0233a35c90460a545bc5c073fd692b282d6924ba1411ae6"
+    },
+    {
+      "reference": "Romans 3:8",
+      "detailedExplanationSha256": "1a120fdc8ce288cd3f336050b550751cf6fd36317c615d7eec9df7ef3b487c65"
+    },
+    {
+      "reference": "Romans 3:9",
+      "detailedExplanationSha256": "aa4d4df964e933b62e2ce0301020fe5a320030585aabe6ba98cb1948fe6f173b"
+    },
+    {
+      "reference": "Romans 3:10",
+      "detailedExplanationSha256": "e11a9df54b68aab336edc915dacfc6f5096cd0f87439d1d261453958de0e9f9d"
+    },
+    {
+      "reference": "Romans 3:11",
+      "detailedExplanationSha256": "bdfc3087e8ca4122042619697348ed632ce65134a101ecbc1265dba4738515f2"
+    },
+    {
+      "reference": "Romans 3:12",
+      "detailedExplanationSha256": "0ff07fefa38f999ec1d68795c5bb400baad535dab8b51c99bcb4bf5f220bea1f"
+    },
+    {
+      "reference": "Romans 3:13",
+      "detailedExplanationSha256": "4a5c843188f1ce92fb84ecc05c30940f3e492f80e7d94cd18133bce00ffab207"
+    },
+    {
+      "reference": "Romans 3:14",
+      "detailedExplanationSha256": "54579694d29d1cda270c57e8d85528c068dc4966de1849ca388bf15ad7a7b3bd"
+    },
+    {
+      "reference": "Romans 3:15",
+      "detailedExplanationSha256": "2d6235f64366f98a7c4e9005a43ce2cc37445a7bb49d72a4431b1270f25abd82"
+    },
+    {
+      "reference": "Romans 3:16",
+      "detailedExplanationSha256": "865aa7ffdbb663c712135cb2164221bef6e930d299f83bdaf5cb3ba6d13837e5"
+    },
+    {
+      "reference": "Romans 3:17",
+      "detailedExplanationSha256": "2a82e136055a813e7dcff487b41ac850a98089a7b0b645aa548337f2ec7c0167"
+    },
+    {
+      "reference": "Romans 3:18",
+      "detailedExplanationSha256": "f922914d0759fa966e98157ef6b35d2404bcc82c38dfb01a7ecd8323ebbf7c49"
+    },
+    {
+      "reference": "Romans 3:19",
+      "detailedExplanationSha256": "15ad2bdc8e50123f390f637d251cda317bd3791622bafdced54ef4dfef3c2b66"
+    },
+    {
+      "reference": "Romans 3:20",
+      "detailedExplanationSha256": "6c08521fac5403dd86b06a8947275291529b0b0bbb9a7e67d7aa301c136c89d4"
+    },
+    {
+      "reference": "Romans 3:21",
+      "detailedExplanationSha256": "308c6a932fde6fe43a5cef8be44f052c1fec15c243ad998a86ae59931e617eb8"
+    },
+    {
+      "reference": "Romans 3:22",
+      "detailedExplanationSha256": "b28941ae89d5f6105b6e85f95017bed8e32fdf249be8bdad48eb6b4940bd215a"
+    },
+    {
+      "reference": "Romans 3:23",
+      "detailedExplanationSha256": "880624d8cf426369a6d137bdd396532345b3e36844badc9c612c15c3d085cd93"
+    },
+    {
+      "reference": "Romans 3:24",
+      "detailedExplanationSha256": "58e75c75ff50ae0f90ac65950b7526026be8cdface7b8a4dfa97a92d443d7954"
+    },
+    {
+      "reference": "Romans 3:25",
+      "detailedExplanationSha256": "e436f82fbf47ec8a248a2c0a453b42187f26dfbc128142004761a347ca51e8a4"
+    },
+    {
+      "reference": "Romans 3:26",
+      "detailedExplanationSha256": "02d76b26fcc0590cb30423d03c0d784c14d0f8de13adcefc2ec9b1a5ee527503"
+    },
+    {
+      "reference": "Romans 3:27",
+      "detailedExplanationSha256": "4cfce263dac11c12dd7ce89f13140453d13a3a2a9cd89647b9f84859c31d9005"
+    },
+    {
+      "reference": "Romans 3:28",
+      "detailedExplanationSha256": "d298c4b9313c7ef36f7e7c5be3c2154d3a8b7a14f499a6a1797f9507debc1e8e"
+    },
+    {
+      "reference": "Romans 3:29",
+      "detailedExplanationSha256": "cc50890a7edba590967c9e69c0b7bcd84d35442fde38c710cfc15ea36daf73a7"
+    },
+    {
+      "reference": "Romans 3:30",
+      "detailedExplanationSha256": "a460448afe546f16be37795c24412a0504e47e6f4e43fc4e24e76d6f4013622f"
+    },
+    {
+      "reference": "Romans 3:31",
+      "detailedExplanationSha256": "c451d5bca1fd391153ca2fabc8abc89942eed2ddd17468ea9681602e1ddf474c"
+    },
+    {
+      "reference": "Romans 4:1",
+      "detailedExplanationSha256": "2a8165b3000a31a4b83b3d024543334876d9ab9a1475868fd07d6b0aa40a5526"
+    },
+    {
+      "reference": "Romans 4:2",
+      "detailedExplanationSha256": "8e3959e5598523dca60817ca6e3328a6e2dac7dc0d86a19d3eb9a87889972385"
+    },
+    {
+      "reference": "Romans 4:3",
+      "detailedExplanationSha256": "9fa06bd1ebcb3d00628d618291838f5abd6f7fc018b32017c64bec538905c149"
+    },
+    {
+      "reference": "Romans 4:4",
+      "detailedExplanationSha256": "aa609292633dea83329b15a2ae28f57c1ab7980b722b99a789f83edf281f2319"
+    },
+    {
+      "reference": "Romans 4:5",
+      "detailedExplanationSha256": "99ba2b2d88691c749e3f1ba120a75d368dec6a2a435817d9ed85978de623aaa6"
+    },
+    {
+      "reference": "Romans 4:6",
+      "detailedExplanationSha256": "d480a727affec7d1b6f4051c4d7cc7eebd8a9804578c926837706ccb434eea16"
+    },
+    {
+      "reference": "Romans 4:7",
+      "detailedExplanationSha256": "c0b4b724f67e71a09e80d3bf5bf662a8d45a16ba963703f5e7d8940e41d848a2"
+    },
+    {
+      "reference": "Romans 4:8",
+      "detailedExplanationSha256": "6d6cc76bebafef11a42f9db655463a30548ab2f331f5ab67c0d9a328e8dcdb2f"
+    },
+    {
+      "reference": "Romans 4:9",
+      "detailedExplanationSha256": "d0dbb4367ba77d373bb3f85742f647ea8b8b5d28fe155a8444019f2a32f0162f"
+    },
+    {
+      "reference": "Romans 4:10",
+      "detailedExplanationSha256": "399ee61236de6f33d67c436d96f6e5640cf52e909bdfccadb574953c068902a8"
+    },
+    {
+      "reference": "Romans 4:11",
+      "detailedExplanationSha256": "e6cdd0c01f2cd538408e3768edbab300e45ab7773d8183ed97774bd6430aa334"
+    },
+    {
+      "reference": "Romans 4:12",
+      "detailedExplanationSha256": "fa8c7c169b059adf0132c0392bf638841d548f0c8865a3110008ffd413911e1a"
+    },
+    {
+      "reference": "Romans 4:13",
+      "detailedExplanationSha256": "cee34beccfb57a49c5953b83b15ada2acfb43ec73b6da8b1590e10d68a927458"
+    },
+    {
+      "reference": "Romans 4:14",
+      "detailedExplanationSha256": "8a3b847f0a22734f3a4f3f99edeeab73da0e42a4d96ef4d1b64584a79809dea6"
+    },
+    {
+      "reference": "Romans 4:15",
+      "detailedExplanationSha256": "c0bc2e2852394f3b39eb4e7e9b4c3974ca2cce125df2e7016d93e69ec2ccd8f4"
+    },
+    {
+      "reference": "Romans 4:16",
+      "detailedExplanationSha256": "b11d23a918962ad2fe2ed95a3c9d06e5e83150a7327baccd297b1a8132599211"
+    },
+    {
+      "reference": "Romans 4:17",
+      "detailedExplanationSha256": "a7980223cd75700dfebfb3ffd503d178f0bc85476d875f95ba4104d2a78059ff"
+    },
+    {
+      "reference": "Romans 4:18",
+      "detailedExplanationSha256": "1e54fe4dfb9c90ee550fc770c65ee3d160fa710542bbadff473f36d1db554ff1"
+    },
+    {
+      "reference": "Romans 4:19",
+      "detailedExplanationSha256": "50393f2f7743b9701382053ceea0d191805c88edb33e634b8e6a1c31f3627fc1"
+    },
+    {
+      "reference": "Romans 4:20",
+      "detailedExplanationSha256": "23e96bf250bca9ed999ed3c195533be60b8bb4650c34f24bf998979b6b4323c7"
+    },
+    {
+      "reference": "Romans 4:21",
+      "detailedExplanationSha256": "6c711d661a2870e1832b8b91cda3f8afa04db0093f7173532b1677497aa62589"
+    },
+    {
+      "reference": "Romans 4:22",
+      "detailedExplanationSha256": "e16311eb90684f41455e51046d68911274aa7a0e2c01a5ad0b66c2293a671954"
+    },
+    {
+      "reference": "Romans 4:23",
+      "detailedExplanationSha256": "552a4eb487554cc0281b09dd6bc4d2759db8634167611b2e4b88c72e92a8f10c"
+    },
+    {
+      "reference": "Romans 4:24",
+      "detailedExplanationSha256": "6c786633b4f2da372e15269fa6082a709ae1076393f1ffa2e8dc0db4c0ba237f"
+    },
+    {
+      "reference": "Romans 4:25",
+      "detailedExplanationSha256": "7b3de27a963fe5b3af23ffacb63e2470bc61a374b05a930215d1a969df70c41b"
+    },
+    {
+      "reference": "Romans 5:1",
+      "detailedExplanationSha256": "339f2fe88b72dc7966065fb891c99c284859f08a006f9ecfca625a4fffb7f3f9"
+    },
+    {
+      "reference": "Romans 5:2",
+      "detailedExplanationSha256": "8c9109a67d6343f8feab5cfbbd583376edb554b94b91248fe62ebeef30864b9c"
+    },
+    {
+      "reference": "Romans 5:3",
+      "detailedExplanationSha256": "6e0ee02885917f63b2274b18b1ad08af0deb388eb24e2d8a3d6ad7c571c3bcca"
+    },
+    {
+      "reference": "Romans 5:4",
+      "detailedExplanationSha256": "4121b54aa3ae39e25a36c2ff5545d21e930bd72247039261b479652c13d46160"
+    },
+    {
+      "reference": "Romans 5:5",
+      "detailedExplanationSha256": "4d67c9b129baabebd50285473055cffbb70a767b0d7150acec39df2ec4980978"
+    },
+    {
+      "reference": "Romans 5:6",
+      "detailedExplanationSha256": "a3ba7e7326040072afb6247a7ef33cc6dd94af54bee7e29f218216d1b2750cb1"
+    },
+    {
+      "reference": "Romans 5:7",
+      "detailedExplanationSha256": "3c9c46aa3623fd83d4d938c3a61b00a436aad0b8f548ea8bc3a716bac05a88a9"
+    },
+    {
+      "reference": "Romans 5:8",
+      "detailedExplanationSha256": "460e45379ca1ca100ad6c24a0deb3254de3b0b940dc667acd23624e55aa3dbc7"
+    },
+    {
+      "reference": "Romans 5:9",
+      "detailedExplanationSha256": "e6c0585e2411a7575480d47e681652a449463f030fa9e990e201adc112305cde"
+    },
+    {
+      "reference": "Romans 5:10",
+      "detailedExplanationSha256": "f4587d050932773dcebc989683926d6d88885e3659d1a453b9db653fcbfbb146"
+    },
+    {
+      "reference": "Romans 5:11",
+      "detailedExplanationSha256": "09c86a31aa7b900434d6eaddd832bccf4d33ef32942e097314794b7bfa994bdc"
+    },
+    {
+      "reference": "Romans 5:12",
+      "detailedExplanationSha256": "9ff79e7212d074d45a26801912475e6498b99cfc7154755395936ed39c0f6ae8"
+    },
+    {
+      "reference": "Romans 5:13",
+      "detailedExplanationSha256": "29d0ae247460d3852e3d28cc8072d8b88fd27597f0c1c5aa4c7f17b3d1cf68dc"
+    },
+    {
+      "reference": "Romans 5:14",
+      "detailedExplanationSha256": "dfe5225b0a55d134e4dbb7363f5246aa67e1092528f3b091bf9553e39b682075"
+    },
+    {
+      "reference": "Romans 5:15",
+      "detailedExplanationSha256": "7242db7325d9d95d424cab2e9a399394aecfaee9dfaa9549492b79fefdb7e170"
+    },
+    {
+      "reference": "Romans 5:16",
+      "detailedExplanationSha256": "9ff660e1ece47ad16b33f4e0569a88eaedb41b81ac9d99bd31d81069db44c5d3"
+    },
+    {
+      "reference": "Romans 5:17",
+      "detailedExplanationSha256": "b78fa011b98e471b9848a2034fbe9def841a044658045c8dc900c737862bdfae"
+    },
+    {
+      "reference": "Romans 5:18",
+      "detailedExplanationSha256": "62df45dfb9686a8a9c7597e3f38555212089bb1d9d2b080f16c914ae65060618"
+    },
+    {
+      "reference": "Romans 5:19",
+      "detailedExplanationSha256": "a425fe5d9255116861fa481dc9cfab722fca0136f33fae3c465c28b4eeb504f8"
+    },
+    {
+      "reference": "Romans 5:20",
+      "detailedExplanationSha256": "624db5cf1c7c38760c6ca54f052376a6aec0b7875d72b524a2babbd00891ed5b"
+    },
+    {
+      "reference": "Romans 5:21",
+      "detailedExplanationSha256": "5b110abe5c68c82afa0ad0e7800c41799ba55ea7ac63f7931b1e657debf3a015"
+    },
+    {
+      "reference": "Romans 6:1",
+      "detailedExplanationSha256": "304b57104ca17a42b0fc8f6e17fa57352d6f597d6634d96fa5c24395c875de91"
+    },
+    {
+      "reference": "Romans 6:2",
+      "detailedExplanationSha256": "1bdedda93984e6fb9f4d8f3f8c7faded582a98d11f0847c6b9c77b7caf6f79a0"
+    },
+    {
+      "reference": "Romans 6:3",
+      "detailedExplanationSha256": "c70d4e06e0525717f56673378f4d242feffefd2e9ff6d6d3d44fa22f68d6a092"
+    },
+    {
+      "reference": "Romans 6:4",
+      "detailedExplanationSha256": "245526eb55ff98a2ec642735913b2f2e313561d1ad56e925dd9321ec9bf2626a"
+    },
+    {
+      "reference": "Romans 6:5",
+      "detailedExplanationSha256": "45ea937c812b95298b95744369705ea09f2f7c91719fd778ddb1062ced720fe0"
+    },
+    {
+      "reference": "Romans 6:6",
+      "detailedExplanationSha256": "948e64506be334128cec9552c60c511d74058596b0a299d95bd74f61414d0e68"
+    },
+    {
+      "reference": "Romans 6:7",
+      "detailedExplanationSha256": "f946ca7a357a11d47b02f738bbbd1a502e84d598bc6160ac3bbf76fc5b94c331"
+    },
+    {
+      "reference": "Romans 6:8",
+      "detailedExplanationSha256": "90f5fe2a1f04212d7e66cdf6b9067371eccb090977c2a94f8e4fb23929421b54"
+    },
+    {
+      "reference": "Romans 6:9",
+      "detailedExplanationSha256": "7be9491900a7e552ff3e7315a21754498f9da0c1fcac7133c7f5f473f3156c8e"
+    },
+    {
+      "reference": "Romans 6:10",
+      "detailedExplanationSha256": "008cb68ef159d154609890d0e599417f3f25fffbd2915563ee92a8ac15bbd77a"
+    },
+    {
+      "reference": "Romans 6:11",
+      "detailedExplanationSha256": "5614cceb24e5a82fb8016511503d9decfb14b6f4c62aefa55acd6bc9b09304c6"
+    },
+    {
+      "reference": "Romans 6:12",
+      "detailedExplanationSha256": "5de5b269b9d56c896fa6a25d1a29e820fa68782520faaade6ac48afba079f83a"
+    },
+    {
+      "reference": "Romans 6:13",
+      "detailedExplanationSha256": "aed3a0a3d4d641fdf93d235d558da917d0be494049db46f1223b4ef118119e44"
+    },
+    {
+      "reference": "Romans 6:14",
+      "detailedExplanationSha256": "895878b777e01178dc761decab403f243b4011ec9d37f36d3eb679a749f9d48a"
+    },
+    {
+      "reference": "Romans 6:15",
+      "detailedExplanationSha256": "9fa8e7f33e7a2972c7764917312606c9981b9bd8ac56a268dde114b469d9a63a"
+    },
+    {
+      "reference": "Romans 6:16",
+      "detailedExplanationSha256": "419454caf83bd06a596c3bb4689c995ea47694c404229f27efa861f6d3a1c4d1"
+    },
+    {
+      "reference": "Romans 6:17",
+      "detailedExplanationSha256": "944201042974fe6b1aba70f6b2b2906a68dc9ad37749c728effcabc35b89b2e4"
+    },
+    {
+      "reference": "Romans 6:18",
+      "detailedExplanationSha256": "e2b6e442fea0fa9e86ef82bd868292f906e8122b8bc768106edeefb93fedb27f"
+    },
+    {
+      "reference": "Romans 6:19",
+      "detailedExplanationSha256": "39aaa36eadcd3f38ce4c4499d50de4cc3565042631ba038f7ee2fabc27d1f0b7"
+    },
+    {
+      "reference": "Romans 6:20",
+      "detailedExplanationSha256": "c42a8e39cf74aed2e3583c427de0c6eb0869756b780e878ee8e35aea73980db9"
+    },
+    {
+      "reference": "Romans 6:21",
+      "detailedExplanationSha256": "fd09c83023ed6c193a74b4cf975aa52b4bf3540c33cfe093f734f0002aeb89a5"
+    },
+    {
+      "reference": "Romans 6:22",
+      "detailedExplanationSha256": "97a388244c772ab6f17913ca244205f13edc83e53be83a0887b2d97bf7fdd461"
+    },
+    {
+      "reference": "Romans 6:23",
+      "detailedExplanationSha256": "9e23b2d3c137d9a9e4bd2a0eabbf9568071ddc82eba32b38f4b568ab99d95f23"
+    },
+    {
+      "reference": "Romans 7:1",
+      "detailedExplanationSha256": "723ac89cc68d8af3edd940e7113ddd08031d98637022b93dcba724959e367c81"
+    },
+    {
+      "reference": "Romans 7:2",
+      "detailedExplanationSha256": "892056adb48c9c8b62dd3db2f4fcbc11bb8fccefdde6fc1bad946703021277bc"
+    },
+    {
+      "reference": "Romans 7:3",
+      "detailedExplanationSha256": "24ec9ebf19f2e2c79a44d1b02de4643ebfec16f1bf5f871f855e9f66bc27db57"
+    },
+    {
+      "reference": "Romans 7:4",
+      "detailedExplanationSha256": "aafdacaa47e7119c8b6f285ad25b23b97991e86ceb37e7afc80e47c9451a6f60"
+    },
+    {
+      "reference": "Romans 7:5",
+      "detailedExplanationSha256": "894ba5eefb26b7b94e556963a5efdd7de1d533340429ecc4db34cc14eb608984"
+    },
+    {
+      "reference": "Romans 7:6",
+      "detailedExplanationSha256": "ac86422152ebcf163663c9c2f32c6c001bcc57c401b0e142f88a337cb462b281"
+    },
+    {
+      "reference": "Romans 7:7",
+      "detailedExplanationSha256": "349f07fd5a015f3c542426e4a70218f4f3bfc49ae2a554c7d33afcb83d077a77"
+    },
+    {
+      "reference": "Romans 7:8",
+      "detailedExplanationSha256": "dd2c2095bf846d3425847d83266a673b8ef8ffb1a331fc5ffddef4608ca0a304"
+    },
+    {
+      "reference": "Romans 7:9",
+      "detailedExplanationSha256": "0dfc783e3569ed0e0dbb8800cdf054b2b88e90f776b1469588bd9adf9399c2ab"
+    },
+    {
+      "reference": "Romans 7:10",
+      "detailedExplanationSha256": "187d197a968f6f0cd16d68cd8d34ba189eb676a18ff55c48be4def8b5b75c4bd"
+    },
+    {
+      "reference": "Romans 7:11",
+      "detailedExplanationSha256": "d8dd825b2915ee1dcb56cdb7a800a8d52b119422f78529a02b63c8921d217f23"
+    },
+    {
+      "reference": "Romans 7:12",
+      "detailedExplanationSha256": "adb96adf2fdc6e8363c1c372fcbd76faa2ba4987e38525d97ba927e8b14585af"
+    },
+    {
+      "reference": "Romans 7:13",
+      "detailedExplanationSha256": "43890dd3545e11bb604d7b20ea1102c926e8426e9d0b10705b3e1213f5304551"
+    },
+    {
+      "reference": "Romans 7:14",
+      "detailedExplanationSha256": "e5d8fd7b34a502ac89de5204ebe7d4f3c14b00605ed7393415843cc6af0c670a"
+    },
+    {
+      "reference": "Romans 7:15",
+      "detailedExplanationSha256": "bf35acc0dfac9dca734d72b94442bf2fa697f49ed7f7c624b5d5dec8f9fe9a18"
+    },
+    {
+      "reference": "Romans 7:16",
+      "detailedExplanationSha256": "eaed2026171b117091bdac1ffb5e18264a7ea7f80b6064b2ecec8d6a563b608e"
+    },
+    {
+      "reference": "Romans 7:17",
+      "detailedExplanationSha256": "667b3ce8208d22dbc3168e756358406a19fd172aa507aa8fdaf05900aedc38b1"
+    },
+    {
+      "reference": "Romans 7:18",
+      "detailedExplanationSha256": "e4e60ded7503bdea3ccb9c289aca119754f5e14db37f2ce5c1017448023c41fb"
+    },
+    {
+      "reference": "Romans 7:19",
+      "detailedExplanationSha256": "3db6a488f0ef63ac0576396e4324c247e8d7a9974dfe6ba726941bf9a611ac57"
+    },
+    {
+      "reference": "Romans 7:20",
+      "detailedExplanationSha256": "14625dd669e3e6cf47afe0045fb72774d9746952693a42b6b9ccc447f3a7b265"
+    },
+    {
+      "reference": "Romans 7:21",
+      "detailedExplanationSha256": "eda524dc5e7bed385c73575c5e176bd470d9e3304d48d8255252fc245e4e9f2d"
+    },
+    {
+      "reference": "Romans 7:22",
+      "detailedExplanationSha256": "c0dfd39aa27f7c3a1929f70946b46f8cd8c358c6d1e5c673fcc59f2ed004e299"
+    },
+    {
+      "reference": "Romans 7:23",
+      "detailedExplanationSha256": "4048e4424eecf4291358195792d237f1b1ead12861f49fb6aa41816b2f6c1194"
+    },
+    {
+      "reference": "Romans 7:24",
+      "detailedExplanationSha256": "dae98f30747c380044257220a9e56836833aac4c13e85c8874f05db002224e20"
+    },
+    {
+      "reference": "Romans 7:25",
+      "detailedExplanationSha256": "e9a2c11b958160460383421dc38892d59003c4458a7b7835008950406d3b6bbf"
+    },
+    {
+      "reference": "Romans 8:1",
+      "detailedExplanationSha256": "70bfe361846e2d92a7c388b10edda97ccba48e0a20b5716b464c3b46c4ecf1c1"
+    },
+    {
+      "reference": "Romans 8:2",
+      "detailedExplanationSha256": "414a19f721746d190ba6b6b9d0919df426a46bfd24ec2fd1f09faf212ff44d27"
+    },
+    {
+      "reference": "Romans 8:3",
+      "detailedExplanationSha256": "c64b6ccc683179e3b78b5377592928774bfe53c1294afaacf2721e01b5c9da7f"
+    },
+    {
+      "reference": "Romans 8:4",
+      "detailedExplanationSha256": "2726707dc9639d0c9f00398d1644a9b3eee7a7ff5b5c12cf8169cda4c46d4809"
+    },
+    {
+      "reference": "Romans 8:5",
+      "detailedExplanationSha256": "507965ce620763ed73523bf6d2ece158c6c96cffe0d3ee034ded9f7c4a202fe3"
+    },
+    {
+      "reference": "Romans 8:6",
+      "detailedExplanationSha256": "e202a74a9068b9a46bfa64a87627c6596b43c5434459102b92e24145adc6e85c"
+    },
+    {
+      "reference": "Romans 8:7",
+      "detailedExplanationSha256": "bda019c586a58060298430bed91c963635c61d81798a0f6f18511df4de21d7a5"
+    },
+    {
+      "reference": "Romans 8:8",
+      "detailedExplanationSha256": "5704f26df7eb60ed18b07a46574a2089acca2e506d0deb1bf2b5967ffee1c20e"
+    },
+    {
+      "reference": "Romans 8:9",
+      "detailedExplanationSha256": "cda10f36ffddba2d1dcdfce232a2142dd4307079feca12ed78f67b6dc98c9e85"
+    },
+    {
+      "reference": "Romans 8:10",
+      "detailedExplanationSha256": "6e86fb8150b12369ef94497372c28c93152b16e2638abc90b77c11822726ecc3"
+    },
+    {
+      "reference": "Romans 8:11",
+      "detailedExplanationSha256": "5f812468034237b52e8b9539f988f70f500ab393ae959b1fdba7c93542958870"
+    },
+    {
+      "reference": "Romans 8:12",
+      "detailedExplanationSha256": "feec0536fe9120a9b94223c481feac10fbb0a5786b31986c596a4196ae3fe394"
+    },
+    {
+      "reference": "Romans 8:13",
+      "detailedExplanationSha256": "f28a627e68a2fa8b8fc2677ed494703607e3d8823789a58b50c69d9b77ab55e2"
+    },
+    {
+      "reference": "Romans 8:14",
+      "detailedExplanationSha256": "ff14c7c5140cb898f9860716266a45eb9b4d8f93a2850a47baae054a3dc16771"
+    },
+    {
+      "reference": "Romans 8:15",
+      "detailedExplanationSha256": "118f4bae001858713e196b11960903e513b3fc7d05bf186ea3ce11a0ae50d399"
+    },
+    {
+      "reference": "Romans 8:16",
+      "detailedExplanationSha256": "44703b2fe7dd86d345d52f7b66dda9e83c4d9ebbdb22bc09e06fe6919d26a661"
+    },
+    {
+      "reference": "Romans 8:17",
+      "detailedExplanationSha256": "e544ebd9647c0477c86dba7f3b5ba2ec4fd0ba0c34d79cf94d871a6fe2d81954"
+    },
+    {
+      "reference": "Romans 8:18",
+      "detailedExplanationSha256": "b7036c81a5f7bbc5ba41c7bd9e9fc7f268927ce4f75e87629251adcdda88f544"
+    },
+    {
+      "reference": "Romans 8:19",
+      "detailedExplanationSha256": "9e622598d8a31341642f37f4feb8583a7e832e92d7f19852a008e57ec6c10ae6"
+    },
+    {
+      "reference": "Romans 8:20",
+      "detailedExplanationSha256": "4aa5f4435521ebe967fd422d8d9441e65ca38d970a3aa221847c84d07349b2d3"
+    },
+    {
+      "reference": "Romans 8:21",
+      "detailedExplanationSha256": "1394a0e84439baa2884890ee528e0153a5180cda0dc622fe8303eca546b6bc4e"
+    },
+    {
+      "reference": "Romans 8:22",
+      "detailedExplanationSha256": "d8beaa6ca11e80a56ca1ff41b42e7a77b39d864df24c82daa85226c416a3da44"
+    },
+    {
+      "reference": "Romans 8:23",
+      "detailedExplanationSha256": "1106ebd33a132244aec5370eddd058d6547f7c630957fb0f49a532061521bdff"
+    },
+    {
+      "reference": "Romans 8:24",
+      "detailedExplanationSha256": "78f46c1218b3ecb473da95887aca55fd3831e737d8d78d01e17bcba942a25758"
+    },
+    {
+      "reference": "Romans 8:25",
+      "detailedExplanationSha256": "2412670bb6b02b87f1ee6fb21262b4128889dde3fe9d3dfd1b38e293e79b45e4"
+    },
+    {
+      "reference": "Romans 8:26",
+      "detailedExplanationSha256": "91c59f4d34b8a89f8a527b91ec3711531bf244a4f8879c24e81deabda0df31f1"
+    },
+    {
+      "reference": "Romans 8:27",
+      "detailedExplanationSha256": "8492882b37931f2eb3c71435d33aeb521ffa6759fb3a996caef13ab4d62fe23d"
+    },
+    {
+      "reference": "Romans 8:28",
+      "detailedExplanationSha256": "37b9bae4face826a7b2cc715bc5ff5979ebbfbb73992336a9956c03b145640e9"
+    },
+    {
+      "reference": "Romans 8:29",
+      "detailedExplanationSha256": "8cc567262b62be9db99dc8a142c49459ea8a9cbf77219ddfa2c3178f8db5e6cb"
+    },
+    {
+      "reference": "Romans 8:30",
+      "detailedExplanationSha256": "1e0846ce287ea18f7e7dd2b78520dbd318f451bbfc3dbb70fd8de0f789ab7e68"
+    },
+    {
+      "reference": "Romans 8:31",
+      "detailedExplanationSha256": "def8d085fd86ada65800ac134d216af4ecf5e8602054fc75e4677ea6c9f73121"
+    },
+    {
+      "reference": "Romans 8:32",
+      "detailedExplanationSha256": "b9ed4cc5972728f2203bcd6793d002c283b436baab0441f3860b7b346372f1ea"
+    },
+    {
+      "reference": "Romans 8:33",
+      "detailedExplanationSha256": "29e7bfaab22f7f5dc9df2dfb570fbdc8a50b6ccf5e76c94724d701616af13969"
+    },
+    {
+      "reference": "Romans 8:34",
+      "detailedExplanationSha256": "0533db1f019a5bf63a2e4da508765668fc6b6b17884a591320cf76a1c8a26a21"
+    },
+    {
+      "reference": "Romans 8:35",
+      "detailedExplanationSha256": "ffaea06028aabd52eac508d134ac6b70daec14c41c9caccbc26cfdb94d520899"
+    },
+    {
+      "reference": "Romans 8:36",
+      "detailedExplanationSha256": "49149cb727c7dcceaf429c77595f6c0e651f4a3f0d1f00a7a261d7bce011290e"
+    },
+    {
+      "reference": "Romans 8:37",
+      "detailedExplanationSha256": "b51688807b6666f58c7d7b031153f5499f7aa79c81873828d2f3e2cb1ae85157"
+    },
+    {
+      "reference": "Romans 8:38",
+      "detailedExplanationSha256": "fcfbb03a5fe20f9f420b7580321e42c163baa9c40a7fb17b0ff3340d2d7fc7c7"
+    },
+    {
+      "reference": "Romans 8:39",
+      "detailedExplanationSha256": "b7ee1bd82a3b3fc1c9648598e54aa180745ee482f51bc3e581ec034bb510b3c6"
+    },
+    {
+      "reference": "Romans 9:1",
+      "detailedExplanationSha256": "cc33bc60f0324ec051e1036cae37aac790e106be5ba8a6e3e7146c6581453dbe"
+    },
+    {
+      "reference": "Romans 9:2",
+      "detailedExplanationSha256": "84abb979000eb8ded38b44b43e2dbf267850cfb9421c9b18ff3bbc05185092a4"
+    },
+    {
+      "reference": "Romans 9:3",
+      "detailedExplanationSha256": "705343303d2d5868c2f8e9a578f0a16abe208f5190b31e04e096d1cf07e8a638"
+    },
+    {
+      "reference": "Romans 9:4",
+      "detailedExplanationSha256": "29bfb5e3b1538df7144a37e17b2d853d6ebf5ddc25e3f6902295ad39ca4118c9"
+    },
+    {
+      "reference": "Romans 9:5",
+      "detailedExplanationSha256": "17b71b708950dc7b6dea5c702fb4b72154debcbd7eef4d016952f6523547f382"
+    },
+    {
+      "reference": "Romans 9:6",
+      "detailedExplanationSha256": "6971223f3eb9e7c824afae1e50aa17f34745265dda0d122dc74cc1c4baeeaebb"
+    },
+    {
+      "reference": "Romans 9:7",
+      "detailedExplanationSha256": "b2db971301302ad4396c1b26134346a89c5cacbb19a2fb1358afdc5408975ca0"
+    },
+    {
+      "reference": "Romans 9:8",
+      "detailedExplanationSha256": "e3625e55d58450c3f3793e29d75f82dd62827b826e253f96d807d06a39df825c"
+    },
+    {
+      "reference": "Romans 9:9",
+      "detailedExplanationSha256": "cf004874f6d1db2cefa92ed3c0336ce6b0d87efb271dde9f896d8d35246c4ec6"
+    },
+    {
+      "reference": "Romans 9:10",
+      "detailedExplanationSha256": "33c971e57b4ed76ec7df89d4218990c937bc7453406a868af52ee5fba462913f"
+    },
+    {
+      "reference": "Romans 9:11",
+      "detailedExplanationSha256": "c5c21518f2fc62cb6179fc93e2cac82d22c09a3b151bfb00a3c82c822472f23f"
+    },
+    {
+      "reference": "Romans 9:12",
+      "detailedExplanationSha256": "99ca3dbe886b2d5ae884a833608a6b3b9ffd4f4a94bc150fa19db25fb9b3b6f5"
+    },
+    {
+      "reference": "Romans 9:13",
+      "detailedExplanationSha256": "b4ab4cce15e9abfc695ddf5d75b93b7b7cc80d8c786fc84639a17f957b54d4f8"
+    },
+    {
+      "reference": "Romans 9:14",
+      "detailedExplanationSha256": "69acc5a478aba9339bee8c1d4446207d72ad575797bfa7ef99a79c10708bbdc5"
+    },
+    {
+      "reference": "Romans 9:15",
+      "detailedExplanationSha256": "955eca21ea601d893bc19ad820cd09034da370d69b29db708c592d86d2864d27"
+    },
+    {
+      "reference": "Romans 9:16",
+      "detailedExplanationSha256": "0c1cb1cae891ea7f5d73559fa384f44095482df9285c1349a1b099b4a5e68e3e"
+    },
+    {
+      "reference": "Romans 9:17",
+      "detailedExplanationSha256": "b1a3d8a4a36bcd4a455defc80be415d024842cc342b000f39cbdad2a15611f69"
+    },
+    {
+      "reference": "Romans 9:18",
+      "detailedExplanationSha256": "c01ede30fc7b512ee9b9a11a3f7349349fde7f757b7c049cbc8756dbbb125536"
+    },
+    {
+      "reference": "Romans 9:19",
+      "detailedExplanationSha256": "899db6d03a6db8188b75bebe2725fd7d26a437a4ab98bad65a172fcebd63a1f9"
+    },
+    {
+      "reference": "Romans 9:20",
+      "detailedExplanationSha256": "ff069755060ef9f6b1a9e398026116892053bf5442f39860d7a228b9c9649063"
+    },
+    {
+      "reference": "Romans 9:21",
+      "detailedExplanationSha256": "c016577900d9f207fea4257e56342738c7ccad8c8a4fb57f78ff6b6ae8ecfed1"
+    },
+    {
+      "reference": "Romans 9:22",
+      "detailedExplanationSha256": "db84cedc533ff3ab052f6894635258229eae28ad749446f9e97bf285408c826e"
+    },
+    {
+      "reference": "Romans 9:23",
+      "detailedExplanationSha256": "98264003857b071c3ac10ac8c8311eb589b42c9e47deeaaa6b5f3df4703d39fb"
+    },
+    {
+      "reference": "Romans 9:24",
+      "detailedExplanationSha256": "61d1931e91b5ed52268fbc4142803a9db7d9b2fbb771aecfc18ccb9a1671421a"
+    },
+    {
+      "reference": "Romans 9:25",
+      "detailedExplanationSha256": "c29a622b03356de6d14bbddc85e1c47f345f8b3b79e00da1ab78caffed41a9b8"
+    },
+    {
+      "reference": "Romans 9:26",
+      "detailedExplanationSha256": "6a1fe03b22424df52f63be31146323d5928ea98da63ed3976da851a8c8769233"
+    },
+    {
+      "reference": "Romans 9:27",
+      "detailedExplanationSha256": "dae2c7627b9457dcda782a3744c1e3a39dd881319579c16b59962ff63775fe78"
+    },
+    {
+      "reference": "Romans 9:28",
+      "detailedExplanationSha256": "c8934ccfc4b047c7e541733025772d7c73e05981728d311b41a2bdbc41e124a7"
+    },
+    {
+      "reference": "Romans 9:29",
+      "detailedExplanationSha256": "8ff3ca2accb2d80036361e243a315f11b35fa96d3629d6583fb1b84d538669a3"
+    },
+    {
+      "reference": "Romans 9:30",
+      "detailedExplanationSha256": "050ab52efe8688cf7df3fdf06971c0f59c4e9650b6d2f07b61e4180139f926d6"
+    },
+    {
+      "reference": "Romans 9:31",
+      "detailedExplanationSha256": "946356524ae7521d8fe10ee6278525e55396266c299074db76ac1d75d3fdeab6"
+    },
+    {
+      "reference": "Romans 9:32",
+      "detailedExplanationSha256": "2c067946e38bc68bef48a5f94b7bb41cc1ec28f8b630a502f2ec3f982074e4ae"
+    },
+    {
+      "reference": "Romans 9:33",
+      "detailedExplanationSha256": "2999a4d18584bd6747f42a1f8fc37032afb23d433088f853dd87241aad4f7f3e"
+    },
+    {
+      "reference": "Romans 10:1",
+      "detailedExplanationSha256": "d4a9d6c151f5bdbf8dcfa07c3203a165bbdaa483516f4b8958ba83a906f5861a"
+    },
+    {
+      "reference": "Romans 10:2",
+      "detailedExplanationSha256": "51a8bd7d74d64ba4520d9c7bea95e3c5c13e08a7a24e9581214a03bdb43f2565"
+    },
+    {
+      "reference": "Romans 10:3",
+      "detailedExplanationSha256": "b37c5c88b76086b5ebafed7b6a4a9eba0144bdcbfb1adef722835aff14ad84e5"
+    },
+    {
+      "reference": "Romans 10:4",
+      "detailedExplanationSha256": "84e441c492dc86a2a136015e433b5eae7f8bca00fdc89a6cbd7a5a62e062125f"
+    },
+    {
+      "reference": "Romans 10:5",
+      "detailedExplanationSha256": "28acf01ceb48a540ccf5cf4687bc79672b55a09f7d2715e17405aa09f8e7ef56"
+    },
+    {
+      "reference": "Romans 10:6",
+      "detailedExplanationSha256": "63fce72e2da0873c0a4945260bdbaf910e2b17603314a11ec1d818df4035c98c"
+    },
+    {
+      "reference": "Romans 10:7",
+      "detailedExplanationSha256": "c1254d1ad78dbe23ccc8031de597157272f2ca64b84967d3d7a4cf171fb2a560"
+    },
+    {
+      "reference": "Romans 10:8",
+      "detailedExplanationSha256": "b4815712c0b3031d3c63dcd71c0a8288d538f8dc640c022fa0a676afb0eb4386"
+    },
+    {
+      "reference": "Romans 10:9",
+      "detailedExplanationSha256": "e9d1d8b366924612b0c225915634ba90bd40dc87f2db214e01d3305229ceb05a"
+    },
+    {
+      "reference": "Romans 10:10",
+      "detailedExplanationSha256": "d25835fe9146c6af6358e687eb477ceff4c05979e511a43e6e88266321f33ccc"
+    },
+    {
+      "reference": "Romans 10:11",
+      "detailedExplanationSha256": "ca0a821011902f954e645e662d02ac69740f8673cc91dea95bbc621c767399bd"
+    },
+    {
+      "reference": "Romans 10:12",
+      "detailedExplanationSha256": "5f2c1ec7f64830be2484441687087b4829be611b51e749c6990e2e7e78d97d49"
+    },
+    {
+      "reference": "Romans 10:13",
+      "detailedExplanationSha256": "f0dc1b5b5e5b52c1c5546189c7cf600ee10485325fb8d15fd119c9890d707b86"
+    },
+    {
+      "reference": "Romans 10:14",
+      "detailedExplanationSha256": "0d70b4e6960be4f3ef0d98170d80397884f5681d39fcdf0625810746eb3c0de9"
+    },
+    {
+      "reference": "Romans 10:15",
+      "detailedExplanationSha256": "7d04c449a2dea02678fa3a156fbe93e1a43313762d5b20c0f83637d378ec1c76"
+    },
+    {
+      "reference": "Romans 10:16",
+      "detailedExplanationSha256": "c2598dfc8083746173fccfb41b9a878dd4897b133d500b6d823ab18af753b1dd"
+    },
+    {
+      "reference": "Romans 10:17",
+      "detailedExplanationSha256": "44b624ab07ada693fc93d66bf1393f35dae6e95ed4b2d2657d6e390439f19951"
+    },
+    {
+      "reference": "Romans 10:18",
+      "detailedExplanationSha256": "768bbcf1afe10f5c461233a9b54ec3b98b954abc422879c4cd6f4b96fd1dd62a"
+    },
+    {
+      "reference": "Romans 10:19",
+      "detailedExplanationSha256": "07526b77d3743b71b2346f038a22a7ca41eb5031631d6c01725d49f4230047a6"
+    },
+    {
+      "reference": "Romans 10:20",
+      "detailedExplanationSha256": "962f5b1cb3e9d8212d711c754683ebf41bb33c8b5b241b7691a1f2eb32f7c433"
+    },
+    {
+      "reference": "Romans 10:21",
+      "detailedExplanationSha256": "c1ad25c6764bec6797fb0ba2056a6f2b1fa44e8861898df51ddcd213a03645a3"
+    },
+    {
+      "reference": "Romans 11:1",
+      "detailedExplanationSha256": "7ba5bb346a8d9c30e88a67d321c938d4911f90a5aa209b5c483cfd0ccec15706"
+    },
+    {
+      "reference": "Romans 11:2",
+      "detailedExplanationSha256": "054584580d241f3b6b331e448f679ced0d06b153c2bc14b5c638642129bab81f"
+    },
+    {
+      "reference": "Romans 11:3",
+      "detailedExplanationSha256": "b0fc9d7403b861969246c02135bdc6ee9ac054906be847e5a705797f61f7e644"
+    },
+    {
+      "reference": "Romans 11:4",
+      "detailedExplanationSha256": "ddde4396991cc7ce982853b34b298692ab659252919f9f0e098286c0405bb972"
+    },
+    {
+      "reference": "Romans 11:5",
+      "detailedExplanationSha256": "ae3dfe292e4270f68fb26366dccf9e1212fb8190a8d12df08ea3d4cc5c11fe1a"
+    },
+    {
+      "reference": "Romans 11:6",
+      "detailedExplanationSha256": "962f7f6e3a8125799395a7c44cefd71f777208129be20ad77e51996a4d105371"
+    },
+    {
+      "reference": "Romans 11:7",
+      "detailedExplanationSha256": "64a679a2dfdf552ec4ad84d98b1e392e0d34964dd05641f5d247cef36c25a8c2"
+    },
+    {
+      "reference": "Romans 11:8",
+      "detailedExplanationSha256": "c27fd3ed640cfb65f030d2927794b18b2cf6ff7b7fb31886f2b43897d32139ef"
+    },
+    {
+      "reference": "Romans 11:9",
+      "detailedExplanationSha256": "c442a9fdd51f7ed3e3424d35aede2f28f1f8ba4f038e7e1b88d1cf77090f1495"
+    },
+    {
+      "reference": "Romans 11:10",
+      "detailedExplanationSha256": "38d7a877cc3319190c8d0cdbc00efdd6c99cbb5ff6f67c02b66bb4ecad0d80b3"
+    },
+    {
+      "reference": "Romans 11:11",
+      "detailedExplanationSha256": "856b8a8478ecb049043d3626b77b791b984ee9c7f2b909df3ac102404b186332"
+    },
+    {
+      "reference": "Romans 11:12",
+      "detailedExplanationSha256": "42406dccf8cb20926a762ad74a220ef29aeed96a2424fa9b2a197d91da68123e"
+    },
+    {
+      "reference": "Romans 11:13",
+      "detailedExplanationSha256": "81444d519dcd2e203ea464b8979e8b29196df2450f022054a91a708da7c69c33"
+    },
+    {
+      "reference": "Romans 11:14",
+      "detailedExplanationSha256": "f5e6f2d6a88302ff719b527da68c51a7206427b3fb4fc4c37ab5b0bb679c067e"
+    },
+    {
+      "reference": "Romans 11:15",
+      "detailedExplanationSha256": "b4e0c30f4c5d7a389ab2ede657869851673531225d9076a0824ce22912ed60b0"
+    },
+    {
+      "reference": "Romans 11:16",
+      "detailedExplanationSha256": "b3b12bc6d9c115d1663b40813035bf004e5b88dcd20bda54e3150e8f69871347"
+    },
+    {
+      "reference": "Romans 11:17",
+      "detailedExplanationSha256": "5ee9433f61732911b3d41bcab7bc5906db66d47d6410df4ab0aa9d5465e6bf5e"
+    },
+    {
+      "reference": "Romans 11:18",
+      "detailedExplanationSha256": "7650b53947901075dcd5f26de156ee375c0406fc3ee6c1fc4d755d2572b09f22"
+    },
+    {
+      "reference": "Romans 11:19",
+      "detailedExplanationSha256": "59e787bc609b3bcefb525951ecdabe00633327a1ab1c604f4ba6b28a6514d512"
+    },
+    {
+      "reference": "Romans 11:20",
+      "detailedExplanationSha256": "b4c175b6bdce6b9217465908a75dae4283a12e9a57dfaf3f451b394af028320b"
+    },
+    {
+      "reference": "Romans 11:21",
+      "detailedExplanationSha256": "9924c943ad490faee8ecf5211ef6d2a98847ae8e11ce173c77536596282b63d2"
+    },
+    {
+      "reference": "Romans 11:22",
+      "detailedExplanationSha256": "f7a27d5dbf468cbfd1925b455d536aa5af0bceb80d827c9c0963b80aa1ecbc55"
+    },
+    {
+      "reference": "Romans 11:23",
+      "detailedExplanationSha256": "e0b36c4fa7f386ccc405065fa3553e29ea57035be6f5454252acc8a3a4e8b0a9"
+    },
+    {
+      "reference": "Romans 11:24",
+      "detailedExplanationSha256": "741547f001bec6c0136d5443e73964830048f2ffb3e941cd67008ea76e05995a"
+    },
+    {
+      "reference": "Romans 11:25",
+      "detailedExplanationSha256": "2d9cdfbf1edd79dfa03f51b494d2065b0b75ef900cba80805d2993d7f3632d86"
+    },
+    {
+      "reference": "Romans 11:26",
+      "detailedExplanationSha256": "859ceee20a56b60ce6822d15a00a570ceab7975016fc03ef8c3f9588c2fd4ef3"
+    },
+    {
+      "reference": "Romans 11:27",
+      "detailedExplanationSha256": "d2dfbceaf15e1c619e6bdec98c7f2245be9bed292a18ddbe23dc85a183805051"
+    },
+    {
+      "reference": "Romans 11:28",
+      "detailedExplanationSha256": "c6a901aafe1031e2404fcb327d5dc9c917d4fef8b84d549449e320933ca0a1a4"
+    },
+    {
+      "reference": "Romans 11:29",
+      "detailedExplanationSha256": "544448c8afea5fee62b5d310adc95196fe351d3f401ca247c71bcf7612d9bd54"
+    },
+    {
+      "reference": "Romans 11:30",
+      "detailedExplanationSha256": "72491cb43ce76ef02828c2c40071fd4ae30309e323aba90abda992e6cc3ec860"
+    },
+    {
+      "reference": "Romans 11:31",
+      "detailedExplanationSha256": "b823afe8e9a9b19a3f97cd452ba791b5ea51a5c535d0aa7ce12f7a710f8b3f53"
+    },
+    {
+      "reference": "Romans 11:32",
+      "detailedExplanationSha256": "698f9c6b3b1fb126d2cf7cce82172e9806edb2add9c97247ba4611a9773697a2"
+    },
+    {
+      "reference": "Romans 11:33",
+      "detailedExplanationSha256": "44bd2890e970d0a56e1dbd321e105cd6edb6d8a39da2f80f4d28a2f3006b4e2b"
+    },
+    {
+      "reference": "Romans 11:34",
+      "detailedExplanationSha256": "e3cccc81ab3a660f84efbb0a4ec0ccafe503b9683034e7670ca1d5dad77df018"
+    },
+    {
+      "reference": "Romans 11:35",
+      "detailedExplanationSha256": "b3a6cb8e08f6f40ede22593ae5bb7ad7cdae8499fe14a1b7735d8601bd0cad3e"
+    },
+    {
+      "reference": "Romans 11:36",
+      "detailedExplanationSha256": "5ae75b2ef587d16b9024584ef7e4ae49ac5497d5966166215746dbc0ec2c12bb"
+    },
+    {
+      "reference": "Romans 12:1",
+      "detailedExplanationSha256": "eecbff8134b98a7c9aaeebc43d6d4dac35245409dc2a5a81957c122feeb8fc58"
+    },
+    {
+      "reference": "Romans 12:2",
+      "detailedExplanationSha256": "8c2f38cd5de9f530ed08a473157a13e848a360ae4ffead60fa3f618eda3817de"
+    },
+    {
+      "reference": "Romans 12:3",
+      "detailedExplanationSha256": "bc860fa877d3e7cbaa387aab03b62914122e46f76de31fa2c627e18ab96f672b"
+    },
+    {
+      "reference": "Romans 12:4",
+      "detailedExplanationSha256": "539dab678adaa9b95284230eea055705364b348ee1d205bdcd7871cee8a2f79c"
+    },
+    {
+      "reference": "Romans 12:5",
+      "detailedExplanationSha256": "924042ddb447aed3162bf9be4f2ef81744612da3453cb15b6f06a42f6bfcf77b"
+    },
+    {
+      "reference": "Romans 12:6",
+      "detailedExplanationSha256": "1f2ed5c867d30dcee553148b6acf2a90f550724599500f7a7f8f19d3d863736b"
+    },
+    {
+      "reference": "Romans 12:7",
+      "detailedExplanationSha256": "23018560c02920b5a827fdd3914c53328b41c5623dceae1346c6ad8bd2b5ca7e"
+    },
+    {
+      "reference": "Romans 12:8",
+      "detailedExplanationSha256": "f3dc6c0587c494d2a27f8903deb0409119a79b04f3e7a4a057c6ae2537a79132"
+    },
+    {
+      "reference": "Romans 12:9",
+      "detailedExplanationSha256": "70ce191d8586f400a7841f4342f07a650954f56753757b64b988b16ec0b4c9fc"
+    },
+    {
+      "reference": "Romans 12:10",
+      "detailedExplanationSha256": "4219022a421ad0502458731bd3f0c8dcb15ea8d7654b13a237ce9d8332aaffc7"
+    },
+    {
+      "reference": "Romans 12:11",
+      "detailedExplanationSha256": "8e2286ca7f347db5fa882c761f44c19673d0d5f7bb240f50a66a57b2f4db6ce3"
+    },
+    {
+      "reference": "Romans 12:12",
+      "detailedExplanationSha256": "417fc43610b69f03892c61475d63a65791e2758991cf2df6e63672ded06f35cd"
+    },
+    {
+      "reference": "Romans 12:13",
+      "detailedExplanationSha256": "9aed0f80985cf2cf753f0c7e44fdda598f8f42479c920d71933a4e204e675583"
+    },
+    {
+      "reference": "Romans 12:14",
+      "detailedExplanationSha256": "03f9706ad4a48005a3685a60b7918ad3b9b6be2eb4223ccb392529abcce6f6ad"
+    },
+    {
+      "reference": "Romans 12:15",
+      "detailedExplanationSha256": "02443ff8d68240a647f3e20b19b9a57bd3d8189ca695ff82b9a3dd4b23427a15"
+    },
+    {
+      "reference": "Romans 12:16",
+      "detailedExplanationSha256": "2f3b4c48888f9242bf7d5ead8f750147b3c54886a39db17deafd1a1dda92aab6"
+    },
+    {
+      "reference": "Romans 12:17",
+      "detailedExplanationSha256": "f999fade707d3aa58615ff3c9154431e52537965ea0a66694935666bc3ba28b3"
+    },
+    {
+      "reference": "Romans 12:18",
+      "detailedExplanationSha256": "6810ceffeebbf9cf61c2f97c4ded50a2cf9efa0d602a9bddaa8b08b7de1500b1"
+    },
+    {
+      "reference": "Romans 12:19",
+      "detailedExplanationSha256": "460fa5cfeaf06fcb6f0cd0d7fc980d015d34810eedc0e6a74fc89c7e7c2581bd"
+    },
+    {
+      "reference": "Romans 12:20",
+      "detailedExplanationSha256": "59cdec3047ab1b406580692f39918befa5ed6a04276c20ae1783d9c43ed5bfc1"
+    },
+    {
+      "reference": "Romans 12:21",
+      "detailedExplanationSha256": "a5ff067c06e3dbf205e1867f2993416934a1322f7d65ad9f1390479363e86a04"
+    },
+    {
+      "reference": "Romans 13:1",
+      "detailedExplanationSha256": "9387ee4cf21b1d79d4d4c8b703c86e27130ab8c7670895e19deaa52b4201a08f"
+    },
+    {
+      "reference": "Romans 13:2",
+      "detailedExplanationSha256": "32a1ba7784108f54fa5376433e1c8295725f10ad687716b74c90b0dc5b630321"
+    },
+    {
+      "reference": "Romans 13:3",
+      "detailedExplanationSha256": "e849ae284605f5596f6f213cedf39878061446eb8c33ed3651b9c760cfd853f7"
+    },
+    {
+      "reference": "Romans 13:4",
+      "detailedExplanationSha256": "b36330b5f27790dcb7b56278872b518c2c86850f1775fdc6c3b3044b26c02547"
+    },
+    {
+      "reference": "Romans 13:5",
+      "detailedExplanationSha256": "ca2233aed8579430dcdecc25c28fe28cb1c99f8dd795680c5f850ba4574d03d0"
+    },
+    {
+      "reference": "Romans 13:6",
+      "detailedExplanationSha256": "6d0d1d4f65c6f1d1eabc86088dec1d03156ba9d4cf3a5a075b9d69f956ac1d5d"
+    },
+    {
+      "reference": "Romans 13:7",
+      "detailedExplanationSha256": "e630829015f96e7e60aca6be447a376f2064d48c69b90bad684f764aca9995ef"
+    },
+    {
+      "reference": "Romans 13:8",
+      "detailedExplanationSha256": "820ad2031c9ce03e3d4fdc10946c2f4fda8be68eca5e78a8b7458dd145e5d0ad"
+    },
+    {
+      "reference": "Romans 13:9",
+      "detailedExplanationSha256": "f3126277f26d6a52ad34687bfb490ca61da9a2849625f8aa2bffa399fcd025df"
+    },
+    {
+      "reference": "Romans 13:10",
+      "detailedExplanationSha256": "618763bca53f89d41e281194c454e1119b3ea1c380be4abdee5e69b1d43aa164"
+    },
+    {
+      "reference": "Romans 13:11",
+      "detailedExplanationSha256": "46d3b9a53d7cbc11f22974f4ecfa596507fa6b7e74a64b6ef9391245cb687730"
+    },
+    {
+      "reference": "Romans 13:12",
+      "detailedExplanationSha256": "820e6ec0542afae8e89cad017693d7c54010bf80e7426423650f6f213a8d1333"
+    },
+    {
+      "reference": "Romans 13:13",
+      "detailedExplanationSha256": "7e051e72ddee12534d5ec5f5167eb4deffc3a30fa95540af05189169bb8b413f"
+    },
+    {
+      "reference": "Romans 13:14",
+      "detailedExplanationSha256": "985d4cf1dc544407e2f9471223207af7ad74779f08a678b05cdbcea2a700dc27"
+    },
+    {
+      "reference": "Romans 14:1",
+      "detailedExplanationSha256": "f564f8e60c6adcd139a6385067b66f8111a1bde5bf270646761faafc01750de1"
+    },
+    {
+      "reference": "Romans 14:2",
+      "detailedExplanationSha256": "2b64241d198e83c5921e96fca1a96ca69cbe035f16edc5162bf41cb9066c648f"
+    },
+    {
+      "reference": "Romans 14:3",
+      "detailedExplanationSha256": "d5a25611465686bdbe0f78bd254d70bf9770ba7d5c35232457ffee7fe7b7b7bc"
+    },
+    {
+      "reference": "Romans 14:4",
+      "detailedExplanationSha256": "0d45ac37b384872d5eb62dfc04c76d76f270eafdb14cdbfca7095a9fa96d58ac"
+    },
+    {
+      "reference": "Romans 14:5",
+      "detailedExplanationSha256": "f834c4923f42316f53bafdea819c921bc53bdfeefc00641d96cc25f5e8a733ba"
+    },
+    {
+      "reference": "Romans 14:6",
+      "detailedExplanationSha256": "77f6d839c222a3d96a01fe47cf9de2cbca7148ba955373bfecc10265ea5de21f"
+    },
+    {
+      "reference": "Romans 14:7",
+      "detailedExplanationSha256": "15f8ea9416a9bc58253ffe58c36bf9187c2d34198b6f3a51f096a96ea1cb6038"
+    },
+    {
+      "reference": "Romans 14:8",
+      "detailedExplanationSha256": "aab0b659514c7d7a019e9c3656db87682c939b1a9ae913ecd2827c1b07007066"
+    },
+    {
+      "reference": "Romans 14:9",
+      "detailedExplanationSha256": "11e4516c8d0ffac076b9502383db2af4d63ca12264d739cb40c0ce832fd805b2"
+    },
+    {
+      "reference": "Romans 14:10",
+      "detailedExplanationSha256": "d60997f0fd3871efd78ce1125f9d93262379f9a24b09802f99fc6d1390a8bf54"
+    },
+    {
+      "reference": "Romans 14:11",
+      "detailedExplanationSha256": "bd6722085f51afb94df08e336516d219116acb1f3ad253abf7a54f37c8617639"
+    },
+    {
+      "reference": "Romans 14:12",
+      "detailedExplanationSha256": "f6cb47fcb935137ad5e2eef03221b112e8651e1d753ec6ac81ffcdc085737b39"
+    },
+    {
+      "reference": "Romans 14:13",
+      "detailedExplanationSha256": "3b9110fb448fa6363af8d3784da3a31dbc5253d13b0d4abfb08547c5df1e5b35"
+    },
+    {
+      "reference": "Romans 14:14",
+      "detailedExplanationSha256": "82e6e800d00845252b988fe165fd250847041e46285808b675683c49b2a8d501"
+    },
+    {
+      "reference": "Romans 14:15",
+      "detailedExplanationSha256": "df2f1011aaa7d9963fbd2d555c99bb7987db2b7a5f47f4b35287cda8e4987332"
+    },
+    {
+      "reference": "Romans 14:16",
+      "detailedExplanationSha256": "81bba8abef81ad471ede957969df733d615bf929b6a2b198fd19240936aee458"
+    },
+    {
+      "reference": "Romans 14:17",
+      "detailedExplanationSha256": "9648aa239a9e546d95a6e585634612e45bdf4f5941b499af9f253288c0006319"
+    },
+    {
+      "reference": "Romans 14:18",
+      "detailedExplanationSha256": "6a5196d37595f769b5c3f75bfd3b3f804e45e5ada46e6c81ef3de7135a30778d"
+    },
+    {
+      "reference": "Romans 14:19",
+      "detailedExplanationSha256": "51f8c8acac4f7b1f68f50ba005253e1885857d55e8e78aed05e2f3c2b4c82a40"
+    },
+    {
+      "reference": "Romans 14:20",
+      "detailedExplanationSha256": "eadbe70f8b748dd5163ea1345380f2d021faffac4cfcbc460eb3998428049f9b"
+    },
+    {
+      "reference": "Romans 14:21",
+      "detailedExplanationSha256": "8da649d851b9f690e0662d3ac65de05206f1c1e450f9c8fa86c19efe9aaed4a2"
+    },
+    {
+      "reference": "Romans 14:22",
+      "detailedExplanationSha256": "4068e88e410e33c33cf7a76aabb4ee71227eae2003e066a1c0758af49ce49848"
+    },
+    {
+      "reference": "Romans 14:23",
+      "detailedExplanationSha256": "7b6493cc09690ffd63940a264d6514ca40c2f69d22615b5dac492447fd3eb213"
+    },
+    {
+      "reference": "Romans 15:1",
+      "detailedExplanationSha256": "21b415ef31bf8e66e01baec5bc9be1992388a6c831f81eb813017d2fc3025d77"
+    },
+    {
+      "reference": "Romans 15:2",
+      "detailedExplanationSha256": "89c13352cb5d1fba2029ddf6bac711b50c566a24985d9587ecd0fe38eb549c2f"
+    },
+    {
+      "reference": "Romans 15:3",
+      "detailedExplanationSha256": "6caa8aa5cdc0e65850f3ce8292f87d6628cd1302fbb91c3e01d228b27ec9b851"
+    },
+    {
+      "reference": "Romans 15:4",
+      "detailedExplanationSha256": "a6248248290c705cc345c7609b40dc05f6aabf903d9b503f74145ce5e1651897"
+    },
+    {
+      "reference": "Romans 15:5",
+      "detailedExplanationSha256": "4889879166a5c87c1859b6cc79b6db8adaae26c8ce6103ab9dc500e2157f3fa2"
+    },
+    {
+      "reference": "Romans 15:6",
+      "detailedExplanationSha256": "3338436e3a3a88f5575420deba814b1135a1f9be6ae436fa0b588a717c6fade0"
+    },
+    {
+      "reference": "Romans 15:7",
+      "detailedExplanationSha256": "4f6e9af01e42d1d58c11b75669cc51dbce42df24e8f047efb63469cbfcad7a1f"
+    },
+    {
+      "reference": "Romans 15:8",
+      "detailedExplanationSha256": "c6eada0d5ad0562ca2f839a3f23667ee79af04168c9e434aa7a1ed61e69c31d6"
+    },
+    {
+      "reference": "Romans 15:9",
+      "detailedExplanationSha256": "88dc473b259074065570bf5f89ad59663f980d31b203ddf97310b8d6c24c0a31"
+    },
+    {
+      "reference": "Romans 15:10",
+      "detailedExplanationSha256": "32ff33c9555d49c34e8fec0d1e1a1fb48a747d2fb4c34c5e39837d037ae61e34"
+    },
+    {
+      "reference": "Romans 15:11",
+      "detailedExplanationSha256": "56a8f91ebd6626609b345dc476fe7cb6b045691ef685183b2a2bdcb939f657c9"
+    },
+    {
+      "reference": "Romans 15:12",
+      "detailedExplanationSha256": "dca73065f7fc5089e8e30a69758c155a08aac7c0544334af601bbbd87e4a71d1"
+    },
+    {
+      "reference": "Romans 15:13",
+      "detailedExplanationSha256": "d69f6910eb3afc6e64e0aab4e3bdd6ef50c8bdbb4336920ff647c173728d394f"
+    },
+    {
+      "reference": "Romans 15:14",
+      "detailedExplanationSha256": "71e97c5c435deff6cacd6c4ca768b3e130030242985ca5411c7fcdb68d6b5036"
+    },
+    {
+      "reference": "Romans 15:15",
+      "detailedExplanationSha256": "72b3c3d8548cc750cdb866489cef4cf807f22ed31a8b067618dc954a18f7964f"
+    },
+    {
+      "reference": "Romans 15:16",
+      "detailedExplanationSha256": "32efdbb3cb6931ab72e2eda252b868b90bfe630552e64002ff68971f73974a82"
+    },
+    {
+      "reference": "Romans 15:17",
+      "detailedExplanationSha256": "908c2d8c0dc3c7959e4bd87053f1a0b5abb26a6a287d96f07a985ca03221a893"
+    },
+    {
+      "reference": "Romans 15:18",
+      "detailedExplanationSha256": "b8dd07efb7d219921a1ee626d4cc38e1c2dbdaa62fcf6f0920e98755c6338664"
+    },
+    {
+      "reference": "Romans 15:19",
+      "detailedExplanationSha256": "5a6ed5714006ab7271dc4736d169c6a3c8adc0bbeed35c835b114fad4da95709"
+    },
+    {
+      "reference": "Romans 15:20",
+      "detailedExplanationSha256": "e59c76382754ff64ffc8bc52d5ce872b0469b746cce21ff7d2f6a6be1290579e"
+    },
+    {
+      "reference": "Romans 15:21",
+      "detailedExplanationSha256": "9290f8fe7d0fe36a808bbd78ea6bfbc83d84109bd735e4f59102414126a09d79"
+    },
+    {
+      "reference": "Romans 15:22",
+      "detailedExplanationSha256": "3b54f9782108d5eb96e57c3bc97bf46f552c3bc3ed5980b4d2dd66428c9467db"
+    },
+    {
+      "reference": "Romans 15:23",
+      "detailedExplanationSha256": "8f2cb364faede77bea2195df3c9fcd9fe477ccd935dee87942130f56cff3bde9"
+    },
+    {
+      "reference": "Romans 15:24",
+      "detailedExplanationSha256": "a8b75e3f0de2ae5f99e1ef89d614e70047390f0061872c818e2f5bec1a10347d"
+    },
+    {
+      "reference": "Romans 15:25",
+      "detailedExplanationSha256": "5c773b33eb7c7910cfcbcd46bcddf54fd0857e0dbc205c0405bad1f18e4aa04a"
+    },
+    {
+      "reference": "Romans 15:26",
+      "detailedExplanationSha256": "982b3360cf5acff99adbee1f7d81bfe0a6bbb05a33cfd26b7d8f546e084556aa"
+    },
+    {
+      "reference": "Romans 15:27",
+      "detailedExplanationSha256": "bdc009c3c380ccb0cfa23c355e3303a972f9759710275f8b10d9932b2f76ecce"
+    },
+    {
+      "reference": "Romans 15:28",
+      "detailedExplanationSha256": "b915aed51c4e1a7c54a12e1741c77bc79c6c2b7723dd0afa4685b9dd6ad640c1"
+    },
+    {
+      "reference": "Romans 15:29",
+      "detailedExplanationSha256": "080a28abc9b6227ad20a0a31cc2150978df06cbcc3747d0e326ed97d351a50a5"
+    },
+    {
+      "reference": "Romans 15:30",
+      "detailedExplanationSha256": "f5e7a5ab39173b8facea5c563dc5f1746ac3e1d6337c743ebe08a077e110194f"
+    },
+    {
+      "reference": "Romans 15:31",
+      "detailedExplanationSha256": "90acfcc621d34b666282c35ec137807146a094d4f0f78d43b437a713d3ff17b2"
+    },
+    {
+      "reference": "Romans 15:32",
+      "detailedExplanationSha256": "cba9066f8e1f8569727ebee9fe63ee67c320a8b7ffe6b5822b78c61aa5a47a61"
+    },
+    {
+      "reference": "Romans 15:33",
+      "detailedExplanationSha256": "e203cabebaa5b893562517f3b4c53b05043f9b5a044e11bb3eff421cc1d9fd34"
+    },
+    {
+      "reference": "Romans 16:1",
+      "detailedExplanationSha256": "b77fb8eaab617340c0e9f38450f957c344f8a082a6c941bbfc75392267c32a40"
+    },
+    {
+      "reference": "Romans 16:2",
+      "detailedExplanationSha256": "2107ac546b80c28ae842b77554149071aeb70eb366e765363d9b6f0949f0b7c7"
+    },
+    {
+      "reference": "Romans 16:3",
+      "detailedExplanationSha256": "212bd2d35313456480e698617f032d98523f9d0a02dce69c228010bbde3257e9"
+    },
+    {
+      "reference": "Romans 16:4",
+      "detailedExplanationSha256": "0502807c2a953d1da79c8414f1af2094363873f850cdb551d3d0fe8de4dfd750"
+    },
+    {
+      "reference": "Romans 16:5",
+      "detailedExplanationSha256": "78a3361500b6324dff068b409accc933df0d756dbce341d6b34f56a7ede24acc"
+    },
+    {
+      "reference": "Romans 16:6",
+      "detailedExplanationSha256": "6a542eadec51ae547cf8500218134cb74e96e422ebf98f301b1efb66965e945b"
+    },
+    {
+      "reference": "Romans 16:7",
+      "detailedExplanationSha256": "2f4aaf4d8cdc2bcfe351c41a47abd911c189997b5b7342812fc70ad02bf2a28b"
+    },
+    {
+      "reference": "Romans 16:8",
+      "detailedExplanationSha256": "a16215c5e6938494007533d2b4b0d464629362e56522c31b44204b3004b99572"
+    },
+    {
+      "reference": "Romans 16:9",
+      "detailedExplanationSha256": "132de3df55f00a143d8ebab35f68e477c9c0b06abfc9d8373399706e229699dc"
+    },
+    {
+      "reference": "Romans 16:10",
+      "detailedExplanationSha256": "f2e22876d3585abcaa4a5acacaae2c99bea1804ccbbb26bcfd94c1a82d30d1d9"
+    },
+    {
+      "reference": "Romans 16:11",
+      "detailedExplanationSha256": "f8642e94763521ff270a0aeda4cc9b13f07b4f34f183504d09b6fc7fb1082b6d"
+    },
+    {
+      "reference": "Romans 16:12",
+      "detailedExplanationSha256": "d207ca76648462c55f8b0202858ed1438a9fe851e4127ae92c1e7ead7c042140"
+    },
+    {
+      "reference": "Romans 16:13",
+      "detailedExplanationSha256": "7ef12b19b44f7a370ec8a6510779475a1e66c6ac94790695b1f798c489622659"
+    },
+    {
+      "reference": "Romans 16:14",
+      "detailedExplanationSha256": "ede65393b53a65c6a11a8121df39fe8d997c6e1668ef7e13abdde4bc3ff935b2"
+    },
+    {
+      "reference": "Romans 16:15",
+      "detailedExplanationSha256": "7d4176e078ced398b64739c96a44591b18583614d401fd910d118d0179e3aaef"
+    },
+    {
+      "reference": "Romans 16:16",
+      "detailedExplanationSha256": "b95ae90fca2d12fb4151aecc61d3aea2d207b93473357947b0ed7bee476a90aa"
+    },
+    {
+      "reference": "Romans 16:17",
+      "detailedExplanationSha256": "4a1e14098132b9bd144614f41f179c255950114d90491e6156b3b6aa2f285e29"
+    },
+    {
+      "reference": "Romans 16:18",
+      "detailedExplanationSha256": "5ab95afbfe9ca453da5f6088091e923228bf86b2e5f4c71a660a8086584316d2"
+    },
+    {
+      "reference": "Romans 16:19",
+      "detailedExplanationSha256": "e4cf8a6c97e89ffe749b79054348854c932021507a04a214c2eedf0e3d8956e5"
+    },
+    {
+      "reference": "Romans 16:20",
+      "detailedExplanationSha256": "740b54a689e22a6d4e4325f81ae0a08df579ac2a0822b2da05ad1cbcc8d8c496"
+    },
+    {
+      "reference": "Romans 16:21",
+      "detailedExplanationSha256": "a1f8b6ba9adf717ef71963967d4b5f371112e50e4f64b28497e7ca2ac914b01b"
+    },
+    {
+      "reference": "Romans 16:22",
+      "detailedExplanationSha256": "05b944fb669ec7c08a010a5030a8bf93490902cf3c88e8c061720fafd7b60167"
+    },
+    {
+      "reference": "Romans 16:23",
+      "detailedExplanationSha256": "afc8c2767c2fd7a986a9fafed2a2141341bc947a9c60358ef7de11ed42036632"
+    },
+    {
+      "reference": "Romans 16:24",
+      "detailedExplanationSha256": "2bb406f1a2e18b8237e0dae63c4cf0b2a5ada318a1c73389db6264432c5e0059"
+    },
+    {
+      "reference": "Romans 16:25",
+      "detailedExplanationSha256": "73eaa3826aba6a2c7ab1a8d63888f7c12c296a4e508e4b609f81d7b0dcc0d317"
+    },
+    {
+      "reference": "Romans 16:26",
+      "detailedExplanationSha256": "948b13ba01c24c9a7f81d2d4a85b91d65e2ad45507c3e45011b135e798dfc59f"
+    },
+    {
+      "reference": "Romans 16:27",
+      "detailedExplanationSha256": "6e35e929729db18344595f4dee2736c2e840c3d989365d31f12bd7cd5bfb595a"
+    }
+  ]
+}

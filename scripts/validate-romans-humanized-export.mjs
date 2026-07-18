@@ -1,13 +1,27 @@
+import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
-import { join } from "node:path";
+import { join, resolve } from "node:path";
 
 const siteRoot = process.cwd();
-const [contentRoot, baselineRoot] = process.argv.slice(2);
-if (!contentRoot || !baselineRoot) {
-  throw new Error("Usage: node scripts/validate-romans-humanized-export.mjs <content-root> <baseline-root>");
+const argumentsList = process.argv.slice(2);
+if (argumentsList.length > 2) {
+  throw new Error(
+    "Usage: node scripts/validate-romans-humanized-export.mjs [content-root] [baseline-manifest]"
+  );
 }
+const contentRoot = argumentsList[0]
+  ? resolve(siteRoot, argumentsList[0])
+  : join(siteRoot, "content", "romans");
+const baselineManifestPath = argumentsList[1]
+  ? resolve(siteRoot, argumentsList[1])
+  : join(siteRoot, "scripts", "romans-humanization-baseline.manifest.json");
 
 const errors = [];
+// This immutable hash-only baseline comes from the last public export before humanization.
+const expectedBaselineRevision = "b1252db1afa7832f3254b8e9ddac6eb66a875f1d";
+const expectedBaselineEntriesSha256 =
+  "df1bf3ba1b1947245357cd45ce2db0ff89494d51faa07bf11312061fbc5a9e82";
+const expectedVerseCounts = [32, 29, 31, 25, 21, 23, 25, 39, 33, 21, 36, 21, 14, 23, 33, 27];
 const forbiddenPatterns = [
   /\bAdventist\b/iu,
   /Biblical Research Institute/iu,
@@ -18,6 +32,10 @@ const forbiddenPatterns = [
 
 function readJson(path) {
   return JSON.parse(readFileSync(path, "utf8"));
+}
+
+function sha256(value) {
+  return createHash("sha256").update(value).digest("hex");
 }
 
 function jsonInner(value) {
@@ -139,13 +157,55 @@ function embeddedChapter(value, label) {
     return null;
   }
 }
+
+const baselineManifest = readJson(baselineManifestPath);
+const baselineEntriesSha256 = Array.isArray(baselineManifest.baseline)
+  ? sha256(JSON.stringify(baselineManifest.baseline))
+  : "";
+if (
+  baselineManifest.schemaVersion !== 1 ||
+  baselineManifest.hashAlgorithm !== "sha256" ||
+  baselineManifest.chapters !== 16 ||
+  baselineManifest.notes !== 433 ||
+  baselineManifest.source?.kind !== "public-git-revision" ||
+  baselineManifest.source?.revision !== expectedBaselineRevision ||
+  baselineEntriesSha256 !== expectedBaselineEntriesSha256 ||
+  !Array.isArray(baselineManifest.baseline) ||
+  baselineManifest.baseline.length !== 433
+) {
+  errors.push("The public pre-humanization baseline manifest is missing or invalid.");
+}
+
+const baselineByReference = new Map();
+for (const entry of baselineManifest.baseline ?? []) {
+  if (
+    typeof entry.reference !== "string" ||
+    !/^[a-f0-9]{64}$/u.test(entry.detailedExplanationSha256 ?? "")
+  ) {
+    errors.push("The public pre-humanization baseline manifest contains an invalid entry.");
+    continue;
+  }
+  if (baselineByReference.has(entry.reference)) {
+    errors.push(`The public pre-humanization baseline repeats ${entry.reference}.`);
+    continue;
+  }
+  baselineByReference.set(entry.reference, entry.detailedExplanationSha256);
+}
+
 let embeddedNotes = 0;
-let staleNotes = 0;
+let preHumanizationRegressions = 0;
+const checkedBaselineReferences = new Set();
 
 for (let chapterNumber = 1; chapterNumber <= 16; chapterNumber += 1) {
   const file = `chapter-${String(chapterNumber).padStart(2, "0")}.json`;
   const chapter = readJson(join(contentRoot, file));
-  const baseline = readJson(join(baselineRoot, file));
+  const expectedVerseCount = expectedVerseCounts[chapterNumber - 1];
+  if (chapter.chapterNumber !== chapterNumber || chapter.verses?.length !== expectedVerseCount) {
+    errors.push(
+      `${file} reports chapter ${chapter.chapterNumber} with ${chapter.verses?.length ?? 0} verses; ` +
+      `expected Romans ${chapterNumber} with ${expectedVerseCount} verses.`
+    );
+  }
   const chapterDir = join(siteRoot, "romans", String(chapterNumber));
   const html = readFileSync(join(chapterDir, "index.html"), "utf8");
   const indexText = readFileSync(join(chapterDir, "index.txt"), "utf8");
@@ -175,23 +235,37 @@ for (let chapterNumber = 1; chapterNumber <= 16; chapterNumber += 1) {
   validateHtmlFlightLengths(html, `Romans ${chapterNumber}`);
 
   chapter.verses.forEach((verse, index) => {
+    const expectedReference = `Romans ${chapterNumber}:${index + 1}`;
     const note = verse.commentary.detailedExplanation;
-    const oldNote = baseline.verses[index].commentary.detailedExplanation;
-    const variants = [note, jsonInner(note), htmlEscape(note)];
-    if (!variants.some((variant) => exportText.includes(variant))) errors.push(`${verse.verse} is absent from the static payload.`);
-    else embeddedNotes += 1;
-    if (
-      oldNote !== note &&
-      !note.includes(oldNote) &&
-      [oldNote, jsonInner(oldNote), htmlEscape(oldNote)].some((variant) => exportText.includes(variant))
-    ) {
-      staleNotes += 1;
-      errors.push(`${verse.verse} retains its pre-humanized detailed note.`);
+    if (verse.verse !== expectedReference) {
+      errors.push(`${file} verse ${index + 1} is labeled ${verse.verse}; expected ${expectedReference}.`);
     }
-});
+    const baselineHash = baselineByReference.get(expectedReference);
+    if (!baselineHash) {
+      errors.push(`${expectedReference} is missing from the public pre-humanization baseline.`);
+    } else {
+      checkedBaselineReferences.add(expectedReference);
+      if (sha256(note) === baselineHash) {
+        preHumanizationRegressions += 1;
+        errors.push(`${expectedReference} has reverted to its pre-humanization detailed note.`);
+      }
+    }
+    const variants = [note, jsonInner(note), htmlEscape(note)];
+    if (!variants.some((variant) => exportText.includes(variant))) {
+      errors.push(`${verse.verse} is absent from the static payload.`);
+    } else {
+      embeddedNotes += 1;
+    }
+  });
 }
 
 if (embeddedNotes !== 433) errors.push(`Expected 433 embedded notes; verified ${embeddedNotes}.`);
+if (checkedBaselineReferences.size !== 433 || baselineByReference.size !== 433) {
+  errors.push(
+    `Expected 433 canonical-to-baseline mappings; checked ${checkedBaselineReferences.size} ` +
+    `against ${baselineByReference.size} manifest entries.`
+  );
+}
 
 if (errors.length) {
   console.error(`Romans static humanization validation failed with ${errors.length} issue${errors.length === 1 ? "" : "s"}:`);
@@ -199,4 +273,7 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`Romans static humanization validation passed: ${embeddedNotes} embedded notes, 0 stale notes, and valid Flight lengths.`);
+console.log(
+  `Romans static humanization validation passed: ${embeddedNotes} embedded notes match the canonical public JSON, ` +
+  `${preHumanizationRegressions} pre-humanization regressions, and valid Flight lengths.`
+);
