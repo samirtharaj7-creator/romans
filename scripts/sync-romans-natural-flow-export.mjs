@@ -3,7 +3,7 @@ import { join } from "node:path";
 
 const siteRoot = process.cwd();
 const [oldContentRoot, newContentRoot] = process.argv.slice(2);
-const assetVersion = "romans-home-static-73";
+const assetVersion = "romans-home-static-75";
 if (!oldContentRoot || !newContentRoot) {
   throw new Error("Usage: node scripts/sync-romans-natural-flow-export.mjs <old-content-root> <new-content-root>");
 }
