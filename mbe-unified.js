@@ -454,13 +454,39 @@
     scheduleDesktopChapterReaderPin();
   }
 
+
+  function cssAttrEscape(value) {
+    if (window.CSS?.escape) return window.CSS.escape(String(value));
+    return String(value).replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+  }
+
+  function romansVerseToken(chapter, verse) {
+    return 'romans-' + chapter + '-' + verse;
+  }
+
+  function normalizeRomansVerseAnchors(root = document) {
+    root.querySelectorAll?.('.scripture-pane button.scripture-card[id^="romans-"]').forEach((button) => {
+      if (!button.dataset.verseId) button.dataset.verseId = button.id;
+      button.removeAttribute('id');
+    });
+  }
+
+  function romansVerseButtonFromToken(token) {
+    normalizeRomansVerseAnchors();
+    return document.querySelector(`[data-verse-id="${cssAttrEscape(token)}"]`) || document.getElementById(token);
+  }
+
+  function romansButtonVerseToken(button) {
+    return button?.dataset?.verseId || button?.id || '';
+  }
+
   function installDesktopVerseScrollContainment() {
     if (window.__romansDesktopVerseScrollContainmentInstalled) return;
     window.__romansDesktopVerseScrollContainmentInstalled = true;
 
     document.addEventListener('click', (event) => {
       if (!(event.target instanceof Element)) return;
-      const verseButton = event.target.closest('.scripture-pane button.scripture-card[id^="romans-"]');
+      const verseButton = event.target.closest('.scripture-pane button.scripture-card[data-verse-id^="romans-"], .scripture-pane button.scripture-card[id^="romans-"]');
       if (!verseButton) return;
       const reference = verseReferenceFromButton(verseButton);
       if (reference) referenceScheduleInputSync(Number(reference.chapter), Number(reference.verse));
@@ -602,7 +628,8 @@
   }
 
   function verseReferenceFromButton(button) {
-    const match = button && button.id ? button.id.match(/^romans-(\d+)-(\d+)$/) : null;
+    const token = romansButtonVerseToken(button);
+    const match = token ? token.match(/^romans-(\d+)-(\d+)$/) : null;
     if (!match) return null;
     return {
       chapter: match[1],
@@ -709,10 +736,12 @@
       return;
     }
     const hashId = decodeURIComponent(window.location.hash.replace(/^#/, ''));
-    const hashVerse = hashId ? document.getElementById(hashId) : null;
-    const active = hashVerse && hashVerse.matches('.scripture-pane button.scripture-card[id^="romans-"]')
+    const hashMatch = hashId.match(/^v-?(\d+)$/);
+    const currentChapter = document.body?.dataset?.romansChapter || (window.location.pathname.match(/\/romans\/(\d+)/)?.[1]);
+    const hashVerse = hashMatch && currentChapter ? romansVerseButtonFromToken(romansVerseToken(currentChapter, Number(hashMatch[1]))) : romansVerseButtonFromToken(hashId);
+    const active = hashVerse && hashVerse.matches('.scripture-pane button.scripture-card[data-verse-id^="romans-"], .scripture-pane button.scripture-card[id^="romans-"]')
       ? hashVerse
-      : document.querySelector('.scripture-pane .scripture-card-active[id^="romans-"]');
+      : document.querySelector('.scripture-pane .scripture-card-active[data-verse-id^="romans-"], .scripture-pane .scripture-card-active[id^="romans-"]');
     if (active) {
       syncRomansInlineNoteForVerse(active, 0);
       return;
@@ -732,7 +761,7 @@
     window.__romansInlineNotesInstalled = true;
     document.addEventListener('click', (event) => {
       if (!(event.target instanceof Element)) return;
-      const verseButton = event.target.closest('.scripture-pane button.scripture-card[id^="romans-"]');
+      const verseButton = event.target.closest('.scripture-pane button.scripture-card[data-verse-id^="romans-"], .scripture-pane button.scripture-card[id^="romans-"]');
       if (!verseButton) return;
       window.setTimeout(() => syncRomansInlineNoteForVerse(verseButton, 0), 0);
     });
@@ -1299,7 +1328,7 @@
 
   function referenceVerseButton(chapter, verse) {
     const id = referenceNavConfig.simpleVerseIds ? 'v-' + verse : referenceNavConfig.slug + '-' + chapter + '-' + verse;
-    return document.getElementById(id);
+    return romansVerseButtonFromToken(id);
   }
 
   function referenceValid(chapter, verse) {
@@ -1309,8 +1338,8 @@
   function referenceSelectedVerse(chapter) {
     const hashMatch = (window.location.hash || '').match(/^#v-?(\d+)$/);
     if (hashMatch && referenceValid(chapter, Number(hashMatch[1]))) return Number(hashMatch[1]);
-    const active = document.querySelector('.scripture-card-active[id], main[data-bible-panel] button[id^="v-"].bg-primary, main[data-bible-panel] button[id^="v-"][aria-pressed="true"]');
-    const idMatch = active?.id?.match(/(\d+)$/);
+    const active = document.querySelector('.scripture-card-active[data-verse-id], .scripture-card-active[id], main[data-bible-panel] button[id^="v-"].bg-primary, main[data-bible-panel] button[id^="v-"][aria-pressed="true"]');
+    const idMatch = romansButtonVerseToken(active).match(/(\d+)$/);
     if (idMatch && referenceValid(chapter, Number(idMatch[1]))) return Number(idMatch[1]);
     return 1;
   }
@@ -1618,7 +1647,7 @@
 
     referenceAddRecent(currentChapter, currentVerse);
     if ((window.location.hash || '').match(/^#v-?\d+$/)) {
-      window.setTimeout(() => referenceSelect(currentChapter, referenceSelectedVerse(currentChapter)), 120);
+      referenceSelect(currentChapter, referenceSelectedVerse(currentChapter));
     }
   }
   // MBE reference navigator end
@@ -1626,6 +1655,7 @@
 
   function ensureShell() {
     if (!document.body) return;
+    normalizeRomansVerseAnchors();
     installReferenceNavigator();
     forceDarkTheme();
     ensureIllustratedAssets();
@@ -1688,6 +1718,7 @@
   forceDarkTheme();
   installRouteWatcher();
 
+  normalizeRomansVerseAnchors();
   const scheduleShellAfterHydration = () => {
     window.setTimeout(ensureShell, 100);
     window.setTimeout(ensureShell, 300);
