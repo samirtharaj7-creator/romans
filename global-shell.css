@@ -52,10 +52,6 @@
   top:46px;
 }
 
-.mbe-global-shell ~ .reader-header{
-  top:46px !important;
-}
-
 .mbe-global-shell ~ .fixed.left-0.top-0{
   top:46px !important;
 }
@@ -328,20 +324,13 @@ body.mbe-shell-managed{
   flex-direction:column;
 }
 
+body.mbe-shell-managed.mbe-shell-pending{
+  padding-top:var(--mbe-ribbon-occupied-height,46px);
+}
+
 body.mbe-shell-managed > .mbe-global-shell{
   order:-20;
   flex:0 0 auto;
-}
-
-body.mbe-shell-managed > .reader-header{
-  order:-10;
-  flex:0 0 auto;
-}
-
-body.mbe-shell-managed .reader-header{
-  min-height:4.35rem !important;
-  padding-top:.85rem !important;
-  padding-bottom:.85rem !important;
 }
 
 body.mbe-shell-managed > main{
@@ -386,28 +375,6 @@ body.mbe-shell-managed > .mbe-global-footer{
     overscroll-behavior-y:contain;
   }
 
-  /*
-   * The shared ribbon sits above each commentary's native reader header.
-   * Include both in the desktop height budget so the pane viewport ends at
-   * the browser edge instead of below it, where final lines would be clipped.
-   */
-  body.mbe-shell-managed:has(> .reader-header) > main.reader-page:has(> .split-reader){
-    height:calc(100dvh - var(--mbe-ribbon-occupied-height) - 4.35rem) !important;
-    min-height:calc(100dvh - var(--mbe-ribbon-occupied-height) - 4.35rem) !important;
-    flex:0 0 auto;
-  }
-
-  body.mbe-shell-managed:has(> .reader-header) > main.reader-page:has(> .split-reader) > .split-reader{
-    height:calc(100dvh - var(--mbe-ribbon-occupied-height) - 4.35rem - var(--chapter-strip-height)) !important;
-    min-height:0 !important;
-  }
-
-  body.mbe-shell-managed:has(> .reader-header) > main.reader-page:has(> .split-reader) :is(
-    .scripture-pane-body,
-    .commentary-pane-body
-  ){
-    padding-bottom:calc(1.5rem + env(safe-area-inset-bottom, 0px)) !important;
-  }
 }
 
 body > #root:empty{
