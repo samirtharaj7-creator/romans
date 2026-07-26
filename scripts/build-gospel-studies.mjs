@@ -3,8 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const VERSION = 'romans-home-static-80';
-const SHELL_VERSION = 'romans-shell-static-79';
+const VERSION = 'romans-home-static-75';
 const FONT_HREF = 'https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@400;500;600&display=swap';
 const LEGACY_STUDY_SLUGS = [
   'gospel-unfolded',
@@ -186,22 +185,34 @@ function head(title, description) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="${FONT_HREF}" rel="stylesheet">
     <link rel="stylesheet" href="/_next/static/css/f76b0aea01fab224.css">
-    <link rel="stylesheet" href="/global-shell.css?v=compact-strip-4">
+    <link rel="stylesheet" href="/global-shell.css?v=compact-strip-1">
     <link rel="stylesheet" href="/romans-illustrated.css?v=${VERSION}" data-romans-illustrated="css">
     <link rel="stylesheet" href="/gospel/gospel.css?v=${VERSION}">
   </head>`;
 }
 
-const unifiedShellSource = await fs.readFile(path.join(ROOT, 'mbe-unified.js'), 'utf8');
-
-function shellMarkup(name) {
-  const match = unifiedShellSource.match(new RegExp(`const ${name} = ("(?:[^"\\\\]|\\\\.)*");`));
-  if (!match) throw new Error(`Could not find ${name} in mbe-unified.js`);
-  return JSON.parse(match[1]).trim();
+function siteHeader() {
+  const links = [
+    ['/', 'Home'],
+    ['/introduction/', 'Introduction'],
+    ['/romans/1/', 'Commentary'],
+    ['/gospel/', 'Gospel'],
+    ['/articles/', 'Articles'],
+  ];
+  const navLinks = links.map(([href, label]) => `<a class="reader-nav-link${label === 'Gospel' ? ' reader-nav-link-active' : ''}" href="${href}"${label === 'Gospel' ? ' aria-current="page"' : ''}>${label}</a>`).join('');
+  const menuLinks = links.map(([href, label]) => `<a class="reader-menu-link${label === 'Gospel' ? ' reader-menu-link-active' : ''}" href="${href}"${label === 'Gospel' ? ' aria-current="page"' : ''}>${label}</a>`).join('');
+  return `  <header class="reader-header no-print">
+    <a class="reader-brand" aria-label="Romans Study Home" href="/">
+      <span class="reader-logo" aria-hidden="true">${icon('book-open', 'h-5 w-5')}</span>
+      <span class="reader-brand-text"><span class="reader-brand-strong">Romans Study</span></span>
+    </a>
+    <nav class="reader-nav" aria-label="Primary navigation">${navLinks}</nav>
+    <div class="reader-header-actions">
+      <button class="reader-menu-button" type="button" aria-label="Open menu" aria-expanded="false" data-romans-static-menu-button>${icon('menu', 'h-5 w-5')}</button>
+    </div>
+    <nav class="reader-menu" aria-label="Mobile navigation" data-romans-static-menu hidden>${menuLinks}</nav>
+  </header>`;
 }
-
-const siteHeader = () => shellMarkup('headerMarkup');
-const siteFooter = () => shellMarkup('footerMarkup');
 
 function stageMarkup(step) {
   const id = `romans-road-${step.id}`;
@@ -241,7 +252,7 @@ function renderRoad() {
   return `<!doctype html>
 <html lang="en" class="dark" style="color-scheme: dark">
 ${head(`${romansRoad.title}: ${romansRoad.subtitle}`, 'Walk through eight key verses in Romans and understand the gospel message from humanity\'s need to life in Christ.')}
-<body class="mbe-shell-managed" data-romans-static-page="gospel-road" data-romans-route="gospel">
+<body data-romans-static-page="gospel-road">
 ${siteHeader()}
   <main class="gospel-page gospel-road-page">
     <section class="gospel-road-hero" aria-labelledby="gospel-road-title">
@@ -276,9 +287,8 @@ ${romansRoad.steps.map(summaryRow).join('\n')}
       </div>
     </section>
   </main>
-${siteFooter()}
   <script src="/gospel/gospel.js?v=${VERSION}"></script>
-  <script src="/mbe-unified.js?v=${SHELL_VERSION}"></script>
+  <script src="/mbe-unified.js?v=${VERSION}"></script>
 </body>
 </html>
 `;

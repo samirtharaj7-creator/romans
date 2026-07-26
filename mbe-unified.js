@@ -1,6 +1,6 @@
 (() => {
   const tool = "romans";
-  const illustratedVersion = "romans-home-static-80";
+  const illustratedVersion = "romans-home-static-75";
   const referencePreviewDataUrl = "/data/romans-reference-previews.json?v=" + illustratedVersion;
   const danielFontsHref = "https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@400;500;600&display=swap";
   const headerMarkup = "<header class=\"mbe-global-shell\" data-tool=\"romans\" data-embedded=\"true\">\n      <div class=\"mbe-shell-wrap\">\n        <div class=\"mbe-ribbon-left\">\n          <a class=\"mbe-ribbon-brand\" href=\"https://mybibleexplorer.com\" aria-label=\"My Bible Explorer home\"><img class=\"mbe-ribbon-logo\" src=\"https://mybibleexplorer.com/assets/my-bible-explorer-logo.png?v=mbe-20260715-1\" alt=\"My Bible Explorer\" width=\"107\" height=\"34\"></a>\n          <a class=\"mbe-ribbon-back\" href=\"https://mybibleexplorer.com/#journeys\">Back to Library</a>\n        </div>\n        <nav class=\"mbe-global-nav\" aria-label=\"My Bible Explorer\">\n          <details class=\"mbe-library-menu\">\n            <summary class=\"mbe-library-toggle\">Library</summary>\n            <div class=\"mbe-library-panel\">\n              <div class=\"mbe-library-grid\">\n            <a class=\"mbe-library-item\" href=\"https://hermeneutics.mybibleexplorer.com\"><span class=\"mbe-library-name\">Hermeneutics</span><span class=\"mbe-library-desc\">Learn to read Scripture faithfully</span></a>\n            <a class=\"mbe-library-item\" href=\"https://psalms.mybibleexplorer.com\"><span class=\"mbe-library-name\">Psalms</span><span class=\"mbe-library-desc\">Worship, lament, praise, and prayer</span></a>\n            <a class=\"mbe-library-item\" href=\"https://sanctuary.mybibleexplorer.com/#structure\"><span class=\"mbe-library-name\">Sanctuary</span><span class=\"mbe-library-desc\">A blueprint of salvation</span></a>\n            <a class=\"mbe-library-item\" href=\"https://lastdayevents.mybibleexplorer.com/index.html\"><span class=\"mbe-library-name\">Last Day Events</span><span class=\"mbe-library-desc\">Earth's final chapter</span></a>\n            <a class=\"mbe-library-item\" href=\"https://parables.mybibleexplorer.com\"><span class=\"mbe-library-name\">Parables</span><span class=\"mbe-library-desc\">Stories of the kingdom</span></a>\n            <a class=\"mbe-library-item\" href=\"https://romans.mybibleexplorer.com\" aria-current=\"page\"><span class=\"mbe-library-name\">Romans</span><span class=\"mbe-library-desc\">Righteousness by faith and life in the Spirit</span></a>\n            <a class=\"mbe-library-item\" href=\"https://corinthians.mybibleexplorer.com/\"><span class=\"mbe-library-name\">Corinthians</span><span class=\"mbe-library-desc\">Unity, worship, holy living, and resurrection</span></a>\n            <a class=\"mbe-library-item\" href=\"https://galatians.mybibleexplorer.com/\"><span class=\"mbe-library-name\">Galatians</span><span class=\"mbe-library-desc\">Freedom in Christ and life by the Spirit</span></a>\n            <a class=\"mbe-library-item\" href=\"https://ephesians.mybibleexplorer.com/\"><span class=\"mbe-library-name\">Ephesians</span><span class=\"mbe-library-desc\">Grace, unity, new life, and spiritual warfare</span></a>\n            <a class=\"mbe-library-item\" href=\"https://philippians.mybibleexplorer.com/\"><span class=\"mbe-library-name\">Philippians</span><span class=\"mbe-library-desc\">Joy, humility, perseverance, and contentment</span></a>\n            <a class=\"mbe-library-item\" href=\"https://colossians.mybibleexplorer.com/\"><span class=\"mbe-library-name\">Colossians</span><span class=\"mbe-library-desc\">The supremacy of Christ and life in Him</span></a>\n            <a class=\"mbe-library-item\" href=\"https://hebrews.mybibleexplorer.com/\"><span class=\"mbe-library-name\">Hebrews</span><span class=\"mbe-library-desc\">Christ, covenant, sanctuary, and persevering faith</span></a>\n            <a class=\"mbe-library-item\" href=\"https://james.mybibleexplorer.com/\"><span class=\"mbe-library-name\">James</span><span class=\"mbe-library-desc\">Living faith, wisdom, speech, patience, and prayer</span></a>\n            <a class=\"mbe-library-item\" href=\"https://isaiah.mybibleexplorer.com/\"><span class=\"mbe-library-name\">Isaiah</span><span class=\"mbe-library-desc\">Judgment, comfort, and gospel hope</span></a>\n            <a class=\"mbe-library-item\" href=\"https://daniel.mybibleexplorer.com\"><span class=\"mbe-library-name\">Daniel</span><span class=\"mbe-library-desc\">Prophecy and providence</span></a>\n            <a class=\"mbe-library-item\" href=\"https://revelation.mybibleexplorer.com/\"><span class=\"mbe-library-name\">Revelation</span><span class=\"mbe-library-desc\">Symbols, judgment, and final hope</span></a>\n            <a class=\"mbe-library-item\" href=\"https://christ.mybibleexplorer.com/\"><span class=\"mbe-library-name\">Life of Christ</span><span class=\"mbe-library-desc\">The life and ministry of Jesus</span></a>\n              </div>\n            </div>\n          </details>\n          <a class=\"mbe-ribbon-give\" href=\"https://mybibleexplorer.com/#donate\">Support</a>\n        </nav>\n      </div>\n    </header>";
@@ -102,6 +102,161 @@
       document.body.setAttribute('data-romans-chapter', chapterMatch[1]);
       return;
     }
+  }
+
+  function syncArticlesNavigation() {
+    const isArticlesRoute = routePath() === '/articles' || routePath().startsWith('/articles/');
+    document.querySelectorAll('.reader-nav, .reader-menu').forEach((nav) => {
+      let articlesLink = Array.from(nav.querySelectorAll('a')).find((link) => {
+        const href = link.getAttribute('href') || '';
+        return href === '/articles' || href === '/articles/';
+      });
+      if (!articlesLink) {
+        articlesLink = document.createElement('a');
+        articlesLink.href = '/articles/';
+        articlesLink.textContent = 'Articles';
+        articlesLink.className = nav.classList.contains('reader-menu') ? 'reader-menu-link' : 'reader-nav-link';
+        nav.appendChild(articlesLink);
+      }
+
+      articlesLink.classList.toggle('reader-nav-link-active', isArticlesRoute && nav.classList.contains('reader-nav'));
+      articlesLink.classList.toggle('reader-menu-link-active', isArticlesRoute && nav.classList.contains('reader-menu'));
+      if (isArticlesRoute) {
+        nav.querySelectorAll('a').forEach((link) => {
+          if (link === articlesLink) return;
+          link.classList.remove('reader-nav-link-active', 'reader-menu-link-active');
+          link.removeAttribute('aria-current');
+        });
+        articlesLink.setAttribute('aria-current', 'page');
+      } else {
+        articlesLink.removeAttribute('aria-current');
+      }
+    });
+  }
+
+  function syncGospelNavigation() {
+    const isGospelRoute = routePath() === '/gospel' || routePath().startsWith('/gospel/');
+    document.querySelectorAll('.reader-nav, .reader-menu').forEach((nav) => {
+      let gospelLink = Array.from(nav.querySelectorAll('a')).find((link) => {
+        const href = link.getAttribute('href') || '';
+        return href === '/gospel' || href === '/gospel/';
+      });
+      if (!gospelLink) {
+        gospelLink = document.createElement('a');
+        gospelLink.href = '/gospel/';
+        gospelLink.textContent = 'Gospel';
+        gospelLink.className = nav.classList.contains('reader-menu') ? 'reader-menu-link' : 'reader-nav-link';
+        const articlesLink = Array.from(nav.querySelectorAll('a')).find((link) => {
+          const href = link.getAttribute('href') || '';
+          return href === '/articles' || href === '/articles/';
+        });
+        nav.insertBefore(gospelLink, articlesLink || null);
+      }
+
+      gospelLink.classList.toggle('reader-nav-link-active', isGospelRoute && nav.classList.contains('reader-nav'));
+      gospelLink.classList.toggle('reader-menu-link-active', isGospelRoute && nav.classList.contains('reader-menu'));
+      if (isGospelRoute) {
+        nav.querySelectorAll('a').forEach((link) => {
+          if (link === gospelLink) return;
+          link.classList.remove('reader-nav-link-active', 'reader-menu-link-active');
+          link.removeAttribute('aria-current');
+        });
+        gospelLink.setAttribute('aria-current', 'page');
+      } else {
+        gospelLink.removeAttribute('aria-current');
+      }
+    });
+  }
+
+  function syncHomeArticlesCard() {
+    if (routePath() !== '/') return;
+    const grid = document.querySelector('.home-action-grid');
+    if (!grid || grid.querySelector('[data-romans-articles-card]')) return;
+    const card = document.createElement('a');
+    card.className = 'home-action-card';
+    card.href = '/articles/';
+    card.setAttribute('data-romans-articles-card', 'true');
+    card.innerHTML = '<span class="home-action-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><path d="M8 7h8"></path><path d="M8 11h6"></path></svg></span><strong>Read the Articles</strong><span>Explore guides that follow Paul\'s argument, context, and theology across the whole letter.</span><em>Open <span aria-hidden="true">&rarr;</span></em>';
+    grid.appendChild(card);
+  }
+
+  function syncHomeGospelCard() {
+    if (routePath() !== '/') return;
+    const grid = document.querySelector('.home-action-grid');
+    if (!grid || grid.querySelector('[data-romans-gospel-card]')) return;
+    const card = document.createElement('a');
+    card.className = 'home-action-card';
+    card.href = '/gospel/';
+    card.setAttribute('data-romans-gospel-card', 'true');
+    card.innerHTML = '<span class="home-action-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><line x1="6" x2="6" y1="3" y2="15"></line><circle cx="18" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><path d="M18 9a9 9 0 0 1-9 9"></path></svg></span><strong>Walk the Romans Road</strong><span>Follow eight key passages from humanity\'s need to salvation and life in Christ.</span><em>Open <span aria-hidden="true">&rarr;</span></em>';
+    const articlesCard = grid.querySelector('[data-romans-articles-card]');
+    grid.insertBefore(card, articlesCard || null);
+  }
+
+  function syncHomeTitle() {
+    if (routePath() !== '/') return;
+    const title = document.querySelector('.home-showcase-copy h1');
+    if (!title || title.previousElementSibling?.classList.contains('home-title-prefix')) return;
+    const prefix = document.createElement('p');
+    prefix.className = 'home-title-prefix';
+    prefix.textContent = 'The Epistle to the';
+    title.insertAdjacentElement('beforebegin', prefix);
+  }
+
+  function syncIntroductionHero() {
+    if (routePath() !== '/introduction') return;
+    document.querySelector('.background-kicker')?.remove();
+    document.querySelector('.background-summary')?.remove();
+    document.querySelector('.background-fact-grid')?.remove();
+
+    const title = document.querySelector('#introduction-title');
+    if (title && title.dataset.romansIntroTitle !== 'split') {
+      title.setAttribute('aria-label', 'Introduction to the Epistle to the Romans');
+      title.dataset.romansIntroTitle = 'split';
+      title.innerHTML = '<span class="background-title-kicker">Introduction to the Epistle to the</span><span class="background-title-main">Romans</span>';
+    }
+
+    const subtitle = document.querySelector('.background-subtitle');
+    if (subtitle) {
+      subtitle.textContent = "A concise guide to Romans' name, author, date, setting, structure, and central burden.";
+    }
+
+    const sectionLabels = [
+      'Author',
+      'Recipients',
+      'Date & Place',
+      'Setting',
+      'Historical Context',
+      'Central Theme',
+      'Theology',
+      'Outline',
+      'Why Romans Matters',
+    ];
+    document.querySelectorAll('.background-section-nav a').forEach((link, index) => {
+      const label = Array.from(link.childNodes).find((node) => (
+        node.nodeType === Node.TEXT_NODE && node.textContent.trim()
+      ));
+      if (label && sectionLabels[index]) label.textContent = sectionLabels[index];
+    });
+
+    const heading = document.querySelector('.background-section-nav-heading');
+    if (!heading || heading.dataset.romansContentsLabel === 'true') return;
+    const label = Array.from(heading.childNodes).find((node) => (
+      node.nodeType === Node.TEXT_NODE && node.textContent.trim()
+    ));
+    if (label) label.textContent = 'Read This Page';
+    heading.dataset.romansContentsLabel = 'true';
+  }
+
+  function installArticlesNavigation() {
+    if (window.__romansArticlesNavigationInstalled) return;
+    window.__romansArticlesNavigationInstalled = true;
+    document.addEventListener('click', (event) => {
+      if (!(event.target instanceof Element)) return;
+      if (event.target.closest('.reader-menu-button')) {
+        window.setTimeout(syncArticlesNavigation, 0);
+      }
+    });
   }
 
   function installArticleReadingBar() {
@@ -225,6 +380,26 @@
     window.addEventListener('resize', scheduleReadingBarUpdate);
     window.addEventListener('hashchange', scheduleReadingBarUpdate);
     updateReadingBar();
+  }
+
+  function installStaticMobileMenu() {
+    const button = document.querySelector('[data-romans-static-menu-button]');
+    const menu = document.querySelector('[data-romans-static-menu]');
+    if (!button || !menu || button.hasAttribute('data-romans-menu-ready')) return;
+    button.setAttribute('data-romans-menu-ready', 'true');
+    button.addEventListener('click', () => {
+      const willOpen = menu.hidden;
+      menu.hidden = !willOpen;
+      button.setAttribute('aria-expanded', String(willOpen));
+      button.setAttribute('aria-label', willOpen ? 'Close menu' : 'Open menu');
+    });
+    window.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape' || menu.hidden) return;
+      menu.hidden = true;
+      button.setAttribute('aria-expanded', 'false');
+      button.setAttribute('aria-label', 'Open menu');
+      button.focus();
+    });
   }
 
   function syncChapterTopicPills() {
@@ -1486,6 +1661,14 @@
     ensureIllustratedAssets();
     syncRomansRouteMeta();
     removeSearchOption();
+    syncArticlesNavigation();
+    syncGospelNavigation();
+    syncHomeTitle();
+    syncIntroductionHero();
+    syncHomeGospelCard();
+    syncHomeArticlesCard();
+    installArticlesNavigation();
+    installStaticMobileMenu();
     removeSearchOption();
     syncChapterTopicPills();
     installRomansInlineNotes();
@@ -1499,7 +1682,6 @@
     if (!document.querySelector('.mbe-global-shell[data-tool="' + tool + '"][data-embedded="true"]')) {
       document.body.insertAdjacentHTML('afterbegin', headerMarkup);
     }
-    document.body.classList.remove('mbe-shell-pending');
     installArticleReadingBar();
     const existingFooters = Array.from(document.querySelectorAll('.mbe-global-footer'));
     let footer = existingFooters.find((node) => node.getAttribute('data-tool') === tool) || null;

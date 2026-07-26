@@ -156,6 +156,87 @@ body > #root:empty::before {
   border-color: rgba(201, 164, 76, .18) !important;
 }
 
+.reader-header {
+  min-height: 4.35rem !important;
+  border-bottom: 1px solid rgba(201, 164, 76, .18) !important;
+  background: linear-gradient(180deg, rgba(14, 33, 56, .96), rgba(11, 31, 58, .96)) !important;
+  color: #ece0c4 !important;
+  box-shadow: 0 18px 44px -36px rgba(0, 0, 0, .82) !important;
+  backdrop-filter: blur(18px);
+}
+
+.reader-logo {
+  width: 2.25rem !important;
+  height: 2.25rem !important;
+  border: 1px solid rgba(201, 164, 76, .35) !important;
+  border-radius: .5rem !important;
+  background: rgba(201, 164, 76, .12) !important;
+  color: #d8b866 !important;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, .24) !important;
+}
+
+.reader-brand-text {
+  color: #f3e8cc !important;
+  font-family: "Cinzel", Georgia, serif !important;
+  font-size: .78rem !important;
+  font-weight: 600 !important;
+  letter-spacing: .18em !important;
+  text-transform: uppercase !important;
+}
+
+.reader-brand-muted {
+  display: none !important;
+}
+
+.reader-nav {
+  gap: clamp(1.5rem, 3.3vw, 3.2rem) !important;
+}
+
+.reader-menu-link,
+.reader-nav-link {
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #b9ad90 !important;
+  font-family: var(--font-sans), system-ui, sans-serif !important;
+  font-size: .72rem !important;
+  font-weight: 600 !important;
+  letter-spacing: .2em !important;
+  opacity: .56 !important;
+  padding: 0 !important;
+  text-transform: uppercase !important;
+}
+
+.reader-menu-link:hover,
+.reader-menu-link-active,
+.reader-nav-link:hover,
+.reader-nav-link-active,
+.dark .reader-nav-link-active,
+.dark .reader-menu-link-active {
+  background: transparent !important;
+  color: #fff2d4 !important;
+  opacity: 1 !important;
+}
+
+.theme-word-toggle {
+  display: none !important;
+  height: auto !important;
+  border-radius: 0 !important;
+  color: #b9ad90 !important;
+  font-family: var(--font-sans), system-ui, sans-serif !important;
+  font-size: .72rem !important;
+  font-weight: 600 !important;
+  letter-spacing: .2em !important;
+  opacity: .76 !important;
+  padding: 0 !important;
+  text-transform: uppercase !important;
+}
+
+.theme-word-toggle:hover {
+  background: transparent !important;
+  color: #fff2d4 !important;
+  opacity: 1 !important;
+}
+
 .home-showcase,
 .reader-page,
 .article-reader,
@@ -746,6 +827,10 @@ body[data-romans-chapter] .commentary-reading p {
 }
 
 @media (max-width: 980px) {
+  .reader-header {
+    grid-template-columns: minmax(0, 1fr) auto !important;
+  }
+
   .chapter-strip-inner {
     justify-content: flex-start !important;
   }
@@ -2891,30 +2976,4 @@ body[data-romans-route="home"] .home-showcase-context,
 body[data-romans-route="introduction"] .background-hero > * {
   position: relative;
   z-index: 2 !important;
-}
-
-.romans-not-found {
-  min-height: calc(100vh - var(--mbe-ribbon-occupied-height, 46px) - 8rem);
-  display: grid;
-  place-content: center;
-  justify-items: center;
-  gap: 1.25rem;
-  padding: 3rem 1.5rem;
-  text-align: center;
-}
-
-.romans-not-found h1 {
-  margin: 0;
-  color: #fff2d4;
-  font-family: "Cinzel", Georgia, serif;
-  font-size: clamp(5rem, 18vw, 10rem);
-  font-weight: 500;
-  line-height: .8;
-}
-
-.romans-not-found > p:not(.home-section-kicker) {
-  margin: 0 0 .75rem;
-  color: #cfc3a5;
-  font-family: "EB Garamond", Georgia, serif;
-  font-size: 1.25rem;
 }

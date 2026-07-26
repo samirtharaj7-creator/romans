@@ -5,10 +5,16 @@ import { fileURLToPath } from "node:url";
 const root = fileURLToPath(new URL("..", import.meta.url));
 const checkOnly = process.argv.includes("--check");
 const layoutMarker = "/_next/static/chunks/app/layout-7a59849285855451.js";
-const currentLayoutReference = `${layoutMarker}?v=romans-shell-static-79`;
+const legacyLayoutReference = `${layoutMarker}?v=search-cleanup-71`;
+const currentLayoutReference = `${layoutMarker}?v=reader-menu-label-76`;
 const layoutChunkPath = join(root, layoutMarker.slice(1));
+const staticMenuLabel = '"aria-label":"Open menu","aria-expanded":r';
+const statefulMenuLabel = '"aria-label":r?"Close menu":"Open menu","aria-expanded":r';
 const legacyAssetVersion = "romans-home-static-74";
-const currentAssetVersion = "romans-home-static-80";
+const currentAssetVersion = "romans-home-static-75";
+const actionsMarker = '<div class="reader-header-actions"><button';
+const themeMarker = 'class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-muted h-10 px-4 py-2 theme-word-toggle"';
+const themeButton = `<button ${themeMarker} aria-label="Toggle theme"><span>Dark</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon h-4 w-4" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"></path></svg></button>`;
 
 async function listHtml(directory) {
   const files = [];
@@ -35,21 +41,47 @@ for (const file of htmlFiles) {
   if (!html.includes(layoutMarker)) continue;
   targets.push(file);
 
+  if (html.includes(legacyLayoutReference)) {
+    if (checkOnly) {
+      throw new Error(`${relative(root, file)} still references the pre-fix layout asset`);
+    }
+    html = html.replaceAll(legacyLayoutReference, currentLayoutReference);
+    await writeFile(file, html);
+  }
   if (!html.includes(currentLayoutReference)) {
     throw new Error(`${relative(root, file)} is missing the current layout asset version`);
   }
-  if (html.includes('reader-header no-print')) {
-    throw new Error(`${relative(root, file)} still contains the obsolete reader header`);
+
+  const themeCount = html.split(themeMarker).length - 1;
+  if (themeCount === 1) continue;
+  if (themeCount > 1) {
+    throw new Error(`${relative(root, file)} has ${themeCount} theme hydration controls`);
   }
+  if (!html.includes(actionsMarker)) {
+    throw new Error(`${relative(root, file)} is missing the reader header action marker`);
+  }
+  if (checkOnly) {
+    throw new Error(`${relative(root, file)} is missing the server-rendered theme control`);
+  }
+
+  html = html.replace(actionsMarker, `<div class="reader-header-actions">${themeButton}<button`);
+  await writeFile(file, html);
 }
 
-if (targets.length !== 16) {
-  throw new Error(`Expected 16 Next-rendered HTML artifacts; found ${targets.length}`);
+if (targets.length !== 19) {
+  throw new Error(`Expected 19 Next-rendered HTML artifacts; found ${targets.length}`);
 }
 
-const layoutChunk = await readFile(layoutChunkPath, "utf8");
-if (!layoutChunk.includes("function w(){return null}")) {
-  throw new Error("The obsolete React reader header is still enabled");
+let layoutChunk = await readFile(layoutChunkPath, "utf8");
+if (layoutChunk.includes(staticMenuLabel)) {
+  if (checkOnly) {
+    throw new Error("The React reader menu label does not reflect its expanded state");
+  }
+  layoutChunk = layoutChunk.replace(staticMenuLabel, statefulMenuLabel);
+  await writeFile(layoutChunkPath, layoutChunk);
+}
+if (!layoutChunk.includes(statefulMenuLabel) || layoutChunk.includes(staticMenuLabel)) {
+  throw new Error("The React reader menu label state repair is missing or ambiguous");
 }
 
 const unifiedScript = await readFile(join(root, "mbe-unified.js"), "utf8");
@@ -74,4 +106,4 @@ for (const generator of ["scripts/build-gospel-studies.mjs", "scripts/sync-roman
   }
 }
 
-console.log(`${checkOnly ? "Validated" : "Synchronized"} the consolidated shell in ${targets.length} interactive chapter artifacts and ${htmlFiles.length} HTML files.`);
+console.log(`${checkOnly ? "Validated" : "Synchronized"} theme hydration markup in ${targets.length} Next artifacts and ${htmlFiles.length} HTML asset references.`);
