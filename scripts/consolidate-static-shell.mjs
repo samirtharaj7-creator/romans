@@ -48,10 +48,10 @@ async function consolidateStaticPage(file, route) {
   if (!html.includes('class="mbe-global-footer"')) {
     html = html.replace(
       /([ \t]*)<script src="\/mbe-unified\.js[^"]*"><\/script>/,
-      `${footer}\n$1<script src="/mbe-unified.js?v=romans-shell-static-79"></script>`,
+      `${footer}\n$1<script src="/mbe-unified.js?v=romans-shell-static-80"></script>`,
     );
   }
-  html = html.replace(/mbe-unified\.js\?v=[^"]+/g, 'mbe-unified.js?v=romans-shell-static-79');
+  html = html.replace(/mbe-unified\.js\?v=[^"]+/g, 'mbe-unified.js?v=romans-shell-static-80');
   await writeFile(file, html);
 }
 
@@ -77,9 +77,9 @@ for (let chapter = 1; chapter <= 16; chapter += 1) {
   html = html.replace(readerHeaderPattern, '');
   html = html.replace(
     /layout-7a59849285855451\.js\?v=[^"]+/g,
-    'layout-7a59849285855451.js?v=romans-shell-static-79',
+    'layout-7a59849285855451.js?v=romans-shell-static-80',
   );
-  html = html.replace(/mbe-unified\.js\?v=[^"]+/g, 'mbe-unified.js?v=romans-shell-static-79');
+  html = html.replace(/mbe-unified\.js\?v=[^"]+/g, 'mbe-unified.js?v=romans-shell-static-80');
   await writeFile(file, html);
 }
 
