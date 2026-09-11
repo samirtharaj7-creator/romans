@@ -185,7 +185,7 @@ function head(title, description) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="${FONT_HREF}" rel="stylesheet">
     <link rel="stylesheet" href="/_next/static/css/f76b0aea01fab224.css">
-    <link rel="stylesheet" href="/global-shell.css?v=compact-strip-1">
+    <link rel="stylesheet" href="/global-shell.css?v=mbe-20260911-1">
     <link rel="stylesheet" href="/romans-illustrated.css?v=${VERSION}" data-romans-illustrated="css">
     <link rel="stylesheet" href="/gospel/gospel.css?v=${VERSION}">
   </head>`;
