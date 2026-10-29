@@ -2913,7 +2913,7 @@ body[data-romans-chapter] {
 
 /* Desktop reader footer reveal. The panes remain the scroll containers; the
    full-width footer appears only at either pane's end and claims its own space. */
-@media (min-width: 981px) {
+@media (min-width: 1024px) {
   html:has(body[data-romans-chapter]),
   body[data-romans-chapter] {
     height: 100dvh !important;
@@ -2998,4 +2998,53 @@ body[data-romans-route="home"] .home-showcase-context,
 body[data-romans-route="introduction"] .background-hero > * {
   position: relative;
   z-index: 2 !important;
+}
+
+/* Make the long-form commentary controls and section labels easier to use. */
+body[data-romans-chapter] .reader-pane-controls button {
+  min-width: 2.75rem !important;
+  min-height: 2.75rem !important;
+}
+body[data-romans-chapter] .exposition-card-heading h2 {
+  font-size: 1rem !important;
+  line-height: 1.4 !important;
+}
+
+/* The inline notes use the document as their scroll container on phones and
+   small tablets. Locking the root while scrolling the body can leave Safari
+   displaying only the dark page background after entering a chapter. */
+@media (max-width: 1023.98px) {
+  html:has(body[data-romans-chapter]) {
+    height: auto !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+
+  body[data-romans-chapter] {
+    height: auto !important;
+    min-height: 100dvh !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+  }
+
+  body[data-romans-chapter] > main.reader-page,
+  body[data-romans-chapter] .split-reader {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  body[data-romans-chapter] .split-reader {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  body[data-romans-chapter] .scripture-pane,
+  body[data-romans-chapter] .scripture-pane-body {
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  body.mbe-shell-managed[data-romans-chapter] > main.reader-page {
+    contain: none !important;
+  }
 }
