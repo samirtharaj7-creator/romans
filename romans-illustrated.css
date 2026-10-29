@@ -2896,21 +2896,6 @@ body[data-romans-route="introduction"] .background-section-list {
   display: none !important;
 }
 
-/* Keep chapter overflow inside the two reader panes. Without an explicit root
-   scroll container, deeply scrolled pane content can extend the document's
-   visual overflow and leave empty space below the global footer. */
-html:has(body[data-romans-chapter]) {
-  height: 100% !important;
-  overflow: hidden !important;
-}
-
-body[data-romans-chapter] {
-  height: 100% !important;
-  min-height: 100% !important;
-  overflow-x: hidden !important;
-  overflow-y: auto !important;
-}
-
 /* Desktop reader footer reveal. The panes remain the scroll containers; the
    full-width footer appears only at either pane's end and claims its own space. */
 @media (min-width: 1024px) {
@@ -3016,8 +3001,7 @@ body[data-romans-chapter] .exposition-card-heading h2 {
 @media (max-width: 1023.98px) {
   html:has(body[data-romans-chapter]) {
     height: auto !important;
-    overflow-x: hidden !important;
-    overflow-y: auto !important;
+    overflow: visible !important;
   }
 
   body[data-romans-chapter] {

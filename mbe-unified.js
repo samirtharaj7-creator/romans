@@ -1,6 +1,6 @@
 (() => {
   const tool = "romans";
-  const illustratedVersion = "romans-home-static-86";
+  const illustratedVersion = "romans-home-static-87";
   const referencePreviewDataUrl = "/data/romans-reference-previews.json?v=" + illustratedVersion;
   const danielFontsHref = "https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@400;500;600&display=swap";
   const headerMarkup = "<header class=\"mbe-global-shell\" data-tool=\"romans\" data-embedded=\"true\">\n      <div class=\"mbe-shell-wrap\">\n        <div class=\"mbe-ribbon-left\">\n          <a class=\"mbe-ribbon-brand\" href=\"https://mybibleexplorer.com\" aria-label=\"My Bible Explorer home\"><img class=\"mbe-ribbon-logo\" src=\"https://mybibleexplorer.com/assets/my-bible-explorer-logo.png?v=mbe-20260715-1\" alt=\"My Bible Explorer\" width=\"107\" height=\"34\"></a>\n          <a class=\"mbe-ribbon-back\" href=\"https://mybibleexplorer.com/#journeys\">Back to Library</a>\n        </div>\n        <nav class=\"mbe-global-nav\" aria-label=\"My Bible Explorer\">\n          <details class=\"mbe-library-menu\">\n            <summary class=\"mbe-library-toggle\">Library</summary>\n            <div class=\"mbe-library-panel\">\n              <div class=\"mbe-library-groups\">\n            <section class=\"mbe-library-group\" aria-labelledby=\"mbe-books-heading\">\n              <p class=\"mbe-library-heading\" id=\"mbe-books-heading\">Books of the Bible</p>\n              <div class=\"mbe-library-grid mbe-library-grid-books\">\n                <a class=\"mbe-library-item\" href=\"https://colossians.mybibleexplorer.com/\"><span class=\"mbe-library-name\">Colossians</span></a>\n                <a class=\"mbe-library-item\" href=\"https://corinthians.mybibleexplorer.com/\"><span class=\"mbe-library-name\">Corinthians</span></a>\n                <a class=\"mbe-library-item\" href=\"https://daniel.mybibleexplorer.com\"><span class=\"mbe-library-name\">Daniel</span></a>\n                <a class=\"mbe-library-item\" href=\"https://ephesians.mybibleexplorer.com/\"><span class=\"mbe-library-name\">Ephesians</span></a>\n                <a class=\"mbe-library-item\" href=\"https://galatians.mybibleexplorer.com/\"><span class=\"mbe-library-name\">Galatians</span></a>\n                <a class=\"mbe-library-item\" href=\"https://hebrews.mybibleexplorer.com/\"><span class=\"mbe-library-name\">Hebrews</span></a>\n                <a class=\"mbe-library-item\" href=\"https://isaiah.mybibleexplorer.com/\"><span class=\"mbe-library-name\">Isaiah</span></a>\n                <a class=\"mbe-library-item\" href=\"https://james.mybibleexplorer.com/\"><span class=\"mbe-library-name\">James</span></a>\n                <a class=\"mbe-library-item\" href=\"https://philippians.mybibleexplorer.com/\"><span class=\"mbe-library-name\">Philippians</span></a>\n                <a class=\"mbe-library-item\" href=\"https://psalms.mybibleexplorer.com\"><span class=\"mbe-library-name\">Psalms</span></a>\n                <a class=\"mbe-library-item\" href=\"https://revelation.mybibleexplorer.com/\"><span class=\"mbe-library-name\">Revelation</span></a>\n                <a class=\"mbe-library-item\" href=\"https://romans.mybibleexplorer.com\" aria-current=\"page\"><span class=\"mbe-library-name\">Romans</span></a>\n              </div>\n            </section>\n            <section class=\"mbe-library-group\" aria-labelledby=\"mbe-topics-heading\">\n              <p class=\"mbe-library-heading\" id=\"mbe-topics-heading\">Topics</p>\n              <div class=\"mbe-library-grid mbe-library-grid-topics\">\n                <a class=\"mbe-library-item\" href=\"https://askew.mybibleexplorer.com/\"><span class=\"mbe-library-name\">Ask Ellen White</span></a><a class=\"mbe-library-item\" href=\"https://stc.mybibleexplorer.com/\"><span class=\"mbe-library-name\">Find Your Way Home</span></a>\n                <a class=\"mbe-library-item\" href=\"https://hermeneutics.mybibleexplorer.com\"><span class=\"mbe-library-name\">Hermeneutics</span></a>\n                <a class=\"mbe-library-item\" href=\"https://lastdayevents.mybibleexplorer.com/index.html\"><span class=\"mbe-library-name\">Last Day Events</span></a>\n                <a class=\"mbe-library-item\" href=\"https://christ.mybibleexplorer.com/\"><span class=\"mbe-library-name\">Life of Christ</span></a>\n                <a class=\"mbe-library-item\" href=\"https://parables.mybibleexplorer.com\"><span class=\"mbe-library-name\">Parables</span></a>\n                <a class=\"mbe-library-item\" href=\"https://salvation.mybibleexplorer.com/\"><span class=\"mbe-library-name\">Salvation</span></a>\n                <a class=\"mbe-library-item\" href=\"https://sanctuary.mybibleexplorer.com/#structure\"><span class=\"mbe-library-name\">Sanctuary</span></a>\n              </div>\n            </section>\n          </div>\n            </div>\n          </details>\n          <a class=\"mbe-ribbon-give\" href=\"https://mybibleexplorer.com/#donate\">Support</a>\n        </nav>\n      </div>\n    </header>";
@@ -410,6 +410,28 @@
 
   function isMobileInlineNoteViewport() {
     return window.matchMedia ? window.matchMedia('(max-width: 1023.98px)').matches : window.innerWidth < 1024;
+  }
+
+  function installMobileChapterNavigation() {
+    if (window.__romansMobileChapterNavigationInstalled) return;
+    window.__romansMobileChapterNavigationInstalled = true;
+    document.addEventListener('click', (event) => {
+      if (!isMobileInlineNoteViewport() || event.defaultPrevented || event.button !== 0 ||
+          event.metaKey || event.ctrlKey || event.shiftKey || event.altKey ||
+          !(event.target instanceof Element)) return;
+      const link = event.target.closest('a[href]');
+      if (!link || link.target || link.hasAttribute('download')) return;
+      const destination = new URL(link.href, window.location.href);
+      if (destination.origin !== window.location.origin ||
+          !/^\/romans\/([1-9]|1[0-6])\/$/.test(destination.pathname) ||
+          destination.pathname === window.location.pathname) return;
+
+      // A full page load avoids retaining the previous chapter's scroll and
+      // React reader state while Safari fetches the next chapter.
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      window.location.assign(destination.href);
+    }, true);
   }
 
   function isDesktopChapterReader() {
@@ -1656,6 +1678,7 @@
   function ensureShell() {
     if (!document.body) return;
     normalizeRomansVerseAnchors();
+    installMobileChapterNavigation();
     installReferenceNavigator();
     forceDarkTheme();
     ensureIllustratedAssets();
